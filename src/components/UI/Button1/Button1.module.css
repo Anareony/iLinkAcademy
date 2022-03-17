@@ -1,0 +1,15 @@
+.button {
+    border: none;
+    border-radius: 2px;
+    background: #fff;
+    padding: 17px 28px;
+    font-size: 18px;
+}
+
+.button:active {
+    background: #C2C4FF;
+}
+
+.button:disabled {
+    background: #E0E0E0;
+}
