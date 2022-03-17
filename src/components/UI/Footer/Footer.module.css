@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 80px 20px 80px;
+}
+.text {
+    color: #8A8A8A;
+}
+.link:nth-child(2) {
+    padding-left: 20.75px;
+    padding-right: 20.5px;
+}
