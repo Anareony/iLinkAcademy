@@ -1,0 +1,18 @@
+.button {
+    border: none;
+    border-radius: 2px;
+    background: #585CC6;
+    color: #fff;
+    padding: 17px 28px;
+    font-size: 18px;
+}
+.button:hover {
+    background: linear-gradient(to right, #696DC8 50%, #585CC6 50%);
+}
+.button:active {
+    background: #797DDF;
+}
+
+.button:disabled {
+    background: #8A8A8A;
+}
