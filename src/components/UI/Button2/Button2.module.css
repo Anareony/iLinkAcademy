@@ -1,14 +1,21 @@
 .button {
+    font-size: 18px;
+    font-family: "Gilroy";
+    font-weight: 600;
     border: none;
     border-radius: 2px;
-    background: #585CC6;
-    color: #fff;
     padding: 17px 28px;
-    font-size: 18px;
+    background: #585CC6;
+    line-height: 17px;
+    letter-spacing: 1%;
+    color: #fff;
+    cursor: pointer;
 }
+
 .button:hover {
     background: linear-gradient(to right, #696DC8 50%, #585CC6 50%);
 }
+
 .button:active {
     background: #797DDF;
 }
