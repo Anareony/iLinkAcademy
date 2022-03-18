@@ -8,7 +8,9 @@
     max-width: 1440px;
     margin: 0 auto;
 }
-
+.App {
+    margin-bottom: 40px;
+}
 body {
     font-family: 'Gilroy';
     font-size: 14px;
