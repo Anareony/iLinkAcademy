@@ -7,19 +7,25 @@ import tg from './img/tg.svg'
 const Footer = () => {
   return (
     <footer className={classes.footer}>
-        <div className={classes.wrapper}>
+        <div className={classes.container}>
             <div className={classes.text}>© iLINK ACADEMY. ALL RIGHTS RESERVED. 2022</div>
-            <div className={classes.socialList}>
-                <a href="1" className={classes.link}>
-                    <img src={vk} alt="" />
-                </a>
-                <a href="1" className={classes.link}>
-                    <img src={reddit} alt="" />
-                </a>
-                <a href="1" className={classes.link}>
-                    <img src={tg} alt="" />
-                </a>
-            </div>
+            <ul className={classes.socialList}>
+                <li className={classes.item}>
+                    <a href="1" className={classes.link}>
+                        <img src={vk} alt="" />
+                    </a>
+                </li>
+                <li className={classes.item}>
+                    <a href="1" className={classes.link}>
+                        <img src={reddit} alt="" />
+                    </a>
+                </li>
+                <li className={classes.item}>
+                    <a href="1" className={classes.link}>
+                        <img src={tg} alt="" />
+                    </a>
+                </li>
+            </ul>
         </div>
     </footer>
   )
