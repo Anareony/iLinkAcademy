@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/iLinkAcademy/static/css/main.9bc8af1f.css",
+    "main.js": "/iLinkAcademy/static/js/main.963ab9fa.js",
+    "static/media/Gilroy-SemiBold.eot": "/iLinkAcademy/static/media/Gilroy-SemiBold.8134b9ab378c54626928.eot",
+    "static/media/Gilroy-Regular.eot": "/iLinkAcademy/static/media/Gilroy-Regular.1d051d9d4215c09cbcaa.eot",
+    "static/media/Gilroy-Regular.ttf": "/iLinkAcademy/static/media/Gilroy-Regular.b91b0127c56a8e5f9e83.ttf",
+    "static/media/Gilroy-SemiBold.ttf": "/iLinkAcademy/static/media/Gilroy-SemiBold.6780292641f883b3dad3.ttf",
+    "static/media/FactorAMedium-Regular.ttf": "/iLinkAcademy/static/media/FactorAMedium-Regular.1a1b89bd931afe1bfa27.ttf",
+    "static/media/Gilroy-SemiBold.woff": "/iLinkAcademy/static/media/Gilroy-SemiBold.e38937dbf8202c144802.woff",
+    "static/media/Gilroy-Regular.woff": "/iLinkAcademy/static/media/Gilroy-Regular.31d54a4b841c0e438f13.woff",
+    "static/media/FactorAMedium-Regular.woff": "/iLinkAcademy/static/media/FactorAMedium-Regular.dcdc0b4f86e3cce5850c.woff",
+    "static/media/FactorAMedium-Regular.woff2": "/iLinkAcademy/static/media/FactorAMedium-Regular.63d92a6f39ed77bacf07.woff2",
+    "static/media/brand.svg": "/iLinkAcademy/static/media/brand.3032636dc16e200fac7409bcdf1133af.svg",
+    "static/media/reddit.svg": "/iLinkAcademy/static/media/reddit.b4ac23c9d09afa26e12b63fb03c80483.svg",
+    "static/media/vk.svg": "/iLinkAcademy/static/media/vk.94b4606fc4b909990f05dc036436a786.svg",
+    "static/media/Camera.svg": "/iLinkAcademy/static/media/Camera.5ce5a7a87fe79f435e5c0a508d0531dc.svg",
+    "static/media/avatar.svg": "/iLinkAcademy/static/media/avatar.a7a853a5879344ae98f3036c5631f89c.svg",
+    "static/media/tg.svg": "/iLinkAcademy/static/media/tg.a9fba5aba6b5d2eb35173b0bc96f5004.svg",
+    "index.html": "/iLinkAcademy/index.html",
+    "static/media/Vector.svg": "/iLinkAcademy/static/media/Vector.c51830957d4ad240c88e.svg",
+    "main.9bc8af1f.css.map": "/iLinkAcademy/static/css/main.9bc8af1f.css.map",
+    "main.963ab9fa.js.map": "/iLinkAcademy/static/js/main.963ab9fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9bc8af1f.css",
+    "static/js/main.963ab9fa.js"
+  ]
+}
