@@ -11,10 +11,26 @@
 .App {
     margin-bottom: 40px;
 }
-body {
+.main {
+    background-color: #585CC6;
+    flex: 1 0 auto;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.review {
+    padding: 56px;
+    background-color: white;
+}
+
+html,body {
     font-family: 'Gilroy';
     font-size: 14px;
     font-family: normal;
+    height: 100%;
 }
 
 @font-face {
