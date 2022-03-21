@@ -1,0 +1,30 @@
+.carousel {
+    display: block;
+    height: 500px;
+
+}
+
+.swiper-pagination-bullet{
+    width: 12px !important;
+    height: 4px !important; 
+    background: #585CC6 !important;
+    border-radius: 0 !important;
+    opacity: 0.3 !important;
+}
+
+.swiper-pagination-bullet-active {
+    width: 24px !important;
+    opacity: 1 !important;
+}
+
+.swiper-button-next {
+    background: url("./right.svg") no-repeat center !important ;
+}
+
+.swiper-button-prev {
+    background: url("./left.svg") no-repeat center !important ;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after{
+    content: none !important;
+}
