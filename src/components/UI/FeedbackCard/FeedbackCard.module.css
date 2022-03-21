@@ -9,11 +9,12 @@
 .user {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 22px;
 }
 
 .about {
-    padding-left: 20px;
+    padding-right: 95px;
 }
 
 .name {
@@ -21,13 +22,14 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
-    padding-bottom: 4px;
     letter-spacing: -1.24%;
 }
+
 .avatar {
     display: block;
     padding: 13px;
 }
+
 .position, .date {
     font-family: 'Factor A';
     font-weight: 400;
@@ -35,11 +37,11 @@
     line-height: 22px;
     color: #8A8A8A;
 }
-.date {
-    align-self:flex-start;
-    padding-left: 137px;
 
+.date {
+    align-self: flex-start;
 }
+
 .body {
     font-family: 'Gilroy';
     font-weight: 400;
