@@ -10,14 +10,17 @@
     line-height: 18px;
     cursor: pointer;
     font-family: 'Gilroy';
-    font-weight: 600;    
+    font-weight: 600;   
+    height: 52px;
+    gap: 10px; 
+    
 }
 
 .icon {
     background: url(./img/Vector.svg) no-repeat;
-    width: 14.3px;
-    height: 14.3px;
-    padding-right: 11.7px;
+    background-position: center;
+    width: 18px;
+    height: 18px;
 }
 .button:hover {
     background: linear-gradient(to right, #696DC8 50%, #585CC6 50%);

@@ -1,24 +1,23 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
+
 #root {
     min-width: 320px;
     max-width: 1440px;
     margin: 0 auto;
 }
+
 .App {
     margin-bottom: 40px;
 }
-.main {
-    background-color: #585CC6;
-    flex: 1 0 auto;
-}
+
 .wrapper {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
 }
 
 .review {
@@ -26,13 +25,114 @@
     background-color: white;
 }
 
-html,body {
+html,
+body {
     font-family: 'Gilroy';
+    font-weight: 400;
+    font-style: normal;
     font-size: 14px;
-    font-family: normal;
+    line-height: 22px;
+    color:#333333;
     height: 100%;
 }
+.main {
+    background-color: #585CC6;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./123.svg');
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+.content {
+    padding: 100px 80px;
+}   
+.mainText {
+    font-family: 'Factor A';
+    font-weight: 500;
+    font-size: 124px;
+    line-height: 148px;
+    letter-spacing: -1.24%;
+    color: white;
+    text-align: justify;
+}
 
+.reviewHeader {
+    font-family: 'Factor A';
+    font-weight: 500;
+    font-size: 68px;
+    line-height: 88px;
+    letter-spacing: -1.24%;
+}
+
+.userCard {
+    background-color: white;
+    font-family: 'Gilroy';
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    max-width: 768px;
+    padding: 40px;
+    display: grid;
+    grid-template-areas: 
+        "name . date"
+        "city sex age"
+        "info info info"
+        "pets pets pets";
+}
+
+.user {
+    display: flex;
+    margin-top: 88px;
+    margin-bottom: 120px;
+    max-height: 383px;
+}
+
+.bold {
+    font-weight: 700;
+}
+.photo {
+    margin-top: 22px;
+}
+.name {
+    font-family: 'Factor A';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    color: #585CC6;
+    grid-area: name;
+}
+
+.date {
+    font-family: 'Gilroy';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color:#8A8A8A;
+    grid-area: date;
+    text-align: end;
+}
+.city {
+    grid-area: city;
+}
+.sex {
+    grid-area: sex;
+}
+.age {
+    grid-area: age;
+}
+.info {
+    grid-area: info;
+}
+.pets {
+    grid-area: pets;
+}
+.review {
+    max-width: 1198px;
+    max-height: 525px;
+}
 @font-face {
     font-family: 'Factor A';
     src: local('Factor A Medium'), local('Factor-A-Medium'),
