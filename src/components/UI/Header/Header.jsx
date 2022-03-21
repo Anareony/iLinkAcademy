@@ -4,7 +4,7 @@ import classes from './Header.module.css'
 import avatar from './img/avatar.svg'
 import brand from './img/brand.svg'
 
-const Header = () => {
+const Header = (props) => {
 
     return (
         <header className={classes.header}>
@@ -14,12 +14,12 @@ const Header = () => {
                         <div className={classes.border}>
                             <img className={classes.icon} src={avatar} alt='avatar'/>
                         </div>
-                        <div className={classes.name}>Имя Фамилия</div>
+                        <div className={classes.name}>{props.user.name + ' ' +props.user.surname}</div>
                     </div>
                     <a href='/' className={classes.link}>
                         <img src={brand} alt="logo" />
                     </a>
-                    <Button2>Личный кабинет</Button2>
+                    <Button2>Панель управления</Button2>
                 </nav>
             </div>
         </header>
