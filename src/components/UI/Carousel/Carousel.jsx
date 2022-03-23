@@ -1,14 +1,13 @@
-import React, { useState} from 'react'
-import ArrowBtn from '../ArrowBtn/ArrowBtn'
-import FeedbackCard from '../FeedbackCard/FeedbackCard'
-import './Carousel.css'
+import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
+import './Carousel.css'
+import FeedbackCard from '../FeedbackCard/FeedbackCard'
+import ArrowBtn from '../ArrowBtn/ArrowBtn';
 
 const Carousel = ({reviewers}) => {
 
@@ -22,19 +21,12 @@ const Carousel = ({reviewers}) => {
                 pagination={{ clickable: true }}
             >
             {reviewers.map( (reviewer) => 
-                <SwiperSlide><FeedbackCard reviewer={reviewer} key={reviewer.id}/></SwiperSlide>
+                <SwiperSlide key={reviewer.id}><FeedbackCard reviewer={reviewer} /></SwiperSlide>
                 )}
+                <ArrowBtn>nazad</ArrowBtn>
             </Swiper>
-
-
-            {/* 
-            <div className={cl.btns}>
-                <ArrowBtn>left</ArrowBtn>
-                <ArrowBtn>right</ArrowBtn>
-            </div>  */}
         </div>
-        
     )
-    }
+}
 
 export default Carousel

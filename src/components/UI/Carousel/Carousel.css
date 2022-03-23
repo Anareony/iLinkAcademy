@@ -1,7 +1,19 @@
 .carousel {
-    display: block;
-    height: 500px;
+    padding-bottom: 32px;
+    position: relative;
+}
+.swiper {
+    position: static !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+    display: none !important;
+}
 
+.swiper-pagination {
+    margin-top: 32px !important;
+    left: 2px !important;
+    bottom: 12px !important;
 }
 
 .swiper-pagination-bullet{
