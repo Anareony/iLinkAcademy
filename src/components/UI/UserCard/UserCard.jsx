@@ -1,24 +1,23 @@
 import React from 'react'
 
 import userPhoto from './img/photo.png'
-import sex from './img/Female.svg'
+import male from './img/Male.svg'
 import dogFood from './img/DogFood.svg'
+
+import './UserCard.css'
 
 const UserCard = (props) => {
   return (
     <div className="user">
-        <div className="photo">
-            <img src={userPhoto} alt='userPhoto'/>
-        </div>
+        <img className="photo" src={userPhoto} alt='userPhoto'/>
         <div className="userCard">
-            <div className="name">{props.user.name + ' ' + props.user.surname}</div>
-            <div className="date">{props.user.date}</div>
-            <div className="city"><span className="bold">Город:</span> {props.user.city}</div>
-            <div className="sex"><span className="bold">Пол:</span> {props.user.sex}<img src={sex} alt='sex'/></div>
-            <div className="age"><span className="bold">Возраст:</span> {props.user.age}</div>
-            <div className="info"><span className="bold">О себе:</span> Всем привет! Меня зовут Яна, мне 22 года, я студент. Учусь на программиста, но хочу стать продуктовым аналитиком. Недавно, например, я начала проходить курс на известной платформе, который поможет мне устроиться на работу моей мечты! 
-            <br/><br/>BTW: И да, у меня есть милая кошка :)</div>
-            <div className="pets"><span className="bold"><img src={dogFood} alt='dogFood'/>Домашнее животное:</span> {props.user.pets}</div>
+            <div className="name"><p>{props.user.name + ' ' + props.user.surname}</p></div>
+            <div className="date"><p>{props.user.date}</p></div>
+            <div className="city"><p><strong>Город:</strong> {props.user.city}</p></div>
+            <div className="sex"><p><strong>Пол:</strong> {props.user.sex}</p><img src={male} alt='sex'/></div>
+            <div className="age"><p><strong>Возраст:</strong> {props.user.age}</p></div>
+            <div className="info"><p><strong>О себе:</strong> {props.user.info}</p></div>
+            <div className="pets"><img src={dogFood} alt='dogFood' style={{marginRight:'12px'}}/><p><strong>Домашнее животное:</strong>{props.user.pets}</p></div>
         </div>
     </div>
   )
