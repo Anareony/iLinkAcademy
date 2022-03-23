@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Factor A';
+    src: local('Factor A Medium'), local('Factor-A-Medium'),
+        url('../fonts/FactorAMedium/FactorAMedium-Regular.woff2') format('woff2'),
+        url('../fonts/FactorAMedium/FactorAMedium-Regular.woff') format('woff'),
+        url('../fonts/FactorAMedium/FactorAMedium-Regular.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Factor A';
+    src: local('Factor A Bold'), local('Factor-A-Bold'),
+        url('../fonts/FactorABold/FactorA-Bold.woff2') format('woff2'),
+        url('../fonts/FactorABold/FactorA-Bold.woff') format('woff'),
+        url('../fonts/FactorABold/FactorA-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/GilroyRegular/Gilroy-Regular.eot');
+    src: url('../fonts/GilroyRegular/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/GilroyRegular/Gilroy-Regular.woff') format('woff'),
+        url('../fonts/GilroyRegular/Gilroy-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('../fonts/GilroySemibold/Gilroy-SemiBold.eot');
+    src: url('../fonts/GilroySemibold/Gilroy-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/GilroySemibold/Gilroy-SemiBold.woff') format('woff'),
+        url('../fonts/GilroySemibold/Gilroy-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
