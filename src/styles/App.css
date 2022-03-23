@@ -1,13 +1,9 @@
+@import url('./fonts.css');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-#root {
-    min-width: 320px;
-    max-width: 1440px;
-    margin: 0 auto;
 }
 
 .App {
@@ -20,13 +16,7 @@
     min-height: 100%;
 }
 
-.review {
-    padding: 56px;
-    background-color: white;
-}
-
-html,
-body {
+html,body {
     font-family: 'Gilroy';
     font-weight: 400;
     font-style: normal;
@@ -35,9 +25,11 @@ body {
     color:#333333;
     height: 100%;
 }
+
 .main {
+    width: 100%;
+    height: 100%;
     background-color: #585CC6;
-    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,17 +38,21 @@ body {
     background-repeat: no-repeat;
     background-position: top right;
 }
+
 .content {
-    padding: 100px 80px;
+    padding: 100px 0;
+    position: relative;
 }   
+
 .mainText {
     font-family: 'Factor A';
     font-weight: 500;
     font-size: 124px;
     line-height: 148px;
-    letter-spacing: -1.24%;
+    letter-spacing: 0px;
     color: white;
     text-align: justify;
+    padding: 0 80px;
 }
 
 .reviewHeader {
@@ -66,99 +62,73 @@ body {
     line-height: 88px;
     letter-spacing: -1.24%;
 }
-
-.userCard {
-    background-color: white;
-    font-family: 'Gilroy';
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 500;
-    max-width: 768px;
-    padding: 40px;
-    display: grid;
-    grid-template-areas: 
-        "name . date"
-        "city sex age"
-        "info info info"
-        "pets pets pets";
-}
-
-.user {
-    display: flex;
-    margin-top: 88px;
-    margin-bottom: 120px;
-    max-height: 383px;
-}
-
-.bold {
-    font-weight: 700;
-}
-.photo {
-    margin-top: 22px;
-}
-.name {
-    font-family: 'Factor A';
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 32px;
-    color: #585CC6;
-    grid-area: name;
-}
-
-.date {
-    font-family: 'Gilroy';
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    color:#8A8A8A;
-    grid-area: date;
-    text-align: end;
-}
-.city {
-    grid-area: city;
-}
-.sex {
-    grid-area: sex;
-}
-.age {
-    grid-area: age;
-}
-.info {
-    grid-area: info;
-}
-.pets {
-    grid-area: pets;
-}
 .review {
+    display: flex;
+}
+.review__container {
+    padding: 56px 56px 56px 80px;
+    background-color: white;
     max-width: 1198px;
     max-height: 525px;
 }
-@font-face {
-    font-family: 'Factor A';
-    src: local('Factor A Medium'), local('Factor-A-Medium'),
-        url('../fonts/FactorA/FactorAMedium-Regular.woff2') format('woff2'),
-        url('../fonts/FactorA/FactorAMedium-Regular.woff') format('woff'),
-        url('../fonts/FactorA/FactorAMedium-Regular.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
+
+.inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 38px;
 }
 
-@font-face {
-    font-family: 'Gilroy';
-    src: url('../fonts/GilroyRegular/Gilroy-Regular.eot');
-    src: url('../fonts/GilroyRegular/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/GilroyRegular/Gilroy-Regular.woff') format('woff'),
-        url('../fonts/GilroyRegular/Gilroy-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+.prevBtn, .nextBtn {
+    background: url('../img/arrow.svg');
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 2px;
+    align-self: flex-end;
+    margin-right: 80px;
+    cursor: pointer;
 }
 
-@font-face {
-    font-family: 'Gilroy';
-    src: url('../fonts/GilroySemibold/Gilroy-SemiBold.eot');
-    src: url('../fonts/GilroySemibold/Gilroy-SemiBold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/GilroySemibold/Gilroy-SemiBold.woff') format('woff'),
-        url('../fonts/GilroySemibold/Gilroy-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
+.prevBtn {
+    transform: rotate(180deg);
+    margin-left: 34px;
+    margin-right: 16px;
+}
+
+.prevBtn:hover, .nextBtn:hover {
+    background: url('../img/hover.svg');
+}
+
+@media screen and (max-width: 925px) {
+
+    .main {
+        background-position: 100% 30%; ;
+    }
+
+    .mainText {
+        font-size: 84px;
+        line-height: 120px;
+    }
+
+    .content {
+        padding: 100px 50px;
+    }   
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .main {
+        background-position: 0% 20% ;
+    }
+
+    .mainText {
+        font-size: 48px;
+        line-height: 54px;
+    }
+
+    .content {
+        padding: 49px 16px 82px 16px;
+    }   
 }
