@@ -12,8 +12,10 @@
 .border {
     border: 1px solid #E0E0E0;
     border-radius: 2px;
-    padding: 9px;
+    width: 52px;
+    height: 52px;
     margin-right: 20px;
+    padding: 8px;
 }
 
 .icon {
@@ -24,12 +26,80 @@
     display: flex;
     align-items: center;
 }
-.name {
-    font-size: 20px;
+
+.name, .surname {
+    font-size: 18px;
     font-family: 'Gilroy';
     font-weight: 700;
+    padding-right: 5px;
 }
+
 .link {
+    padding-left: 35px;
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+    .surname {
+        display: none;
+    }
+
+    .container {
+        padding: 0 50px;
+    }
+
+    .name {
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
+    .nav {
+        padding: 20px 0;
+    }
+
+    .link {
+        padding-left: 0;
+        height: 36px;
+        width: 60px;
+    }
+
+    .border {
+        margin-right: 8px;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .surname {
+        display: none;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .name {
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
+    .nav {
+        padding: 20px 0;
+    }
+
+    .link {
+        padding-left: 0;
+        height: 36px;
+        width: 60px;
+        margin-right: 35px;
+    }
+
+    .border {
+        margin-right: 8px;
+        width: 36px;
+        height: 36px;
+    }
 }

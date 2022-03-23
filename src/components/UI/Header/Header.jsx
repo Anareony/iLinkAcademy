@@ -14,7 +14,8 @@ const Header = (props) => {
                         <div className={classes.border}>
                             <img className={classes.icon} src={avatar} alt='avatar'/>
                         </div>
-                        <div className={classes.name}>{props.user.name + ' ' +props.user.surname}</div>
+                        <span className={classes.name}>{props.user.name}</span>
+                        <span className={classes.surname}>{props.user.surname}</span>
                     </div>
                     <a href='/' className={classes.link}>
                         <img src={brand} alt="logo" />

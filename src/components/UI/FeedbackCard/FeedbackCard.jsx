@@ -12,7 +12,7 @@ function FeedbackCard(props) {
                 </div>
                 <div className={cl.about}>
                     <div className={cl.name}>
-                        {props.reviewer.name}  {props.reviewer.surname}
+                        {props.reviewer.name + ' ' + props.reviewer.surname}
                     </div>
                 <div className={cl.position}>
                     {props.reviewer.position}
