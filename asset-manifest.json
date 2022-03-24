@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/iLinkAcademy/static/css/main.33e03519.css",
+    "main.css": "/iLinkAcademy/static/css/main.bb5ef6a7.css",
     "main.js": "/iLinkAcademy/static/js/main.cb7713c7.js",
     "static/media/1.jpg": "/iLinkAcademy/static/media/1.1e125e523a285a979c18.jpg",
     "static/media/Gilroy-SemiBold.eot": "/iLinkAcademy/static/media/Gilroy-SemiBold.8134b9ab378c54626928.eot",
@@ -34,11 +34,11 @@
     "static/media/hover.svg": "/iLinkAcademy/static/media/hover.b1410af1a883dd5328b7.svg",
     "index.html": "/iLinkAcademy/index.html",
     "static/media/Vector.svg": "/iLinkAcademy/static/media/Vector.c51830957d4ad240c88e32e49ba6a5fe.svg",
-    "main.33e03519.css.map": "/iLinkAcademy/static/css/main.33e03519.css.map",
+    "main.bb5ef6a7.css.map": "/iLinkAcademy/static/css/main.bb5ef6a7.css.map",
     "main.cb7713c7.js.map": "/iLinkAcademy/static/js/main.cb7713c7.js.map"
   },
   "entrypoints": [
-    "static/css/main.33e03519.css",
+    "static/css/main.bb5ef6a7.css",
     "static/js/main.cb7713c7.js"
   ]
 }
