@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon'
@@ -26,11 +26,11 @@ const schema = yup.object().shape({
             return value && value.length
         })
         .test("fileSize", "The file is too large", (value) => {
-            return value && value[0] && value[0].size <= 100000;
+            return value && value[0] && value[0].size <= 200000;
         })
 })
 
-const Modal = ({visible, setVisible}) => {
+const Modal = ({visible, setVisible, setShow}) => {
 
     const [ValueLenght, setValueLenght] = useState('0')
 
@@ -54,6 +54,9 @@ const Modal = ({visible, setVisible}) => {
         console.log(data.names);
         console.log(data.body);
         console.log(data.picture[0].name);
+        setShow(true);
+        setVisible(false);
+        setValueLenght('0');
         reset();
     }
 
@@ -90,7 +93,7 @@ const Modal = ({visible, setVisible}) => {
                             accept=".jpg, .jpeg, .png"                
                         />
                     </div>
-                    <p>{!file ? '' : <div className={cl.as}><img src={fileIcon} alt='fileicon'/>{file}</div> }</p>
+                    {/* <div className={cl.as}><img src={} alt='fileicon'/>a</div> */}
                     { errors.picture && <div className={cl.error}><img src={error} alt='error'/>{errors.picture.message}</div>}
                     { errors.names && <div className={cl.error}><img src={error} alt='error'/>{errors.names.message}</div>}
                     <div className={cl.inputHeight}>

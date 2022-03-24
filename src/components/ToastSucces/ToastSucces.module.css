@@ -9,8 +9,8 @@
     background-position: left bottom;
     border-radius: 32px;
     position: fixed;
-    bottom: 50px;
-    left: 900px;    
+    bottom: 5%;
+    left: 60%;    
     z-index: 50;
     padding: 16px 24px 24px 130px; 
 }
@@ -47,4 +47,41 @@
 
 .toast.active {
     display: flex;
+}
+@media screen and (max-width: 1100px) {
+    .toast{
+        bottom: 5%;
+        left: 50%;    
+    }
+}
+@media screen and (max-width: 768px) {
+    .toast{
+        bottom: 5%;
+        left: 30%;    
+    }
+}
+@media screen and (max-width: 560px) {
+    .toast{
+        width: 288px;
+        bottom: 5%;
+        left: 12%;
+        padding: 16px 16px 32px 90px; 
+    }
+    .header {
+        font-size: 24px;
+        line-height: 28px;
+    }
+    .content {
+
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .toast{
+        bottom: 5%;
+        left: 4%;
+        padding: 16px 16px 32px 90px; 
+    }
 }

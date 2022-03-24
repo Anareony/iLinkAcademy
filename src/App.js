@@ -54,7 +54,7 @@ function App() {
                                         <span className='inner'>Добавить отзыв</span>
                                     </button>
                                 </div>
-                                <Modal visible={modal} setVisible={setModal}></Modal>
+                                <Modal show={toast} setShow={setToast} visible={modal} setVisible={setModal}></Modal>
                                 <Carousel reviewers={reviewers}/>
                             </div>
                             <button className="prevBtn" onClick={prev}><div className="prevInner"></div></button>
