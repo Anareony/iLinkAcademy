@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon'
@@ -10,6 +10,7 @@ import cross from './img/cross.svg'
 import info from './img/info.svg'
 import error from './img/error.svg'
 import fileIcon from './img/fileIcon.svg'
+import deleteIcon from './img/Delete.svg'
 
 const schema = yup.object().shape({
     names: yup
@@ -22,7 +23,7 @@ const schema = yup.object().shape({
         .required("Нужно обязательно оставить отзыв"),
     picture: yup
         .mixed()
-        .test('required', "You need to provide a file", (value) =>{
+        .test('required', 'You need to provide a file', (value) =>{
             return value && value.length
         })
         .test("fileSize", "The file is too large", (value) => {
@@ -34,7 +35,7 @@ const Modal = ({visible, setVisible, setShow}) => {
 
     const [ValueLenght, setValueLenght] = useState('0')
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit,resetField, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema)
     });
     const [file, setFile] = useState('')
@@ -57,6 +58,7 @@ const Modal = ({visible, setVisible, setShow}) => {
         setShow(true);
         setVisible(false);
         setValueLenght('0');
+        setFile('');
         reset();
     }
 
@@ -84,16 +86,35 @@ const Modal = ({visible, setVisible, setShow}) => {
                         <div className={cl.icon}></div>
                             Загрузить фото
                         </ButtonWithIcon>
-                        <input 
-                            // onChange={event => setFile(event.target.files[0].name)}     
-                            {...register("picture")} 
+                        <input  
+                            {...register("picture", {
+                                onChange: (e)  => {
+                                    setFile(e.target.files[0].name)
+                                }
+                            })} 
                             type='file' 
                             className={cl.inputLoader} 
                             id="fileLoader"
                             accept=".jpg, .jpeg, .png"                
                         />
                     </div>
-                    {/* <div className={cl.as}><img src={} alt='fileicon'/>a</div> */}
+                    { !file ? <p></p> : <div className={cl.fileDisplay}>
+                                        <img src={fileIcon} alt='fileicon'/>
+                                        <div className={cl.fileName}>
+                                            <p>{file}</p>
+                                        </div>
+                                        <button 
+                                            onClick={() => {
+                                                resetField('picture')
+                                                setFile('')}
+                                            } 
+                                            className={cl.deleteBtn} 
+                                             type='button'
+                                        >
+                                            <img src={deleteIcon} alt='deleteIcon'/>
+                                        </button>
+                                    </div>
+                    }
                     { errors.picture && <div className={cl.error}><img src={error} alt='error'/>{errors.picture.message}</div>}
                     { errors.names && <div className={cl.error}><img src={error} alt='error'/>{errors.names.message}</div>}
                     <div className={cl.inputHeight}>

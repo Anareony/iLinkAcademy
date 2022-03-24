@@ -65,6 +65,20 @@
     right: 5px;
 }
 
+.fileDisplay {
+    display: flex;
+    align-items: center;
+    padding: 14px 12px;
+    margin-top: 12px;
+}
+
+.fileName {
+    margin: 0 12px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18.2px;
+}
+
 .width {
     margin-right: 10px;
     width: 63%;
@@ -117,7 +131,10 @@
     align-items: center;
     margin-top: 40px;
 }
-
+.deleteBtn {
+    border: none;
+    cursor: pointer;
+}
 .info {
     display: flex;
     align-items: center;
