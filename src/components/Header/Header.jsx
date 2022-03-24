@@ -1,6 +1,6 @@
 import React from 'react'
 import cl from './Header.module.css'
-import avatar from './img/avatar.svg'
+import avatar from '../UserCard/img/1.jpg'
 import brand from './img/brand.svg'
 import profile from '../Button2/img/Profile.svg'
 
