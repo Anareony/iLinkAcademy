@@ -9,6 +9,7 @@ import cl from './Modal.module.css'
 import cross from './img/cross.svg'
 import info from './img/info.svg'
 import error from './img/error.svg'
+import fileIcon from './img/fileIcon.svg'
 
 const schema = yup.object().shape({
     names: yup
@@ -33,10 +34,11 @@ const Modal = ({visible, setVisible}) => {
 
     const [ValueLenght, setValueLenght] = useState('0')
 
-    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema)
     });
-    const watchShowAge = watch("picture", false);
+    const [file, setFile] = useState('')
+
     const rootClasses = [cl.modal]
 
     if(visible) {
@@ -80,14 +82,15 @@ const Modal = ({visible, setVisible}) => {
                             Загрузить фото
                         </ButtonWithIcon>
                         <input 
+                            // onChange={event => setFile(event.target.files[0].name)}     
                             {...register("picture")} 
                             type='file' 
                             className={cl.inputLoader} 
                             id="fileLoader"
-                            accept=".jpg, .jpeg, .png"
+                            accept=".jpg, .jpeg, .png"                
                         />
-                        {watchShowAge && <div>{watchShowAge}</div>}
                     </div>
+                    <p>{!file ? '' : <div className={cl.as}><img src={fileIcon} alt='fileicon'/>{file}</div> }</p>
                     { errors.picture && <div className={cl.error}><img src={error} alt='error'/>{errors.picture.message}</div>}
                     { errors.names && <div className={cl.error}><img src={error} alt='error'/>{errors.names.message}</div>}
                     <div className={cl.inputHeight}>

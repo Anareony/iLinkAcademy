@@ -15,6 +15,7 @@ import img3 from './components/FeedbackCard/img/4.png'
 function App() {
 
     const [modal, setModal] = useState(false)
+    const [toast, setToast] = useState(false)
 
     const user = {name:'Роман', surname:'Чудояков', city:'Томск', sex:'мужчина', age:'21', pets: 'нету', date: '20.09.2000',
         info: 'Всем привет! Меня зовут Роман, мне 21 года. Раньше учился в ТУСУРе по направлению квантовая и оптическая электроника, но решил сменить направление своей деятельности из-за интереса к программированию, да и перспективы и качество условий труда выше.'
@@ -62,6 +63,7 @@ function App() {
                     </div>
                 </main>
                 <Footer/>
+                <ToastSucces show={toast} setShow={setToast}></ToastSucces>
             </div>
         </div>
     );
