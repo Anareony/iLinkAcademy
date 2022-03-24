@@ -26,7 +26,7 @@
 
 .centered {
     max-width: 676px;
-    margin:  150px auto;
+    margin: 150px auto;
     max-height: 443;
 }
 
@@ -55,7 +55,6 @@
 .information {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 35px;
 }
 .ValueLenght {
     font-family: 'Gilroy';
@@ -93,21 +92,30 @@
 
 .inputHeight {
     position: relative;
-    margin-bottom: 40px;
+    margin-top: 32px;
 }
 
 .button {
     border: none;
     cursor: pointer;
+    height: 24px;
 }
 
 .inputLoader {
     display: none;
 }
 
+.icon {
+    background: url(./img/Vector.svg) no-repeat;
+    background-position: center;
+    width: 18px;
+    height: 18px;
+}
+
 .submit {
     display: flex;
     align-items: center;
+    margin-top: 40px;
 }
 
 .info {
@@ -117,4 +125,49 @@
     font-size: 12px;
     line-height: 16px;
     color: #8A8A8A;
+}
+
+.error {
+    margin-top: 12px;
+    color: #EB5757;
+}
+
+@media screen and (max-width: 768px) {
+    .centered {
+        margin: 30px 16px;
+    }
+    .modalContent {
+        padding: 16px;
+    }
+
+    .label, .label:last-of-type {
+        padding-bottom: 8px;
+    }
+
+    .information {
+        display: block;
+    }
+
+    .width {
+        margin-bottom: 12px;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .inputHeight {
+        margin-top: 24px;
+    }
+
+    .submit {
+        flex-direction: column-reverse;
+        margin-top: 32px;
+    }
+
+    .info {
+        margin: 27px 0 12px;
+    }
+
+    .error {
+        margin-top: 16px;
+    }
 }

@@ -19,7 +19,7 @@
 
 .user {
     display: flex;
-    margin: 88px 80px 120px;
+    margin: 80px 80px 120px;
 }
 
 .bold {
@@ -28,7 +28,8 @@
 
 .photo {
     margin-top: 32px;
-    min-width: 519px;
+    max-width: 519px;
+    max-height: 383px;
 }
 
 .name {
@@ -37,7 +38,6 @@
     font-size: 32px;
     line-height: 32px;
     color: #585CC6;
-    height: 15px;
     grid-area: name;
 }
 
@@ -79,8 +79,48 @@
     align-items: center;
 }
 
+@media screen and (max-width: 1171px) {
+    .photo {
+        max-width: 400px;
+        margin-left: 16px
+    }
+    .userCard {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 975px) {
+
+    .photo {
+        max-width: 350px;
+        margin-left: 16px
+    }
+    .user {
+        margin: 25px 0 57px 0;
+    }
+    .date {
+        padding-top: 4px;
+        text-align: start;
+    }
+    .userCard {
+        padding: 20px;
+        grid-template-areas: 
+        "name name"
+        "date date"
+        "city sex"
+        "age age"
+        "info info"
+        "pets pets";
+        max-height: 100%;
+    }
+}
+
 @media screen and (max-width: 768px) {
-    
+
+    .photo {
+        max-width: 500px;
+        margin-left: 0;
+    }
     .user {
         flex-direction: column;
         align-items: center;
@@ -89,7 +129,7 @@
     .userCard {
         font-size: 16px;
         line-height: 22px;
-        width: 288px;
+        max-width: 500px;
         height: 482px;
         padding: 16px;
         grid-template-areas: 
@@ -106,3 +146,17 @@
         line-height: 32px;
     }
 }
+
+@media screen and (max-width: 768px) {
+
+    .photo {
+        max-width: 304px;
+        margin-left: 16px;
+    }
+
+    .userCard {
+        font-size: 16px;
+        line-height: 22px;
+        max-width: 288px;
+    }
+}   

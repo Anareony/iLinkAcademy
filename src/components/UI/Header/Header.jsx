@@ -1,26 +1,29 @@
 import React from 'react'
-import Button2 from '../Button2/Button2';
-import classes from './Header.module.css'
+import cl from './Header.module.css'
 import avatar from './img/avatar.svg'
 import brand from './img/brand.svg'
+import profile from '../Button2/img/Profile.svg'
 
 const Header = (props) => {
 
     return (
-        <header className={classes.header}>
-            <div className={classes.container}>
-                <nav className={classes.nav}>
-                    <div className={classes.user}>
-                        <div className={classes.border}>
-                            <img className={classes.icon} src={avatar} alt='avatar'/>
+        <header className={cl.header}>
+            <div className={cl.container}>
+                <nav className={cl.nav}>
+                    <div className={cl.user}>
+                        <div className={cl.border}>
+                            <img className={cl.icon} src={avatar} alt='avatar'/>
                         </div>
-                        <span className={classes.name}>{props.user.name}</span>
-                        <span className={classes.surname}>{props.user.surname}</span>
+                        <span className={cl.name}>{props.user.name}</span>
+                        <span className={cl.surname}>{props.user.surname}</span>
                     </div>
-                    <a href='/' className={classes.link}>
+                    <a href='/' className={cl.link}>
                         <img src={brand} alt="logo" />
                     </a>
-                    <Button2>Панель управления</Button2>
+                    <button className={cl.btn}>
+                        <img className={cl.btnIcon} src={profile} alt='profile'/>
+                        <span className={cl.inner}>Панель управления</span>
+                    </button>
                 </nav>
             </div>
         </header>

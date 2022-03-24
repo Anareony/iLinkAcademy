@@ -1,0 +1,18 @@
+.toast {
+    margin: 50px;
+    width: 436px;
+    height: 136px;
+    display: none;
+    background-color: #B5FFA2;
+    border-radius: 32px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    bottom: 50px;
+    left: 900px;
+}
+
+.toast.active {
+    display: block;
+}

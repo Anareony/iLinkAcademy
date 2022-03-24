@@ -15,9 +15,14 @@ const Carousel = ({reviewers}) => {
         <div className='carousel'>
             <Swiper
                 modules={[Navigation, Pagination]}
-                spaceBetween={50}
-                slidesPerView={2}
+                spaceBetween={40}
+                slidesPerView={1}
                 navigation
+                breakpoints={{
+                    768: {
+                        slidesPerView: 2
+                    }
+                }}
                 pagination={{ clickable: true }}
             >
             {reviewers.map( (reviewer) => 

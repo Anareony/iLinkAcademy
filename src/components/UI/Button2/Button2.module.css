@@ -23,13 +23,11 @@
     background: #8A8A8A;
 }
 
-.icon {
-    display: none;
-}
+
 
 @media screen and (max-width: 768px) {
     .button {
-        padding: 8px;
+        width: 100%;
     }
     .inner {
         display: none;

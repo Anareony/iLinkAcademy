@@ -18,7 +18,3 @@
 .input:disabled::placeholder {
     color: #E0E0E0;
 }
-
-.input:valid:focus {
-    border: 1px solid red;
-}

@@ -8,6 +8,7 @@ import Input from '../Input/Input'
 import cl from './Modal.module.css'
 import cross from './img/cross.svg'
 import info from './img/info.svg'
+import error from './img/error.svg'
 
 const schema = yup.object().shape({
     names: yup
@@ -24,7 +25,7 @@ const schema = yup.object().shape({
             return value && value.length
         })
         .test("fileSize", "The file is too large", (value) => {
-            return value && value[0] && value[0].size <= 200000;
+            return value && value[0] && value[0].size <= 100000;
         })
 })
 
@@ -32,13 +33,12 @@ const Modal = ({visible, setVisible}) => {
 
     const [ValueLenght, setValueLenght] = useState('0')
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema)
     });
-
+    const watchShowAge = watch("picture", false);
     const rootClasses = [cl.modal]
 
- 
     if(visible) {
         rootClasses.push(cl.active)
     }
@@ -47,7 +47,7 @@ const Modal = ({visible, setVisible}) => {
         const input = document.querySelector('#fileLoader');
         input.click();
     }
-
+    
     const onSubmit = (data) => {
         console.log(data.names);
         console.log(data.body);
@@ -75,7 +75,8 @@ const Modal = ({visible, setVisible}) => {
                             style={{alignSelf: 'flex-end'}}
                             type='button' 
                             onClick={fileLoader}
-                        >
+                        >   
+                        <div className={cl.icon}></div>
                             Загрузить фото
                         </ButtonWithIcon>
                         <input 
@@ -83,10 +84,12 @@ const Modal = ({visible, setVisible}) => {
                             type='file' 
                             className={cl.inputLoader} 
                             id="fileLoader"
+                            accept=".jpg, .jpeg, .png"
                         />
+                        {watchShowAge && <div>{watchShowAge}</div>}
                     </div>
-                    { errors.picture && <div>{errors.picture.message}</div>}
-                    { errors.names && <div>{errors.names.message}</div>}
+                    { errors.picture && <div className={cl.error}><img src={error} alt='error'/>{errors.picture.message}</div>}
+                    { errors.names && <div className={cl.error}><img src={error} alt='error'/>{errors.names.message}</div>}
                     <div className={cl.inputHeight}>
                         <div className={cl.label}>Все ли вам понравилось?</div>
                         <textarea 
@@ -97,8 +100,8 @@ const Modal = ({visible, setVisible}) => {
                         > 
                         </textarea>
                         <div className={cl.ValueLenght}>{ValueLenght}/200</div>
-                        { errors.body && <span>{errors.body.message}</span>}
                     </div>
+                    { errors.body && <p className={cl.error}><img src={error} alt='error'/>{errors.body.message}</p>}
                     <div className={cl.submit}>
                         <Button2 type="submit">Отправить отзыв</Button2>
                         <div className={cl.info}><img style={{marginRight: '8px'}} src={info} alt=''/>Все отзывы проходят модерацию в течение 2 часов</div>
