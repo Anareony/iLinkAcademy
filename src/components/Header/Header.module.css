@@ -53,6 +53,17 @@
     font-family: 'Gilroy';
     font-weight: 600; 
 }
+.btn:hover {
+    background: linear-gradient(to right, #696DC8 50%, #585CC6 50%);
+}
+
+.btn:active {
+    background: #797DDF;
+}
+
+.btn:disabled {
+    background: #8A8A8A;
+}
 
 .btnIcon {
     display: none;
