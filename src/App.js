@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import './styles/App.css';
-import Header from "./components/UI/Header/Header.jsx"
-import Footer from "./components/UI/Footer/Footer";
+import Header from "./components/Header/Header.jsx"
+import Footer from "./components/Footer/Footer";
 import plus from "./img/Vector.svg"
-import Modal from "./components/UI/Modal/Modal";
-import Carousel from "./components/UI/Carousel/Carousel";
-import UserCard from "./components/UI/UserCard/UserCard";
-import ToastSucces from "./components/UI/ToastSucces/ToastSucces";
-import img1 from './components/UI/FeedbackCard/img/1.png'
-import avatar from './components/UI/FeedbackCard/img/Camera.svg'
-import img2 from './components/UI/FeedbackCard/img/3.png'
-import img3 from './components/UI/FeedbackCard/img/4.png'
+import Modal from "./components/Modal/Modal";
+import Carousel from "./components/Carousel/Carousel";
+import UserCard from "./components/UserCard/UserCard";
+import ToastSucces from "./components/ToastSucces/ToastSucces";
+import img1 from './components/FeedbackCard/img/1.png'
+import avatar from './components/FeedbackCard/img/Camera.svg'
+import img2 from './components/FeedbackCard/img/3.png'
+import img3 from './components/FeedbackCard/img/4.png'
 
 function App() {
 
