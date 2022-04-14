@@ -5,7 +5,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+a {
+    outline: none;
+    text-decoration: none;
+}
 .App {
     margin-bottom: 40px;
 }
