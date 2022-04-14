@@ -201,7 +201,7 @@ const FormPasswordRecovery = () => {
     const [error, setError] = useState(false)
 
     const database = {
-        email: "user@mail.com",
+        email: "user@gmail.com",
     }
 
     const onSubmit = (data) => {
