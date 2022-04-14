@@ -3,6 +3,7 @@ import cl from './Header.module.css'
 import avatar from '../UserCard/img/1.jpg'
 import brand from './img/brand.svg'
 import profile from '../Button2/img/Profile.svg'
+import { Link } from 'react-router-dom'
 
 const Header = (props) => {
 
@@ -20,10 +21,12 @@ const Header = (props) => {
                     <a href='/' className={cl.link}>
                         <img src={brand} alt="logo" />
                     </a>
-                    <button className={cl.btn}>
-                        <img className={cl.btnIcon} src={profile} alt='profile'/>
-                        <span className={cl.inner}>Панель управления</span>
-                    </button>
+                    <Link to='/auth'>
+                        <button className={cl.btn}>
+                            <img className={cl.btnIcon} src={profile} alt='profile'/>
+                            <span className={cl.inner}>Панель управления</span>
+                        </button>
+                    </Link>
                 </nav>
             </div>
         </header>
