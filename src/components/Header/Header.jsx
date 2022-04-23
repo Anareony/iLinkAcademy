@@ -1,9 +1,10 @@
 import React from 'react'
 import cl from './Header.module.css'
-import avatar from '../UserCard/img/1.jpg'
+import { Link } from 'react-router-dom'
+
+import avatar from '../../shared/assets/1.jpg'
 import brand from './img/brand.svg'
 import profile from '../Button2/img/Profile.svg'
-import { Link } from 'react-router-dom'
 
 const Header = (props) => {
 
@@ -18,10 +19,10 @@ const Header = (props) => {
                         <span className={cl.name}>{props.user.name}</span>
                         <span className={cl.surname}>{props.user.surname}</span>
                     </div>
-                    <a href='/' className={cl.link}>
+                    <Link to='/' className={cl.link}>
                         <img src={brand} alt="logo" />
-                    </a>
-                    <Link to='/auth'>
+                    </Link>
+                    <Link to='/students'>
                         <button className={cl.btn}>
                             <img className={cl.btnIcon} src={profile} alt='profile'/>
                             <span className={cl.inner}>Панель управления</span>
