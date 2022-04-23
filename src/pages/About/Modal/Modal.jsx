@@ -2,15 +2,16 @@ import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
-import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon'
-import Button2 from '../Button2/Button2'
-import Input from '../Input/Input'
+import ButtonWithIcon from '../../../components/ButtonWithIcon/ButtonWithIcon'
+import Button2 from '../../../components/Button2/Button2'
+import Input from '../../../components/Input/Input'
 import cl from './Modal.module.css'
-import cross from './img/cross.svg'
-import info from './img/info.svg'
-import error from './img/error.svg'
-import fileIcon from './img/fileIcon.svg'
-import deleteIcon from './img/Delete.svg'
+
+import cross from '../assets/cross.svg'
+import info from '../assets/info.svg'
+import error from '../assets/error.svg'
+import fileIcon from '../assets/fileIcon.svg'
+import deleteIcon from '../assets/Delete.svg'
 
 const schema = yup.object().shape({
     names: yup
