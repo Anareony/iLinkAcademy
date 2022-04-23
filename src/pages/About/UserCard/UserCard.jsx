@@ -1,8 +1,8 @@
 import React from 'react'
 
-import userPhoto from './img/1.jpg'
-import male from './img/Male.svg'
-import dogFood from './img/DogFood.svg'
+import userPhoto from '../../../shared/assets/1.jpg'
+import male from '../assets/Male.svg'
+import dogFood from '../assets/DogFood.svg'
 
 import './UserCard.css'
 
