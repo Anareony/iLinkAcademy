@@ -1,32 +1,38 @@
 import React from 'react'
 import cl from './FeedbackCard.module.css'
 
-function FeedbackCard(props) {
-  return (
-    <div className={cl.feedback}>
-        <div className={cl.container}>
-            <div className={cl.user}>
-                <div className={cl.icon}>
-                    <img src={props.reviewer.avatar} className={cl.avatar} alt="" />
-                    <div className={cl.about}>
-                        <div className={cl.name}>
-                            {props.reviewer.name + ' ' + props.reviewer.surname}
+import icon from './img/Camera.svg'
+
+function FeedbackCard({name, surname, about, avatar, position, date}) {
+    return (
+        <div className={cl.feedback}>
+            <div className={cl.container}>
+                <div className={cl.user}>
+                    <div className={cl.pic}>
+                        { (avatar)  ?   <img src={avatar} className={cl.avatar} alt="avatar" />
+                                    :   <div className={cl.icon}>
+                                            <img className={cl.camera} src={icon} alt='avatar'/>
+                                        </div>               
+                        }
+                        <div className={cl.about}>
+                            <div className={cl.name}>
+                                {name + ' ' + surname}
+                            </div>
+                        <div className={cl.position}>
+                            {position}
                         </div>
-                    <div className={cl.position}>
-                        {props.reviewer.position}
+                    </div>
+                    </div>
+                    <div className={cl.date}>
+                        {date}
                     </div>
                 </div>
+                <div className={cl.body}>
+                    {about}
                 </div>
-                <div className={cl.date}>
-                    {props.reviewer.date}
-                </div>
-            </div>
-            <div className={cl.body}>
-                {props.reviewer.body}
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default FeedbackCard
