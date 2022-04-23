@@ -1,9 +1,12 @@
 import './styles/App.css';
 
 import { Route, Routes } from "react-router-dom";
-import Authorization from "./pages/Authorization";
-import About from "./pages/About";
-import PasswordRecovery from './pages/PasswordRecovery';
+import Authorization from "./pages/Authorization/Authorization";
+import About from "./pages/About/About";
+import PasswordRecovery from './pages/PasswordRecovery/PasswordRecovery';
+import Students from './pages/Students/Students';
+import Feedback from './pages/Feedback/Feedback';
+import AboutMe from './pages/AboutMe/AboutMe';
 
 function App() {
 
@@ -12,6 +15,9 @@ function App() {
             <Route exact path='/' element={<About/>}/>
             <Route path='/auth' element={<Authorization/>}/>
             <Route path='/passwordrecovery' element={<PasswordRecovery/>}/>
+            <Route path='/students' element={<Students/>}/>
+            <Route path='/feedback' element={<Feedback/>}/>
+            <Route path='/aboutme' element={<AboutMe/>}/>
         </Routes>
     );  
 }

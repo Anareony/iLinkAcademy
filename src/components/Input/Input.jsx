@@ -14,15 +14,14 @@ const StyledInput = styled.input`
     width: 100%;
 
     &:focus {
-    border: 1px solid #585CC6;
+        border: 1px solid #585CC6;
     }
 `
 
-
 const Input = React.forwardRef((props,ref) => {
-  return (
-    <StyledInput ref={ref} {...props}/>
-  )
+    return (
+        <StyledInput ref={ref} {...props}/>
+    )
 })
 
 export default Input
