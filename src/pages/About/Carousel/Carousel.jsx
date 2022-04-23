@@ -6,8 +6,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './Carousel.css'
-import FeedbackCard from '../FeedbackCard/FeedbackCard'
-import ArrowBtn from '../ArrowBtn/ArrowBtn';
+import FeedbackCard from '../../../components/FeedbackCard/FeedbackCard'
+import ArrowBtn from '../../../components/ArrowBtn/ArrowBtn';
 
 const Carousel = ({reviewers}) => {
 
@@ -26,7 +26,13 @@ const Carousel = ({reviewers}) => {
                 pagination={{ clickable: true }}
             >
             {reviewers.map( (reviewer) => 
-                <SwiperSlide key={reviewer.id}><FeedbackCard reviewer={reviewer} /></SwiperSlide>
+                <SwiperSlide key={reviewer.id}>
+                    <FeedbackCard 
+                        name={reviewer.name} 
+                        surname={reviewer.surname} 
+                        about={reviewer.about} 
+                    />
+                </SwiperSlide>
                 )}
                 <ArrowBtn>nazad</ArrowBtn>
             </Swiper>
