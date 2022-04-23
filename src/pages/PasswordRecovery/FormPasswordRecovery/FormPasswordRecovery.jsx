@@ -5,14 +5,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 import styled from 'styled-components';
 
-import ToastSucces from '../ToastSucces/ToastSucces';
-import Input from '../Input/Input'
-import Button2 from '../Button2/Button2';
+import ToastSucces from '../../../components/ToastSucces/ToastSucces';
+import Input from '../../../components/Input/Input'
+import Button2 from '../../../components/Button2/Button2';
+import ToastError from '../../../components/ToastError/ToastError';
 
-import arrow from './img/arrow.svg'
-import info from './img/InfoSquare.svg'
-import ToastError from '../ToastError/ToastError';
-import arrowHover from './img/arrowHover.svg'
+import arrow from '../assets/arrow.svg'
+import info from '../assets/InfoSquare.svg'
+import arrowHover from '../assets/arrowHover.svg'
 
 const Form = styled.form`
     min-width: 628px;
@@ -41,7 +41,7 @@ const Header = styled.header`
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
-    color: #3333333;
+    color: #333333;
     text-align: center;
     margin-bottom: 32px;
     @media (max-width: 430px) {
@@ -56,7 +56,7 @@ const Label = styled.label`
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: #3333333;
+    color: #333333;
     margin-bottom: 4px;
     position: relative;
     @media (max-width: 700px) {
@@ -244,8 +244,8 @@ const FormPasswordRecovery = () => {
             </Wrapper>
             <BtnWrapper> 
                 <Button>
-                    <Text>Отправить код</Text>
-                    <MobileText>Сбросить</MobileText>
+                    <Text type='submit'>Отправить код</Text>
+                    <MobileText type='submit'>Сбросить</MobileText>
                 </Button>
                 <Link to='/auth'><StyledButton>Отмена</StyledButton></Link>
             </BtnWrapper>  
