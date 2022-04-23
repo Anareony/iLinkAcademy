@@ -5,15 +5,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 import styled from 'styled-components';
 
-import Input from '../Input/Input'
-import Button2 from '../Button2/Button2';
+import Input from '../../../components/Input/Input'
+import Button2 from '../../../components/Button2/Button2';
 
-import eye from './img/eye.svg'
-import eyeHover from './img/eyeHover.svg'
-import eyeHide from './img/eyeHide.svg'
-import eyeHideHover from './img/eyeHideHover.svg'
-import info from './img/InfoSquare.svg'
-import show from './img/Show.svg'
+import eye from '../assets/eye.svg'
+import eyeHover from '../assets/eyeHover.svg'   
+import eyeHide from '../assets/eyeHide.svg'
+import eyeHideHover from '../assets/eyeHideHover.svg'
+import info from '../assets/InfoSquare.svg'
+import show from '../assets/Show.svg'
 
 const Form = styled.form`
     padding: 40px 40px 24px;
@@ -42,7 +42,7 @@ const Header = styled.h3`
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
-    color: #3333333;
+    color: #333333;
     margin-bottom: 32px;
     text-align: center;
     @media (max-width: 430px) {
@@ -244,7 +244,6 @@ const Auth = () => {
     const [passwordShown, setPasswordShown] = useState(false);
 
     const togglePasswordVisiblity = (e) => {
-        e.preventDefault();
         setActive(!isActive)
         setPasswordShown(passwordShown ? false : true);
     };
@@ -323,7 +322,7 @@ const Auth = () => {
                         }
                     </Label>
                 </Wrapper>
-                <StyledButton disabled={isDirty && !isValid }>Войти</StyledButton>
+                <StyledButton type='submit' disabled={isDirty && !isValid }>Войти</StyledButton>
                 <StyledLink to='/passwordrecovery'>Забыли пароль?</StyledLink>
             </Form>
             {errors.server && <Error>Пользователь не найден</Error>}
