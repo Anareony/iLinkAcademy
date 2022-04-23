@@ -4,11 +4,45 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
 }
 a {
     outline: none;
     text-decoration: none;
 }
+
+h1 {
+    font-family: 'Factor A';
+    font-weight: 500;
+    font-size: 124px;
+    line-height: 148px;
+    letter-spacing: -0.0124rem;
+}
+
+h2 {
+    font-family: 'Factor A';
+    font-weight: 500;
+    font-size: 68px;
+    line-height: 88px;
+    letter-spacing: -0.0124rem;
+}
+
+h3 {
+    font-family: 'Factor A';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+h4 {
+    font-family: 'Factor A';
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.0124rem;
+}
+
 .App {
     margin-bottom: 40px;
 }
@@ -37,7 +71,7 @@ html,body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('../img/background.svg');
+    background-image: url('../shared/assets/background.svg');
     background-repeat: no-repeat;
     background-position: top right;
 }
@@ -82,7 +116,7 @@ html,body {
 }
 
 .btnIcon {
-    background: url(../img/Vector.svg) no-repeat;
+    background: url('../shared/assets/Vector.svg') no-repeat;
     background-position: center;
     width: 18px;
     height: 18px;
@@ -117,7 +151,7 @@ html,body {
 }
 
 .prevBtn, .nextBtn {
-    background: url('../img/arrow.svg');
+    background: url('../shared/assets/arrow.svg');
     width: 56px;
     height: 56px;
     border: none;
@@ -133,7 +167,7 @@ html,body {
 }
 
 .prevBtn:hover, .nextBtn:hover {
-    background: url('../img/hover.svg');
+    background: url('../shared/assets/hover.svg');
     
 }
 @media screen and (max-width: 1360px) {
