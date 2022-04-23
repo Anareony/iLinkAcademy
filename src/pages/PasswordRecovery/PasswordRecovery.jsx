@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
-import Footer from '../components/Footer/Footer'
-import FormPasswordRecovery from '../components/FormPasswordRecovery/FormPasswordRecovery';
+import Footer from '../../components/Footer/Footer'
+import FormPasswordRecovery from './FormPasswordRecovery/FormPasswordRecovery';
 
-import background2 from './img/background2.svg'
-import ilink from './img/ilink.svg'
+import background2 from '../../img/background2.svg'
+import ilink from '../../img/ilink.svg'
 
 const Main = styled.main`
     width: 100%;
