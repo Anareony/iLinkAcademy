@@ -1,25 +1,15 @@
 import React, { useState } from 'react'
+
 import { IStudent } from '../../../types/types'
-import styled from 'styled-components'
 
 import FeedbackItem from '../FeedbackItem/FeedbackItem'
 import ToastSucces from '../../../components/ToastSucces/ToastSucces';
 
+import { Wrapper } from './styles'
+
 interface FeedbackListProps {
     students: IStudent[]
 }
-
-const Wrapper = styled.div`
-    display: grid;
-    grid-template-columns: minmax( 288px, 520px) minmax( 288px, 520px);
-    gap: 24px;
-
-    @media (max-width: 900px) {
-        grid-template-columns: minmax( 288px, 520px);
-        justify-content: center;
-        gap: 20px;
-    }
-`
 
 const FeedbackList: React.FC<FeedbackListProps> = ({students}) => {
 
