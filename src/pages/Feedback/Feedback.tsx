@@ -1,20 +1,24 @@
 import { useState, useMemo, useEffect } from 'react'
 import styled from 'styled-components'
-import Pagination from '../../components/Pagination/Pagination'
 
 import Footer from '../../components/Footer/Footer'
 import HeaderAdmin from '../../components/HeaderAdmin/HeaderAdmin'
 import Sidebar from '../../components/Sidebar/Sidebar'
 
-import ReviewModal from './ReviewModal/ReviewModal'
-
 import { IStudent } from '../../types/types'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import FeedbackList from './FeedbackList/FeedbackList'
 
+import none from '../../shared/assets/wolf.svg'
+
 const Wrapper = styled.div`
     display: flex;
     position: relative;
+    margin-bottom: 64px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 const Scroll = styled.div`
     margin-top: 43px;
@@ -23,16 +27,45 @@ const Scroll = styled.div`
     &::-webkit-scrollbar { 
         display: none;
     }
+    @media (max-width: 768px) {
+        margin-top: 16px;
+    }
 `
 const Container = styled.div`
     margin: 59px 80px 0 26px;
     width: 100%;
+
+    @media (max-width: 768px) {
+        margin: 0;
+    }
 `
 
 const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 768px) {
+        margin: 24px 0 0 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 22px;
+    }
+`
+
+const ImgContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 110px auto;
+
+    @media (max-width: 768px) {
+        margin: 110px auto 126px;
+    }
+`
+const Img = styled.img`
+
+    @media (max-width: 768px) {
+        width: 240px;
+    }
 `
 
 const Feedback: React.FC = () => {
@@ -42,7 +75,7 @@ const Feedback: React.FC = () => {
 
     useEffect(() => {
         setStudents([...students].sort((a:any,b:any) => b.reviewStatus.localeCompare(a.reviewStatus)))
-    }, [setStudents])
+    }, [])
 
     const sortFeedback = (sort:any) => {
         setSelectedSort(sort)
@@ -88,7 +121,9 @@ const Feedback: React.FC = () => {
                                 <FeedbackList students={students}/>
                             </Scroll>
                          </Container>
-                    : <h1>'none'</h1>
+                    :   <ImgContainer>
+                            <Img src={none} alt='none'/>
+                        </ImgContainer>
                 }
             </Wrapper>
             <Footer/>

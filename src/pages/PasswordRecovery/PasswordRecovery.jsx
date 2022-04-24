@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import Footer from '../../components/Footer/Footer'
 import FormPasswordRecovery from './FormPasswordRecovery/FormPasswordRecovery';
 
-import background2 from '../../img/background2.svg'
-import ilink from '../../img/ilink.svg'
+import background2 from '../../shared/assets/background2.svg'
+import ilink from '../../shared/assets/ilink.svg'
 
 const Main = styled.main`
     width: 100%;

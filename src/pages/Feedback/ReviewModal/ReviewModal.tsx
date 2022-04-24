@@ -25,11 +25,18 @@ const Content = styled.form`
     flex-direction: column;
     padding: 24px;
     background: white;
+    @media (max-width: 768px) {
+        padding: 16px;
+    }  
 `
 const Centered = styled.div`
     max-width: 676px;
     margin: 150px auto;
-    max-height: 443;
+    max-height: 443px;
+    @media (max-width: 768px) {
+        min-height: 476px;
+        margin: 80px 16px;
+    }
 `
 
 const Textarea = styled.textarea`
@@ -43,11 +50,17 @@ const Textarea = styled.textarea`
     font-size: 14px;
     line-height: 22px;
     color: #8A8A8A;
+    @media (max-width: 768px) {
+        min-height: 222px;
+    }
 `
 
 const CancelBtn = styled.button`
     border: none;
     cursor: pointer;
+    @media (max-width: 768px) {
+        align-self: flex-start
+    }
 `
 const Text = styled.div`
     font-family: 'Factor A';
@@ -71,6 +84,10 @@ const HeaderText = styled.div`
     font-size: 24px;
     line-height: 28px;
     letter-spacing: -0.0124rem;
+    @media (max-width: 768px) {
+        font-size: 22px;
+        line-height: 26px;
+    }
 `
 const Value = styled.div`
     font-family: 'Gilroy';
@@ -99,16 +116,32 @@ const Button = styled.button`
     &:hover {
         opacity: 0.6;
     }
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 12px 25px;
+    }
 `
 
 const ButtonTomato = styled(Button)`
     margin-left: 12px;
     background: #EB5757;
+    @media (max-width: 768px) {
+        margin-left: 0;
+        margin-top: 8px;
+        font-size: 14px;
+        padding: 12px 25px;
+    }
 `
 
 const Btns = styled.div`
     display: flex;
     margin-top: 40px;
+
+    @media (max-width: 768px) {
+        margin-top: 32px;
+        flex-direction: column;
+    }
 `
 
 const schema = yup.object().shape({
@@ -121,9 +154,10 @@ const schema = yup.object().shape({
 interface IModalReview {
     closeModal(value: boolean): void;
     review: string;
+    setSucces(value: boolean): void;
 }
 
-const ReviewModal: React.FC<IModalReview> = ({closeModal, review}) => {
+const ReviewModal: React.FC<IModalReview> = ({closeModal, review, setSucces}) => {
     
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema)
@@ -134,6 +168,7 @@ const ReviewModal: React.FC<IModalReview> = ({closeModal, review}) => {
     const onSubmit = handleSubmit((data) => {
         console.log(data)
         closeModal(false)
+        setSucces(true)
     });
 
     return (
@@ -162,7 +197,7 @@ const ReviewModal: React.FC<IModalReview> = ({closeModal, review}) => {
                         <ButtonTomato onClick={() => closeModal(false)}>Отмена</ButtonTomato>
                     </Btns>
                 </Content>
-            </Centered>
+            </Centered>      
         </Modal>
     )
 }

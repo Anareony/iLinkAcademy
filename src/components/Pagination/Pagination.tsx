@@ -42,10 +42,6 @@ const MyPagination = styled(ReactPaginate).attrs({
     li.next {
         display: block;
     }
-
-    li.disabled a {
-        background: #8A8A8A;
-    }
 `
 
 const Pagination: React.FC<IPaginateProps> = ({
