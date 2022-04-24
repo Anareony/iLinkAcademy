@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/iLinkAcademy/static/css/main.6c258a24.css",
-    "main.js": "/iLinkAcademy/static/js/main.ccdffd4d.js",
+    "main.css": "/iLinkAcademy/static/css/main.92bb3c3a.css",
+    "main.js": "/iLinkAcademy/static/js/main.9643fe81.js",
     "static/media/1.jpg": "/iLinkAcademy/static/media/1.1e125e523a285a979c18.jpg",
     "static/media/Gilroy-SemiBold.eot": "/iLinkAcademy/static/media/Gilroy-SemiBold.8134b9ab378c54626928.eot",
     "static/media/Gilroy-Regular.eot": "/iLinkAcademy/static/media/Gilroy-Regular.1d051d9d4215c09cbcaa.eot",
@@ -11,6 +11,7 @@
     "static/media/FactorA-Bold.ttf": "/iLinkAcademy/static/media/FactorA-Bold.f8635ab95fce0b26ef5d.ttf",
     "static/media/Gilroy-SemiBold.woff": "/iLinkAcademy/static/media/Gilroy-SemiBold.e38937dbf8202c144802.woff",
     "static/media/Gilroy-Regular.woff": "/iLinkAcademy/static/media/Gilroy-Regular.31d54a4b841c0e438f13.woff",
+    "static/media/wolf.svg": "/iLinkAcademy/static/media/wolf.abfeed2b03616d85116a859f2eb63b40.svg",
     "static/media/FactorAMedium-Regular.woff": "/iLinkAcademy/static/media/FactorAMedium-Regular.dcdc0b4f86e3cce5850c.woff",
     "static/media/FactorA-Bold.woff": "/iLinkAcademy/static/media/FactorA-Bold.3603310c3c972c5ada0f.woff",
     "static/media/FactorAMedium-Regular.woff2": "/iLinkAcademy/static/media/FactorAMedium-Regular.63d92a6f39ed77bacf07.woff2",
@@ -24,16 +25,28 @@
     "static/media/Camera.svg": "/iLinkAcademy/static/media/Camera.5ce5a7a87fe79f435e5c0a508d0531dc.svg",
     "static/media/background.svg": "/iLinkAcademy/static/media/background.36d19b0d5ce39746ea8a.svg",
     "static/media/background2.svg": "/iLinkAcademy/static/media/background2.376ba894a0393cceb783899a913c319c.svg",
+    "static/media/Users.svg": "/iLinkAcademy/static/media/Users.11f7349519b30b4f91f913763aeebdaa.svg",
+    "static/media/UsersActive.svg": "/iLinkAcademy/static/media/UsersActive.680fa7f8d5c43a5cac2f4e2993f56276.svg",
+    "static/media/UsersHover.svg": "/iLinkAcademy/static/media/UsersHover.c104bdc21ced20edbb083f17e39b77b9.svg",
     "static/media/tg.svg": "/iLinkAcademy/static/media/tg.a9fba5aba6b5d2eb35173b0bc96f5004.svg",
+    "static/media/Paper.svg": "/iLinkAcademy/static/media/Paper.a4e6181ac5c9df01ec800d4d9829fb36.svg",
+    "static/media/PaperActive.svg": "/iLinkAcademy/static/media/PaperActive.eec726590bd42cc464fa13e7a7ca999c.svg",
+    "static/media/PaperHover.svg": "/iLinkAcademy/static/media/PaperHover.b98b69874bdbf93865274bd00d48d91d.svg",
     "static/media/eyeHide.svg": "/iLinkAcademy/static/media/eyeHide.a52605655b84e31b9bedbbd022197a7c.svg",
     "static/media/eyeHideHover.svg": "/iLinkAcademy/static/media/eyeHideHover.2b2f7992bb02ca7d5801d0ee29d072e7.svg",
+    "static/media/Chat.svg": "/iLinkAcademy/static/media/Chat.43a955d2da93aebec988bde0508b78cc.svg",
+    "static/media/ChatActive.svg": "/iLinkAcademy/static/media/ChatActive.1f79061a3f683b90d79a758c88729290.svg",
+    "static/media/ChatHover.svg": "/iLinkAcademy/static/media/ChatHover.ad4482c4ebbf49247cab114d15a67f20.svg",
     "static/media/fail.svg": "/iLinkAcademy/static/media/fail.4c7681d5ec5e3a2a07cf3c1a33764b9c.svg",
     "static/media/Delete.svg": "/iLinkAcademy/static/media/Delete.f3edd5955b2bd6c943cac441b188c59a.svg",
+    "static/media/Edit.svg": "/iLinkAcademy/static/media/Edit.07cffb8a943a0c13a3d5c5e1410d5f48.svg",
     "static/media/success.svg": "/iLinkAcademy/static/media/success.6eb9124caccaa98f567123f4846003df.svg",
+    "static/media/canceled.svg": "/iLinkAcademy/static/media/canceled.4917c8f9346c383fd136ffb1dec1bab9.svg",
     "static/media/bubbles.svg": "/iLinkAcademy/static/media/bubbles.c739409664af82bd1e2c.svg",
     "static/media/eye.svg": "/iLinkAcademy/static/media/eye.95befd1e7541da8e3e0f40a8a8501ad3.svg",
     "static/media/Show.svg": "/iLinkAcademy/static/media/Show.fb2c788ad8ef1da3df72f2ba8eba824f.svg",
     "static/media/eyeHover.svg": "/iLinkAcademy/static/media/eyeHover.5e5f535f319adafaf7e2ca08fd86e6e6.svg",
+    "static/media/approved.svg": "/iLinkAcademy/static/media/approved.0e309c86db0bd6b14f62b6893ab93dde.svg",
     "static/media/Male.svg": "/iLinkAcademy/static/media/Male.fc520691ef3388446481c4318341ad43.svg",
     "static/media/InfoSquare.svg": "/iLinkAcademy/static/media/InfoSquare.c90082e4671a12d3580c973b2e5b895f.svg",
     "static/media/info.svg": "/iLinkAcademy/static/media/info.41ef3dbb796a7409a72f8f2099c9e55f.svg",
@@ -45,11 +58,12 @@
     "static/media/arrowHover.svg": "/iLinkAcademy/static/media/arrowHover.7d52272e99d38fe841e129c3ce8e57a9.svg",
     "index.html": "/iLinkAcademy/index.html",
     "static/media/Vector.svg": "/iLinkAcademy/static/media/Vector.c51830957d4ad240c88e32e49ba6a5fe.svg",
-    "main.6c258a24.css.map": "/iLinkAcademy/static/css/main.6c258a24.css.map",
-    "main.ccdffd4d.js.map": "/iLinkAcademy/static/js/main.ccdffd4d.js.map"
+    "static/media/right.svg": "/iLinkAcademy/static/media/right.65783ab5df78a75f76fc27cf15525a16.svg",
+    "main.92bb3c3a.css.map": "/iLinkAcademy/static/css/main.92bb3c3a.css.map",
+    "main.9643fe81.js.map": "/iLinkAcademy/static/js/main.9643fe81.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c258a24.css",
-    "static/js/main.ccdffd4d.js"
+    "static/css/main.92bb3c3a.css",
+    "static/js/main.9643fe81.js"
   ]
 }
