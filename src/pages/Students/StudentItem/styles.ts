@@ -21,6 +21,7 @@ const Student = styled.div`
     font-size: 14px;
     line-height: 17.33px;
     width: 20%;
+    margin-left: 12px;
     @media (max-width: 768px) {
         width: 30%;
     }

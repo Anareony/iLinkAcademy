@@ -34,7 +34,7 @@ const schema = yup.object().shape({
 
 const Modal = ({visible, setVisible, setShow}) => {
 
-    const [ValueLenght, setValueLenght] = useState('0')
+    const [ValueLenght, setValueLenght] = useState(0)
 
     const { register, handleSubmit,resetField, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema)

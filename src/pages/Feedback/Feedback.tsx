@@ -15,30 +15,27 @@ import { Img, ImgContainer, Header, Container, Scroll, Wrapper } from './styles'
 const Feedback: React.FC = () => {
 
     const [students, setStudents] = useState<IStudent[]>((require('../../students.json')))
-    const [selectedSort, setSelectedSort] = useState('')
+    const [selectedSort, setSelectedSort] = useState<string>('')
 
     useEffect(() => {
-        setStudents([...students].sort((a:any,b:any) => b.reviewStatus.localeCompare(a.reviewStatus)))
-    }, [])
+        setStudents([...students].sort((a,b) => { 
+            return b.reviewStatus.localeCompare(a.reviewStatus) || +new Date(b.reviewDate) - +new Date(a.reviewDate) 
+    }))}, [])
 
-    const sortFeedback = (sort:any) => {
+    const sortFeedback = (sort:string) => {
         setSelectedSort(sort)
         console.log(sort)
         if ( sort === 'unpublished') {
-            setStudents([...students].sort((a:any,b:any) => b.reviewStatus.localeCompare(a.reviewStatus)))
+            setStudents([...students].sort((a,b) => { 
+                return b.reviewStatus.localeCompare(a.reviewStatus) || +new Date(b.reviewDate) - +new Date(a.reviewDate) 
+            }))
         }
         if ( sort === 'canceled') {
-            setStudents([...students].sort((a:any,b:any) => a.reviewStatus.localeCompare(b.reviewStatus)))
+            setStudents([...students].sort((a,b) => {
+                return a.reviewStatus.localeCompare(b.reviewStatus) || +new Date(b.reviewDate) - +new Date(a.reviewDate)
+            }))
         }
-        if ( sort === 'published') {
-            setStudents([...students].sort((a:any,b:any):any => {
-                if(a.reviewStatus[0] < b.reviewStatus[0]) {
-                    return 1
-                }
-                if(a.reviewStatus[0] > b.reviewStatus[0]) {
-                    return -1
-                }
-            }))           
+        if ( sort === 'published') {         
         }   
     }
 

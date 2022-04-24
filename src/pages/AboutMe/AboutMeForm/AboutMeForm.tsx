@@ -15,36 +15,40 @@ import { Container, Header, Grid, InputContainer, DropdownContainer, DropdownTex
 
 const schema = yup.object().shape({
     file: yup
-        .string()
-        .max(200, 'Максимальная длина отзыва - 200 символов')
-        .required("Нужно обязательно оставить отзыв"),
+        .mixed()
+        .test("fileSize", "Ошибка загрузки. Размер файла превышает 5Mb.", (value) => {
+            return value && value[0] && value[0].size <= 10000;
+        }),
     name: yup
         .string()
-        .matches(/^([^0-9]*)$/, "Имя и фамилия не должны содержать цифр")
+        .matches(/^([^0-9]*)$/, "Имя не должен содержать цифр")
         .required("Нужно обязательно оставить отзыв"),
     surname: yup
         .string()
-        .matches(/^([^0-9]*)$/, "Имя и фамилия не должны содержать цифр")
+        .matches(/^([^0-9]*)$/, "Фамилия не должен содержать цифр")
         .required("Нужно обязательно оставить отзыв"),
     date: yup
-        .string()
-        .max(200, 'Максимальная длина отзыва - 200 символов'),
+        .date()
+        .test("date", "Wrong birthday", (value:any) => {
+            const today = new Date()
+            return value < today
+        }),
     information: yup
         .string()
-        .max(99, 'Максимальная длина отзыва - 200 символов'),
+        .max(99, 'Максимальная длина отзыва - 99 символов'),
     about: yup
         .string()
-        .max(300, 'Максимальная длина отзыва - 200 символов'),
+        .max(300, 'Максимальная длина отзыва - 300 символов'),
 })
 
 const AboutMeForm = () => {
-    const { register,handleSubmit, formState: { errors }, reset } = useForm({
+    const { register,handleSubmit, formState: { errors }} = useForm({
         resolver: yupResolver(schema)
     });
 
-    const [succes, setSucces] = useState(false)
-    const [aboutValue, setAboutValue] = useState('');
-    const [informationValue, setInformationValue] = useState('');
+    const [succes, setSucces] = useState<boolean>(false)
+    const [aboutValue, setAboutValue] = useState<string>('');
+    const [informationValue, setInformationValue] = useState<string>('');
 
     const onSubmit = handleSubmit((data) => {
         console.log(data)
@@ -73,20 +77,23 @@ const AboutMeForm = () => {
                             <Button type='button' onClick={fileLoader}><ImgEdit src={edit} alt='edit'/>Изменить фото</Button>
                         </PicBtn>
                     </ProfilePic>
-                    <FileInput type='file' id='fileLoader' {...register("file", {
-                        onChange: (e) => console.log(e.target.files[0].name)
-                    })}/>
+                    <FileInput type='file' id='fileLoader' accept=".png, .jpg, .jpeg" 
+                        {...register("file", {
+                            onChange: (e) => console.log(e.target.files[0].name)
+                        })}
+                    />
                     { !isDisabled && <Button2 type='button' onClick={() => setDisabledBtn(true)}>Редактировать</Button2>}
                 </Edit>
+            { errors.file && <p>{errors.file.message}</p>}  
             <Grid>
                 <InputContainer>Имя
                     <StyledInput disabled={!isDisabled} {...register("name")} />
                 </InputContainer>
                 <InputContainer>Фамилия
-                    <StyledInput disabled={!isDisabled}{...register("surname")} />
+                    <StyledInput disabled={!isDisabled} {...register("surname")} />
                 </InputContainer>
                 <InputContainer>Дата рождения
-                    <StyledInput disabled={!isDisabled} {...register("date")}/>
+                    <StyledInput disabled={!isDisabled} {...register("date")} />
                 </InputContainer>
                 <DropdownContainer>
                     <DropdownText>Город</DropdownText>
@@ -157,7 +164,7 @@ const AboutMeForm = () => {
                 body="Данные успешно отредактированы!"
                 show={succes} 
                 setShow={setSucces}
-            ></ToastSucces>  
+            ></ToastSucces>
         </Container>
     )
 }

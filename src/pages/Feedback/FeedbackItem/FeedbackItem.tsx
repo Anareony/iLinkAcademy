@@ -21,7 +21,10 @@ const FeedbackItem: React.FC<FeedbackItemProps> = ({student,setToast}) => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [reviewStat, setReviewStat] = useState(student.reviewStatus)
 
-    console.log(reviewStat)
+    const setStatus = (value:string) => {
+        student.reviewStatus = value
+        setReviewStat(value)
+    }
 
     function ReviewStatus() {
         if (reviewStat === 'published') {
@@ -31,8 +34,8 @@ const FeedbackItem: React.FC<FeedbackItemProps> = ({student,setToast}) => {
         }
         return  <Btns>
                     <BtnsContainer> 
-                        <Button onClick={() => {student.reviewStatus = 'published';setReviewStat('published')}}>Опубликовать</Button>
-                        <ButtonTomato onClick={() => {student.reviewStatus = 'canceled';setReviewStat('canceled')}}>Отклонить</ButtonTomato>
+                        <Button onClick={() => setStatus('published')}>Опубликовать</Button>
+                        <ButtonTomato onClick={() => setStatus('canceled')}>Отклонить</ButtonTomato>
                     </BtnsContainer> 
                     <ButtonWithIcon onClick={() => setModalIsOpen(true)}><img src={icon} alt='icon'/></ButtonWithIcon>
                 </Btns>

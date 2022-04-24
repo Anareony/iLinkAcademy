@@ -2,9 +2,10 @@ import React from 'react'
 
 import { IStudent } from '../../../types/types'
 
+import avatar from '../assets/Camera.svg'
 import { Status, Information, Student, Container } from './styles'
 
-interface StudentItemProps {
+type StudentItemProps = {
     student: IStudent;
 }
 
@@ -21,6 +22,7 @@ const StudentItem: React.FC<StudentItemProps> = ({student}) => {
     
     return (
         <Container>
+            { student.avatar ? <img src={student.avatar} alt='avatar'/> : <img src={avatar} alt='avatar'/>}
             <Student>{student.name + ' ' + student.surname}</Student>
             <Information>{student.information}</Information>
             <StatusContainer/>

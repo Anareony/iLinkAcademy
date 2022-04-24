@@ -6,7 +6,7 @@ import StudentItem from '../StudentItem/StudentItem'
 
 import { Item, Container, Wrapper, Headers } from './styles'
 
-interface StudentsListProps {
+type StudentsListProps = {
     students: IStudent[]
 }
 
