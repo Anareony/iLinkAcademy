@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     file: yup
         .mixed()
         .test("fileSize", "Ошибка загрузки. Размер файла превышает 5Mb.", (value) => {
-            return value && value[0] && value[0].size <= 10000;
+            return value && value[0] && value[0].size <= 500000;
         }),
     name: yup
         .string()
@@ -84,7 +84,6 @@ const AboutMeForm = () => {
                     />
                     { !isDisabled && <Button2 type='button' onClick={() => setDisabledBtn(true)}>Редактировать</Button2>}
                 </Edit>
-            { errors.file && <p>{errors.file.message}</p>}  
             <Grid>
                 <InputContainer>Имя
                     <StyledInput disabled={!isDisabled} {...register("name")} />
