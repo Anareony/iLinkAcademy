@@ -49,25 +49,18 @@ const FormPasswordRecovery = () => {
                 <Header>Сброс пароля</Header>
             </HeaderWrapper>
             <Wrapper>
-                <Label>Электронная почта
-                    <StyledInput 
-                        {...register("email", {
-                                onChange: (e) => {
-                                    setEmailValue(e.target.value)
-                                }
-                        })}
-                        value={emailValue}
-                        placeholder="Введите адрес эл. почты"
-                        className={[ 
-                            errors.email ? 'hasError' : null,
-                            emailValue ? 'active' : null
-                        ]}
-                    />
-                    { errors.email &&   <Helper>
-                                            <Msg>{ errors.email.message}</Msg>
-                                        </Helper>
-                    }
-                </Label>
+                <StyledInput 
+                    {...register("email", {
+                            onChange: (e) => {
+                                setEmailValue(e.target.value)
+                            }
+                    })}
+                    label='Электронная почта'
+                    placeholder="Введите адрес эл. почты"
+                    inputValue={emailValue}
+                    errors={errors.email}
+                    errorMsg={errors.emal && errors.email.message}
+                />
             </Wrapper>
             <BtnWrapper> 
                 <Button>

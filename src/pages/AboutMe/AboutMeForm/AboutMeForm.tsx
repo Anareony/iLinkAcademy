@@ -11,7 +11,7 @@ import ToastSucces from '../../../components/ToastSucces/ToastSucces';
 import avatar from '../../../shared/assets/1.jpg'
 import edit from '../assets/Edit.svg'
 
-import { Container, Header, Grid, InputContainer, DropdownContainer, DropdownText, Select, Text, TextareaContainer, Textarea, Value, Img, ProfilePic, Button, FileInput, PicBtn, PicHeader, ImgEdit, Edit, FloatedBtn, StyledInput } from './styles'
+import { Container, Header, Grid, DropdownContainer, DropdownText, Select, Text, TextareaContainer, Textarea, Value, Img, ProfilePic, Button, FileInput, PicBtn, PicHeader, ImgEdit, Edit, FloatedBtn, StyledInput } from './styles'
 
 const schema = yup.object().shape({
     file: yup
@@ -85,15 +85,27 @@ const AboutMeForm = () => {
                     { !isDisabled && <Button2 type='button' onClick={() => setDisabledBtn(true)}>Редактировать</Button2>}
                 </Edit>
             <Grid>
-                <InputContainer>Имя
-                    <StyledInput disabled={!isDisabled} {...register("name")} />
-                </InputContainer>
-                <InputContainer>Фамилия
-                    <StyledInput disabled={!isDisabled} {...register("surname")} />
-                </InputContainer>
-                <InputContainer>Дата рождения
-                    <StyledInput disabled={!isDisabled} {...register("date")} />
-                </InputContainer>
+                <StyledInput 
+                    {...register("name")} 
+                    label='Имя'
+                    disabled={!isDisabled}
+                    errors={errors.name}
+                    errorMsg={errors.name && errors.name.message}
+                />
+                <StyledInput 
+                    {...register("surname")} 
+                    label='Фамилия'
+                    disabled={!isDisabled}
+                    errors={errors.surname}
+                    errorMsg={errors.surname && errors.surname.message}
+                />
+                <StyledInput 
+                    {...register("date")} 
+                    label='Дата рождения'
+                    disabled={!isDisabled}
+                    errors={errors.date}
+                    errorMsg={errors.date && errors.date.message}
+                />
                 <DropdownContainer>
                     <DropdownText>Город</DropdownText>
                     <Select disabled={!isDisabled} {...register("city")}>

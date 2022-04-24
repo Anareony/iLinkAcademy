@@ -25,15 +25,8 @@ const Auth = () => {
     });
 
     const navigate = useNavigate()
-    const [isActive, setActive] = useState(false);
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
-    const [passwordShown, setPasswordShown] = useState(false);
-
-    const togglePasswordVisiblity = (e) => {
-        setActive(!isActive)
-        setPasswordShown(passwordShown ? false : true);
-    };
 
     const database = {
         email: "user@gmail.com",
@@ -59,55 +52,33 @@ const Auth = () => {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Header>Войти</Header>
                 <Wrapper>
-                    <Label>Электронная почта
-                        <StyledInput 
-                            {...register("email", {
-                                onChange: (e) => {
-                                    setEmailValue(e.target.value)
-                                }
-                            })}
-                            placeholder="Введите адрес эл. почты"
-                            value={emailValue}
-                            className={[
-                                errors.email ? 'hasError' : null,
-                                emailValue ? 'active' : null
-                            ]}    
-                        />
-                        { errors.email &&   <Helper>
-                                                <Msg>{ errors.email.message}</Msg>
-                                            </Helper>
-                        }
-                    </Label>
+                    <StyledInput 
+                        {...register("email", {
+                            onChange: (e) => {
+                                setEmailValue(e.target.value)
+                            }
+                        })}
+                        placeholder="Введите адрес эл. почты"
+                        label='Электронная почта'
+                        inputValue={emailValue}
+                        errors={errors.email}
+                        errorMsg={errors.email && errors.email.message}
+                    />
                 </Wrapper>
                 <Wrapper primary>
-                    <Label> Пароль
-                        <StyledInput password
-                            {...register("password", {
-                                onChange: (e) => {
-                                    setPasswordValue(e.target.value)
-                                }
-                            })} 
-                            placeholder="Введите пароль" 
-                            type={passwordShown ? "text" : "password"}
-                            value={passwordValue}
-                            className={ [
-                                errors.password ? 'hasError' : null,
-                                passwordValue ? 'active' : null
-                            ]}
-                        />
-                        <EyeBtn 
-                            className={[
-                                isActive ? 'active' : null,
-                                passwordValue ? 'activeInput' : null,
-                                errors.password ? 'hasError' : null
-                            ]} 
-                            onClick={togglePasswordVisiblity}
-                        />
-                        { errors.password &&    <Helper>
-                                                    <Msg>{ errors.password.message}</Msg>
-                                                </Helper>
-                        }
-                    </Label>
+                    <StyledInput password
+                        {...register("password", {
+                            onChange: (e) => {
+                                setPasswordValue(e.target.value)
+                            }
+                        })}
+                        label='Пароль'
+                        placeholder="Введите пароль" 
+                        isPassword={true}
+                        inputValue={passwordValue}
+                        errors={errors.password}
+                        errorMsg={errors.password && errors.password.message}
+                    />
                 </Wrapper>
                 <StyledButton type='submit' disabled={isDirty && !isValid }>Войти</StyledButton>
                 <StyledLink to='/passwordrecovery'>Забыли пароль?</StyledLink>

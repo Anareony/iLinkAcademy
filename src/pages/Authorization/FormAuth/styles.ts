@@ -96,7 +96,7 @@ const StyledLink  = styled(Link)`
 const EyeBtn = styled.button`
     border: none;
     position: absolute;
-    bottom: -4px;
+    bottom: 13px;
     right: 15px;
     cursor: pointer;
     background-image: url(${eye});
@@ -157,7 +157,7 @@ const Msg = styled.span`
     line-height: 14px;
     display: none;
     position: absolute;
-    top: -30px;
+    top: -40px;
     right: -14px;
     background: #fff;
     min-width: 166px;
@@ -170,7 +170,7 @@ const Helper = styled.div`
     height: 20px;
     background-image: url(${info});
     right: 14px;
-    bottom: -2px;
+    bottom: 16px;
     cursor: pointer;
     &:hover ${Msg} {
         display: block;

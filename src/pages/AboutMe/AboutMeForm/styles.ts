@@ -31,15 +31,6 @@ export const Grid = styled.div`
     }
 `
 
-export const InputContainer = styled.label`
-    font-family: 'Factor A';
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: -0.0124rem;
-    margin-bottom: 4px;
-`
-
 export const DropdownContainer = styled.div`
     width: 100%
 `

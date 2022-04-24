@@ -4,7 +4,7 @@ import background2 from '../../shared/assets/background2.svg'
 const Main = styled.main`
     width: 100%;
     height: 100%;
-    padding: 40px 406px 592px;
+    padding: 40px 406px 30%;
     background-color: #585CC6;
     display: flex;
     flex-direction: column;

@@ -100,7 +100,7 @@ const Helper = styled.div`
     height: 20px;
     background-image: url(${info});
     right: 14px;
-    bottom: -2px;
+    bottom: 16px;;
     cursor: pointer;
     &:hover ${Msg} {
         display: block;
@@ -135,6 +135,7 @@ const StyledButton = styled(Button2)`
 const Wrapper = styled.div<{primary: string}>`
     min-width: 548px;
     margin-bottom: ${props => props.primary ? "40px" : "32px"};
+    position: relative;
     @media (max-width: 700px) {
         min-width: 350px;
         max-width: 350px;
