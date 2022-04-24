@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     file: yup
         .mixed()
         .test("fileSize", "Ошибка загрузки. Размер файла превышает 5Mb.", (value) => {
-            return value && value[0] && value[0].size <= 500000;
+            return value && value[0] && value[0].size <= 5000000;
         }),
     name: yup
         .string()
