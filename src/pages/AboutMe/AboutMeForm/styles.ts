@@ -66,11 +66,11 @@ export const TextareaContainer = styled.div`
     margin-top: 32px;
     position: relative;
 `
-export const Textarea = styled.textarea`
+export const Textarea = styled.textarea<{small?:boolean}>`
     outline: none;
     border: 1px solid rgba(224, 224, 224, 1);
     padding: 12px 12px 0 12px;
-    min-height: 105px;
+    min-height: ${props => props.small ? "52px" : "105px"};
     resize: none;
     width: 100%;
     font-family: "Gilroy";
@@ -81,7 +81,7 @@ export const Textarea = styled.textarea`
         color: #8A8A8A;
     }
     @media (max-width: 768px) {
-        min-height: 222px;
+        min-height: ${props => props.small ? "74px" : "222px"};
     }
 `
 export const Value = styled.div`

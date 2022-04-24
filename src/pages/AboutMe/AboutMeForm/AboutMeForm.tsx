@@ -145,7 +145,7 @@ const AboutMeForm = () => {
             </Grid>
             <TextareaContainer>
                 <Text>Краткая информация</Text>
-                <Textarea
+                <Textarea small
                     disabled={!isDisabled} {...register("information")}
                     placeholder="Напишите краткую информацию о себе..."
                     value={informationValue}
