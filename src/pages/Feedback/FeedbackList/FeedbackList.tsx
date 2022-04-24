@@ -7,13 +7,13 @@ import ToastSucces from '../../../components/ToastSucces/ToastSucces';
 
 import { Wrapper } from './styles'
 
-interface FeedbackListProps {
+type FeedbackListProps = {
     students: IStudent[]
 }
 
 const FeedbackList: React.FC<FeedbackListProps> = ({students}) => {
 
-    const [succes, setSucces] = useState(false)
+    const [succes, setSucces] = useState<boolean>(false)
 
     return (
         <div>

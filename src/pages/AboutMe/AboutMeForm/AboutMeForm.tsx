@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 
-import { IStudent } from '../../../types/types'
-
 import Button2 from '../../../components/Button2/Button2'
 import ToastSucces from '../../../components/ToastSucces/ToastSucces';
 
@@ -41,7 +39,7 @@ const schema = yup.object().shape({
         .max(300, 'Максимальная длина отзыва - 300 символов'),
 })
 
-const AboutMeForm = () => {
+const AboutMeForm: React.FC = () => {
     const { register,handleSubmit, formState: { errors }} = useForm({
         resolver: yupResolver(schema)
     });

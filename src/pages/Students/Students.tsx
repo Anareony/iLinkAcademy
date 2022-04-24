@@ -1,14 +1,13 @@
 import { useState, useEffect, useMemo } from 'react'
 
 import Pagination from '../../components/Pagination/Pagination'
-
 import Footer from '../../components/Footer/Footer'
 import HeaderAdmin from '../../components/HeaderAdmin/HeaderAdmin'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import StudentsList from './StudentsList/StudentsList'
+import Dropdown from '../../components/Dropdown/Dropdown'
 
 import { IStudent } from '../../types/types'
-import Dropdown from '../../components/Dropdown/Dropdown'
 
 import none from '../../shared/assets/wolf.svg'
 

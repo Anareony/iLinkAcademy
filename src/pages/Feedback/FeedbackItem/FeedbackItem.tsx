@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { IStudent } from '../../../types/types'
 
-
 import Feedback from '../../../components/FeedbackCard/FeedbackCard'
 import ReviewModal from '../ReviewModal/ReviewModal'
 
@@ -11,15 +10,15 @@ import approved from '../assets/approved.svg'
 
 import { BtnsContainer, Container, Img, ReviewCancled, ReviewPublished, Btns, ButtonWithIcon, ButtonTomato, Button } from './styles'
 
-interface FeedbackItemProps {
+type FeedbackItemProps = {
     student: IStudent;
     setToast(value:boolean): void;
 }
 
 const FeedbackItem: React.FC<FeedbackItemProps> = ({student,setToast}) => {
 
-    const [modalIsOpen, setModalIsOpen] = useState(false)
-    const [reviewStat, setReviewStat] = useState(student.reviewStatus)
+    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
+    const [reviewStat, setReviewStat] = useState<string>(student.reviewStatus)
 
     const setStatus = (value:string) => {
         student.reviewStatus = value

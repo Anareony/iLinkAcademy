@@ -7,7 +7,7 @@ import cross from '../assets/cross.svg'
 
 import { Modal, Content, Centered, Textarea, CancelBtn, Text, Header, Value, Container, HeaderText, Button, ButtonTomato, Btns } from './styles'
 
-interface IModalReview {
+type IModalReview = {
     closeModal(value: boolean): void;
     review: string;
     setSucces(value: boolean): void;
@@ -16,13 +16,13 @@ interface IModalReview {
 const schema = yup.object().shape({
     body: yup
         .string()
-        .max(200, 'Максимальная длина отзыва - 200 символов')
-        .required("Нужно обязательно оставить отзыв"),
+        .required("Нужно обязательно оставить отзыв")
+        .max(200, 'Максимальная длина отзыва - 200 символов'),
 })
 
 const ReviewModal: React.FC<IModalReview> = ({closeModal, review, setSucces}) => {
     
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }} = useForm({
         resolver: yupResolver(schema)
     });
 
