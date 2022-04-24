@@ -3,13 +3,11 @@ import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import styled from 'styled-components'
 import avatar from '../../../shared/assets/1.jpg'
-import edit from '../Edit.svg'
+import edit from '../assets/Edit.svg'
 import { IStudent } from '../../../types/types'
 import Input from '../../../components/Input/Input'
 import Button2 from '../../../components/Button2/Button2'
 import ToastSucces from '../../../components/ToastSucces/ToastSucces';
-
-
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
