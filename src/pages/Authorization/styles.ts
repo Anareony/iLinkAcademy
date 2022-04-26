@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import background2 from '../../shared/assets/background2.svg'
 
 const Main = styled.main`
-    padding: 40px 406px 452px;
+    padding: 40px 406px 29.5%;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -7,7 +7,7 @@ export const Container = styled.form`
 
     @media (max-width: 768px) {
         margin: 0;
-        margin-bottom: 80px;
+        margin-bottom: 24px;
     }
 `
 
@@ -92,14 +92,35 @@ export const Value = styled.div`
     bottom: 10px;
     right: 5px;
 `
+export const ImgHover = styled.img`
+    width: 180px;
+    height: 180px;
+    border-radius: 2px;
+    margin: 12px;
+`
+
+export const ImgHoverContainer = styled.div`
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: -65px;
+    z-index: 1000;
+    background: #fff;
+`
 
 export const Img = styled.img`
     width: 64px;
     height: 64px;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover + ${ImgHoverContainer} {
+        display: block;
+    }
 `
 
 export const ProfilePic = styled.div`
     display: flex;
+    position: relative;
     @media (max-width: 768px) {
         margin-bottom: 20px;
     }
@@ -153,6 +174,9 @@ export const Edit = styled.div`
 export const FloatedBtn = styled(Button2)`
     float: right;
     margin-top: 40px;
+    @media (max-width: 768px) {
+        width: 100%
+    }
 `
 export const StyledInput = styled(Input)`
     color: #333333;
@@ -161,3 +185,29 @@ export const StyledInput = styled(Input)`
     }
 `
 
+export const Error = styled.div`
+    width: 100%;
+    min-height: 62px;
+    background-color: #EB5757;
+    display: flex;
+    padding: 20px 0;
+    color: #FFFFFF;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: 93.5%;
+    bottom: 50%;
+    right: 0%;    
+    &.active {
+        display: flex;
+    }
+    @media (max-width: 900px){
+        top: 95%;
+        bottom: 50%;
+    }
+    @media (max-width: 430px){
+        top: 95%;
+        bottom: 50%;
+    }
+`

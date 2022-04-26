@@ -9,13 +9,13 @@ export const Wrapper = styled.div`
 `
 
 export const Container = styled.div`
-    margin: 70px 80px 0 26px;
+    margin: 70px 80px 150px 26px;
 
     @media (max-width: 900px) {
         margin: 59px 10px 0 10px;
     }
 
     @media (max-width: 768px) {
-        margin: 26px 16px 0 ;
+        margin: 26px 16px 80px ;
     }
 `

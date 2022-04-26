@@ -9,27 +9,32 @@ import ToastSucces from '../../../components/ToastSucces/ToastSucces';
 import avatar from '../../../shared/assets/1.jpg'
 import edit from '../assets/Edit.svg'
 
-import { Container, Header, Grid, DropdownContainer, DropdownText, Select, Text, TextareaContainer, Textarea, Value, Img, ProfilePic, Button, FileInput, PicBtn, PicHeader, ImgEdit, Edit, FloatedBtn, StyledInput } from './styles'
+import { Error, ImgHoverContainer, ImgHover, Container, Header, Grid, DropdownContainer, DropdownText, Select, Text, TextareaContainer, Textarea, Value, Img, ProfilePic, Button, FileInput, PicBtn, PicHeader, ImgEdit, Edit, FloatedBtn, StyledInput } from './styles'
 
 const schema = yup.object().shape({
     file: yup
         .mixed()
+        .notRequired()
         .test("fileSize", "Ошибка загрузки. Размер файла превышает 5Mb.", (value) => {
             return value && value[0] && value[0].size <= 5000000;
         }),
     name: yup
         .string()
         .matches(/^([^0-9]*)$/, "Имя не должен содержать цифр")
-        .required("Нужно обязательно оставить отзыв"),
+        .required("Нужно обязательно указать имя"),
     surname: yup
         .string()
         .matches(/^([^0-9]*)$/, "Фамилия не должен содержать цифр")
-        .required("Нужно обязательно оставить отзыв"),
+        .required("Нужно обязательно указать фамилию"),
     date: yup
         .date()
+        .notRequired()
         .test("date", "Wrong birthday", (value:any) => {
-            const today = new Date()
-            return value < today
+            if(!!value) {
+                const today = new Date()
+                return value < today
+            }
+            return true;
         }),
     information: yup
         .string()
@@ -41,7 +46,9 @@ const schema = yup.object().shape({
 
 const AboutMeForm: React.FC = () => {
     const { register,handleSubmit, formState: { errors }} = useForm({
+        mode: 'onChange',
         resolver: yupResolver(schema)
+        
     });
 
     const [succes, setSucces] = useState<boolean>(false)
@@ -69,7 +76,10 @@ const AboutMeForm: React.FC = () => {
             </Header>
                 <Edit>
                     <ProfilePic>
-                        <Img src={avatar} alt='avatar'/>
+                        <Img onClick={fileLoader} src={avatar} alt='avatar'/>
+                        <ImgHoverContainer>
+                            <ImgHover src={avatar} alt='avatar'/>
+                        </ImgHoverContainer>
                         <PicBtn>
                             <PicHeader>Фото профиля</PicHeader>
                             <Button type='button' onClick={fileLoader}><ImgEdit src={edit} alt='edit'/>Изменить фото</Button>
@@ -174,6 +184,7 @@ const AboutMeForm: React.FC = () => {
                 show={succes} 
                 setShow={setSucces}
             ></ToastSucces>
+            {errors.file && <Error>{errors.file.message}</Error>}
         </Container>
     )
 }

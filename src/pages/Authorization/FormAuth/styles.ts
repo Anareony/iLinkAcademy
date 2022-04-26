@@ -191,19 +191,11 @@ const Error = styled.div`
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 969px;
-    bottom: -214px;
+    top: 87.5%;
+    bottom: 50%;
     right: 0%;    
     &.active {
         display: flex;
-    }
-    @media (max-width: 900px){
-        top: 807px;
-        bottom: -91px;
-    }
-    @media (max-width: 430px){
-        top: 650px;
-        bottom: 110px;
     }
 `
 

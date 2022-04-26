@@ -27,12 +27,12 @@ const Feedback: React.FC = () => {
         console.log(sort)
         if ( sort === 'unpublished') {
             setStudents([...students].sort((a,b) => { 
-                return b.reviewStatus.localeCompare(a.reviewStatus) || +new Date(b.reviewDate) - +new Date(a.reviewDate) 
+                return b.reviewStatus.localeCompare(a.reviewStatus) || Number(new Date(b.reviewDate)) - Number(new Date(a.reviewDate)) 
             }))
         }
         if ( sort === 'canceled') {
             setStudents([...students].sort((a,b) => {
-                return a.reviewStatus.localeCompare(b.reviewStatus) || +new Date(b.reviewDate) - +new Date(a.reviewDate)
+                return a.reviewStatus.localeCompare(b.reviewStatus) || Number(new Date(b.reviewDate)) - Number(new Date(a.reviewDate))
             }))
         }
         if ( sort === 'published') {         
@@ -61,7 +61,7 @@ const Feedback: React.FC = () => {
                             <Scroll>
                                 <FeedbackList students={students}/>
                             </Scroll>
-                         </Container>
+                         </Container>   
                     :   <ImgContainer>
                             <Img src={none} alt='none'/>
                         </ImgContainer>

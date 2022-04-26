@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 
-import { StyledButton, Error, FormWrapper, Helper, Header, Msg, StyledInput, EyeBtn, StyledLink, Wrapper, Label, Form } from './styles'
+import { StyledButton, Error, FormWrapper, Header, StyledInput, StyledLink, Wrapper, Form } from './styles'
 
 const schema = yup.object().shape({
     email: yup
@@ -13,14 +13,14 @@ const schema = yup.object().shape({
         .required("Это обязательно поле"),
     password: yup
         .string()
-        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,24}$/, 'Пароль должен содержать как минимум 8 символов: заглавные буквы, прописные буквы, цифры и спецсимволы')
+        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,24}$/, 'Пароль должен содержать как минимум 8 символов: английские заглавные и прописные буквы, цифру и один из спецсимволов: "!#$%&"')
         .required("Это обязательно поле"),
 })
 
 const Auth = () => {
 
-    const { register, handleSubmit, setError ,formState: { errors, isDirty, isValid } } = useForm({
-        mode: "onBlur",
+    const { register, handleSubmit, setError ,formState: { errors, isDirty, isValid, isSubmitted } } = useForm({
+        mode: "onChange",
         resolver: yupResolver(schema)
     });
 
@@ -80,7 +80,7 @@ const Auth = () => {
                         errorMsg={errors.password && errors.password.message}
                     />
                 </Wrapper>
-                <StyledButton type='submit' disabled={isDirty && !isValid }>Войти</StyledButton>
+                <StyledButton type='submit' disabled={isDirty && !isValid && isSubmitted }>Войти</StyledButton>
                 <StyledLink to='/passwordrecovery'>Забыли пароль?</StyledLink>
             </Form>
             {errors.server && <Error>Пользователь не найден</Error>}
