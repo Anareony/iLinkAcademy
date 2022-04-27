@@ -19,7 +19,7 @@ const Feedback: React.FC = () => {
 
     useEffect(() => {
         setStudents([...students].sort((a,b) => { 
-            return b.reviewStatus.localeCompare(a.reviewStatus) || +new Date(b.reviewDate) - +new Date(a.reviewDate) 
+            return b.reviewStatus.localeCompare(a.reviewStatus) ||  Number(new Date(b.reviewDate)) -  Number(new Date(a.reviewDate)) 
     }))}, [])
 
     const sortFeedback = (sort:string) => {
@@ -27,15 +27,19 @@ const Feedback: React.FC = () => {
         console.log(sort)
         if ( sort === 'unpublished') {
             setStudents([...students].sort((a,b) => { 
-                return b.reviewStatus.localeCompare(a.reviewStatus) || Number(new Date(b.reviewDate)) - Number(new Date(a.reviewDate)) 
+                return b.reviewStatus.localeCompare(a.reviewStatus)
             }))
         }
         if ( sort === 'canceled') {
             setStudents([...students].sort((a,b) => {
-                return a.reviewStatus.localeCompare(b.reviewStatus) || Number(new Date(b.reviewDate)) - Number(new Date(a.reviewDate))
+                return a.reviewStatus.localeCompare(b.reviewStatus)
             }))
         }
-        if ( sort === 'published') {         
+        if ( sort === 'published') {   
+            const publishedReview = students.filter(review => review.reviewStatus === 'published')
+            const canceledReview = students.filter(review => review.reviewStatus === 'canceled')       
+            const unpublishedReview = students.filter(review => review.reviewStatus === 'unpublished')
+            setStudents([...publishedReview, ...canceledReview, ...unpublishedReview])
         }   
     }
 
