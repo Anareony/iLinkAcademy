@@ -7,6 +7,7 @@ import PasswordRecovery from './pages/PasswordRecovery/PasswordRecovery';
 import Students from './pages/Students/Students';
 import Feedback from './pages/Feedback/Feedback';
 import AboutMe from './pages/AboutMe/AboutMe';
+import { getData } from './store/store'
 
 function App() {
 

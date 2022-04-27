@@ -34,6 +34,7 @@ const ProfilePic = styled.div`
 const Img = styled.img`
     width: 40px;
     height: 40px;
+    border-radius: 2px;
     @media (max-width: 768px) {
         width: 20px;
         height: 20px;
