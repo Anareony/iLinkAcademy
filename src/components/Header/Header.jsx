@@ -2,7 +2,7 @@ import React from 'react'
 import cl from './Header.module.css'
 import { Link } from 'react-router-dom'
 
-import avatar from '../../shared/assets/1.jpg'
+import avatar from '../../components/FeedbackCard/img/Camera.svg'
 import brand from './img/brand.svg'
 import profile from '../Button2/img/Profile.svg'
 

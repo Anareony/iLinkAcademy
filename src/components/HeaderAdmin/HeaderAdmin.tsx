@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import brand from './img/brand.svg'
-import avatar from '../../shared/assets/1.jpg'
+import avatar from '../../components/FeedbackCard/img/Camera.svg'
 
 import { MobileHeader, Header, ProfileWrapper, Img, ProfilePic, User, Nav, Container } from './styles'
 

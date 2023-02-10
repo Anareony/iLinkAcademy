@@ -6,10 +6,6 @@ import Modal from "./Modal/Modal";
 import Carousel from "./Carousel/Carousel";
 import UserCard from "./UserCard/UserCard";
 import ToastSucces from "../../components/ToastSucces/ToastSucces";
-import img1 from '../../components/FeedbackCard/img/1.png'
-import avatar from '../../components/FeedbackCard/img/Camera.svg'
-import img2 from '../../components/FeedbackCard/img/3.png'
-import img3 from '../../components/FeedbackCard/img/4.png'
 
 const About = () => {
 
@@ -17,7 +13,7 @@ const About = () => {
     const [toast, setToast] = useState(false)
 
     const user = {name:'Роман', surname:'Чудояков', city:'Томск', sex:'мужчина', age:'21', pets: 'нету', date: '20.09.2000',
-        info: 'Всем привет! Меня зовут Роман, мне 21 года. Раньше учился в ТУСУРе по направлению квантовая и оптическая электроника, но решил сменить направление своей деятельности из-за интереса к программированию, да и перспективы и качество условий труда выше.'
+        info: 'Всем привет! Меня зовут Роман, мне 22 года. Учусь в ТУСУРе, и параллельно изучаю программирование.'
     }
     const [reviewers] = useState(require('../../students.json'))
     
