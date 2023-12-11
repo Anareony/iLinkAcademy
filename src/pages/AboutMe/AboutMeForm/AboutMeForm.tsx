@@ -90,7 +90,7 @@ const AboutMeForm: React.FC = () => {
                             onChange: (e) => console.log(e.target.files[0].name)
                         })}
                     />
-                    { !isDisabled && <Button2 type='button' onClick={() => setDisabledBtn(true)}>Редактировать</Button2>}
+                    { !isDisabled && <Button2 onClick={() => setDisabledBtn(true)}>Редактировать</Button2>}
                 </Edit>
             <Grid>
                 <StyledInput 
@@ -177,7 +177,7 @@ const AboutMeForm: React.FC = () => {
                 </Textarea>
                 { isDisabled && <Value>{aboutValue.length}/300</Value>}
             </TextareaContainer>
-            { isDisabled && <FloatedBtn type='submit'>Сохранить изменения</FloatedBtn>}
+            { isDisabled && <FloatedBtn type={'submit'}>Сохранить изменения</FloatedBtn>}
             <ToastSucces 
                 title="Сохранено"
                 body="Данные успешно отредактированы!"

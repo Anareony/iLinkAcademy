@@ -23,7 +23,7 @@ const Dropdown: React.FC<IDropdown> = ({options,value,setSelect}) => {
                 <option key={option.value} value={option.value}>
                     {option.name}
                 </option>
-                )}
+            )}
         </Select>
     )
 }

@@ -84,7 +84,6 @@ const Modal = ({visible, setVisible, setShow}) => {
                             type='button' 
                             onClick={fileLoader}
                         >   
-                        <div className={cl.icon}></div>
                             Загрузить фото
                         </ButtonWithIcon>
                         <input  
