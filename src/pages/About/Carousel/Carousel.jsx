@@ -7,7 +7,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './Carousel.css'
 import FeedbackCard from '../../../components/FeedbackCard/FeedbackCard'
-import ArrowBtn from '../../../components/ArrowBtn/ArrowBtn';
 
 const Carousel = ({reviewers}) => {
 
@@ -17,6 +16,7 @@ const Carousel = ({reviewers}) => {
                 modules={[Navigation, Pagination]}
                 spaceBetween={40}
                 slidesPerView={1}
+                loop={true}
                 navigation
                 breakpoints={{
                     768: {
@@ -34,7 +34,6 @@ const Carousel = ({reviewers}) => {
                     />
                 </SwiperSlide>
                 )}
-                <ArrowBtn>nazad</ArrowBtn>
             </Swiper>
         </div>
     )

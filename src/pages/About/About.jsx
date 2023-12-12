@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Header from "../../components/Header/Header.jsx"
+import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer";
 import plus from "./assets/Vector.svg"
 import Modal from "./Modal/Modal";
@@ -18,12 +18,12 @@ const About = () => {
     const [reviewers] = useState(require('../../students.json'))
     
     const prev = () => {
-        const prevBtn = document.querySelector('.prev')
+        const prevBtn = document.querySelector('.swiper-button-prev')
         prevBtn.click();
     }
 
     const next = () => {
-        const nextBtn = document.querySelector('.next')
+        const nextBtn = document.querySelector('.swiper-button-next')
         nextBtn.click();
     }
   return (
@@ -46,8 +46,8 @@ const About = () => {
                                     <Modal setShow={setToast} visible={modal} setVisible={setModal}></Modal>
                                     <Carousel reviewers={reviewers}/>
                                 </div>
-                                <button className="prevBtn" onClick={prev}><div className="prevInner"></div></button>
-                                <button className="nextBtn" onClick={next}><div className="nextInner"></div></button>
+                                <button className="prevBtn" onClick={prev}></button>
+                                <button className="nextBtn" onClick={next}></button>
                             </div>
                         </div>
                     </main>
