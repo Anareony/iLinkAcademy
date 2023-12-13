@@ -3,35 +3,37 @@ import cl from './FeedbackCard.module.css'
 
 import icon from './img/Camera.svg'
 
+import { Feedback, Container, Header, UserInfo, Avatar, Icon, Camera, FeedbackDate, Body } from './styles.ts'
+
 function FeedbackCard({name, surname, about, avatar, position, date}) {
     return (
-        <div className={cl.feedback}>
-            <div className={cl.container}>
-                <div className={cl.user}>
-                    <div className={cl.pic}>
-                        { (avatar)  ?   <img src={avatar} className={cl.avatar} alt="avatar" />
-                                    :   <div className={cl.icon}>
-                                            <img className={cl.camera} src={icon} alt='avatar'/>
-                                        </div>               
+        <Feedback>
+            <Container>
+                <Header>
+                    <UserInfo>
+                        { (avatar)  ?   <Avatar src={avatar} className={cl.avatar} alt="avatar" />
+                                    :   <Icon className={cl.icon}>
+                                            <Camera className={cl.camera} src={icon} alt='avatar'/>
+                                        </Icon>               
                         }
                         <div className={cl.about}>
                             <div className={cl.name}>
                                 {name + ' ' + surname}
                             </div>
-                        <div className={cl.position}>
-                            {position}
+                            <div className={cl.position}>
+                                {position}
+                            </div>
                         </div>
-                    </div>
-                    </div>
-                    <div className={cl.date}>
+                    </UserInfo>
+                    <FeedbackDate>
                         {date}
-                    </div>
-                </div>
-                <div className={cl.body}>
+                    </FeedbackDate>
+                </Header>
+                <Body>
                     {about}
-                </div>
-            </div>
-        </div>
+                </Body>
+            </Container>
+        </Feedback>
     )
 }
 

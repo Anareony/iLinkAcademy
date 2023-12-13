@@ -1,5 +1,4 @@
 import React from 'react'
-import classes from './Footer.module.css'
 
 import vk from './img/vk.svg'
 import reddit from './img/reddit.svg'
@@ -14,19 +13,19 @@ const Footer:React.FC = () => {
                 <Text>© iLINK ACADEMY. ALL RIGHTS RESERVED. 2022</Text>
                 <SocialList>
                     <SocialItem>
-                        <a href="" className={classes.link}>
-                            <img src={vk} alt="" />
-                        </a>
+                        <SocialLink href="">
+                            <img src={vk} alt="vk" />
+                        </SocialLink>
                     </SocialItem>
                     <SocialItem>
-                        <a href="" className={classes.link}>
-                            <img src={reddit} alt="" />
-                        </a>
+                        <SocialLink href="">
+                            <img src={reddit} alt="reddit" />
+                        </SocialLink>
                     </SocialItem>
                     <SocialItem>
-                        <a href="" className={classes.link}>
-                            <img src={tg} alt="" />
-                        </a>
+                        <SocialLink href="">
+                            <img src={tg} alt="telegram" />
+                        </SocialLink>
                     </SocialItem>
                 </SocialList>
             </Container>

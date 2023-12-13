@@ -31,6 +31,7 @@ const Carousel = ({reviewers}) => {
                         name={reviewer.name} 
                         surname={reviewer.surname} 
                         about={reviewer.about} 
+                        position={reviewer.position} 
                     />
                 </SwiperSlide>
                 )}
