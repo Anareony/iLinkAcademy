@@ -3,7 +3,7 @@ import cl from './FeedbackCard.module.css'
 
 import icon from './img/Camera.svg'
 
-import { Feedback, Container, Header, UserInfo, Avatar, Icon, Camera, FeedbackDate, Body } from './styles.ts'
+import { Feedback, Container, Header, UserInfo, Avatar, Icon, Camera, UserTable, UserFullName, UserLocation, FeedbackDate, Body } from './styles.ts'
 
 function FeedbackCard({name, surname, about, avatar, position, date}) {
     return (
@@ -11,19 +11,19 @@ function FeedbackCard({name, surname, about, avatar, position, date}) {
             <Container>
                 <Header>
                     <UserInfo>
-                        { (avatar)  ?   <Avatar src={avatar} className={cl.avatar} alt="avatar" />
-                                    :   <Icon className={cl.icon}>
-                                            <Camera className={cl.camera} src={icon} alt='avatar'/>
+                        { (avatar)  ?   <Avatar src={avatar} alt="avatar" />
+                                    :   <Icon>
+                                            <Camera src={icon} alt='avatar'/>
                                         </Icon>               
                         }
-                        <div className={cl.about}>
-                            <div className={cl.name}>
+                        <UserTable>
+                            <UserFullName>
                                 {name + ' ' + surname}
-                            </div>
-                            <div className={cl.position}>
+                            </UserFullName>
+                            <UserLocation>
                                 {position}
-                            </div>
-                        </div>
+                            </UserLocation>
+                        </UserTable>
                     </UserInfo>
                     <FeedbackDate>
                         {date}
