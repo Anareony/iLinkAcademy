@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Input from '../../../components/Input/Input'
-import Button2 from '../../../components/Button2/Button2'
+import Button2 from '../../../components/Button/Button'
 
 export const Container = styled.form`
     width: 100%;

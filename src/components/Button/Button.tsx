@@ -8,7 +8,7 @@ type Props = {
     onClick?: () => void;
 }
 
-const Button2: React.FC<Props> = ({children, type, onClick}) => {
+const Button: React.FC<Props> = ({children, type, onClick}) => {
     return (
         <StyledButton type={type} onClick={onClick}>
             {children}
@@ -16,4 +16,4 @@ const Button2: React.FC<Props> = ({children, type, onClick}) => {
     )
 }
 
-export default Button2;
+export default Button;

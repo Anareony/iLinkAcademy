@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import Input from '../../../components/Input/Input'
-import Button2 from '../../../components/Button2/Button2'
+import Button2 from '../../../components/Button/Button'
 
 import eye from '../assets/eye.svg'
 import eyeHover from '../assets/eyeHover.svg'   

@@ -29,7 +29,7 @@ const About = () => {
   return (
     <div className="App">
                 <div className="wrapper">
-                    <Header user={user}/>
+                    <Header name={user.name} surname={user.surname}/>
                     <main className="main">
                         <div className="content">
                             <h3 className="mainText">Добро пожаловать<br/>в академию!</h3>

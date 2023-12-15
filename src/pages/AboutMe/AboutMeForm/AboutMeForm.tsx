@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 
-import Button2 from '../../../components/Button2/Button2'
+import Button2 from '../../../components/Button/Button'
 import ToastSucces from '../../../components/ToastSucces/ToastSucces';
 
 import avatar from '../../../shared/assets/1.jpg'

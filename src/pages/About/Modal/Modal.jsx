@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 import ButtonWithIcon from '../../../components/ButtonWithIcon/ButtonWithIcon'
-import Button2 from '../../../components/Button2/Button2'
+import Button from '../../../components/Button/Button'
 import Input from '../../../components/Input/Input'
 import cl from './Modal.module.css'
 
@@ -130,7 +130,7 @@ const Modal = ({visible, setVisible, setShow}) => {
                     </div>
                     { errors.body && <p className={cl.error}><img src={error} alt='error'/>{errors.body.message}</p>}
                     <div className={cl.submit}>
-                        <Button2 type="submit">Отправить отзыв</Button2>
+                        <Button type="submit">Отправить отзыв</Button>
                         <div className={cl.info}><img style={{marginRight: '8px'}} src={info} alt=''/>Все отзывы проходят модерацию в течение 2 часов</div>
                     </div>
                 </form>
