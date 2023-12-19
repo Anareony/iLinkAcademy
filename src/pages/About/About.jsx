@@ -12,7 +12,7 @@ const About = () => {
     const [modal, setModal] = useState(false)
     const [toast, setToast] = useState(false)
 
-    const user = {name:'Роман', surname:'Чудояков', city:'Томск', sex:'мужчина', age:'21', pets: 'нету', date: '20.09.2000',
+    const user = {name:'Роман', surname:'Чудояков', city:'Томск', sex:'мужчина', age:'21', pets: 'Нет', date: '20.09.2000',
         info: 'Всем привет! Меня зовут Роман, мне 22 года. Учусь в ТУСУРе, и параллельно изучаю программирование.'
     }
     const [reviewers] = useState(require('../../students.json'))

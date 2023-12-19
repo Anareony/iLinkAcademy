@@ -42,11 +42,6 @@ h4 {
     line-height: 28px;
     letter-spacing: -0.0124rem;
 }
-
-.App {
-    margin-bottom: 40px;
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;

@@ -13,6 +13,8 @@ import error from '../assets/error.svg'
 import fileIcon from '../assets/fileIcon.svg'
 import deleteIcon from '../assets/Delete.svg'
 
+import { Container, ModalForm, Header, Feedback, Error} from './styles'
+
 const schema = yup.object().shape({
     names: yup
         .string()
@@ -65,12 +67,12 @@ const Modal = ({visible, setVisible, setShow}) => {
 
     return (
         <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
-            <div className={cl.centered} onClick={ (e)=> e.stopPropagation()}>
-                <form noValidate className={cl.modalContent} onSubmit={handleSubmit(onSubmit)}>
-                    <div className={cl.inline}>
+            <Container onClick={ (e)=> e.stopPropagation()}>
+                <ModalForm noValidate className={cl.modalContent} onSubmit={handleSubmit(onSubmit)}>
+                    <Header>
                         <div className={cl.header}>Отзыв</div>
                         <button type='button' onClick={() => setVisible(false)} className={cl.button}><img src={cross} alt='cross'/></button>
-                    </div>
+                    </Header>
                     <div className={cl.information}>
                         <div className={cl.width}>
                             <div className={cl.label}>Как вас зовут?</div>
@@ -115,9 +117,9 @@ const Modal = ({visible, setVisible, setShow}) => {
                                         </button>
                                     </div>
                     }
-                    { errors.picture && <div className={cl.error}><img src={error} alt='error'/>{errors.picture.message}</div>}
-                    { errors.names && <div className={cl.error}><img src={error} alt='error'/>{errors.names.message}</div>}
-                    <div className={cl.inputHeight}>
+                    { errors.picture && <Error><img src={error} alt='error'/>{errors.picture.message}</Error>}
+                    { errors.names && <Error><img src={error} alt='error'/>{errors.names.message}</Error>}
+                    <Feedback>
                         <div className={cl.label}>Все ли вам понравилось?</div>
                         <textarea 
                             {...register("body")} 
@@ -127,14 +129,14 @@ const Modal = ({visible, setVisible, setShow}) => {
                         > 
                         </textarea>
                         <div className={cl.ValueLenght}>{ValueLenght}/200</div>
-                    </div>
-                    { errors.body && <p className={cl.error}><img src={error} alt='error'/>{errors.body.message}</p>}
+                    </Feedback>
+                    { errors.body && <Error className={cl.error}><img src={error} alt='error'/>{errors.body.message}</Error>}
                     <div className={cl.submit}>
                         <Button type="submit">Отправить отзыв</Button>
                         <div className={cl.info}><img style={{marginRight: '8px'}} src={info} alt=''/>Все отзывы проходят модерацию в течение 2 часов</div>
                     </div>
-                </form>
-            </div>
+                </ModalForm>
+            </Container>
         </div>
     )
 }
