@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { Helper, Msg, InputLabel, StyledInput, EyeBtn } from './styles'
 
-type InputProps = {
+interface InputProps {
     id?: string;
     label?: string;
     name?: string;
@@ -11,6 +11,7 @@ type InputProps = {
     errors?: boolean;
     errorMsg?: string;
     inputValue?: string;
+    placeholder?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -49,6 +50,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
                     value={props.inputValue}
                     type={props.isPassword && passwordShown ? "password" : "text"} 
                     className={rootClassesInput.join(' ')}
+                    placeholder={props.placeholder}
                 />
                     {props.isPassword && <EyeBtn
                                             type='button' 

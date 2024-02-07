@@ -11,30 +11,19 @@ const StyledButton = styled.button`
     line-height: 17px;
     color: #fff;
     cursor: pointer;
-    background-color: #585CC6;
-    transition: all 400ms ease-in;
 
-    &::before {
-        position: absolute;
-        content: "";
-        inset: 0; /* same as { top: 0; right: 0; bottom: 0; left: 0; } */
-        background: linear-gradient(to right, #696DC8 50%, #585CC6 50%);
-        z-index: 1;
-        opacity: 0;
-        transition: opacity 0.25s linear;
-      }
+    background: #585CC6;
+    background-image: linear-gradient(#696DC8  ,#696DC8);
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: .4s;
 
-    &:hover::before {
-        opacity: 1;
-    }
     &:hover {
-        background-color: #696DC8;
+        background-size: 50% 100%;
     }
-
     &:active {
-        background: #797DDF;
+        background-size: 100% 100%;
     }
-
     &:disabled {
         background: #8A8A8A;
     }
