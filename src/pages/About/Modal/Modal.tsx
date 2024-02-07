@@ -34,9 +34,15 @@ const schema = yup.object().shape({
         })
 })
 
-const Modal = ({visible, setVisible, setShow}) => {
+interface IModal {
+    visible: boolean;
+    setVisible: (isOpen: boolean) => void;
+    setShow: (isOpen: boolean) => void;
+}
 
-    const [ValueLenght, setValueLenght] = useState(0)
+const Modal = ({visible, setVisible, setShow}: IModal) => {
+
+    const [ValueLenght, setValueLenght] = useState<number>(0)
 
     const { register, handleSubmit,resetField, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema)
@@ -50,17 +56,17 @@ const Modal = ({visible, setVisible, setShow}) => {
     }
 
     const fileLoader = () => {
-        const input = document.querySelector('#fileLoader');
+        const input: HTMLElement = document.querySelector('#fileLoader') as HTMLElement;
         input.click();
     }
     
-    const onSubmit = (data) => {
+    const onSubmit = (data:any) => {
         console.log(data.names);
         console.log(data.body);
         console.log(data.picture[0].name);
         setShow(true);
         setVisible(false);
-        setValueLenght('0');
+        setValueLenght(0);
         setFile('');
         reset();
     }
@@ -78,7 +84,7 @@ const Modal = ({visible, setVisible, setShow}) => {
                             <div className={cl.label}>Как вас зовут?</div>
                             <Input 
                                 {...register("names")}  
-                                placeholder='Имя Фамилия'
+                                placeholder={'Имя Фамилия'}
                             />
                         </div>
                         <ButtonWithIcon 

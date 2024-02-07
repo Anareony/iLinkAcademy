@@ -8,7 +8,20 @@ import 'swiper/css/scrollbar';
 import './Carousel.css'
 import FeedbackCard from '../../../components/FeedbackCard/FeedbackCard'
 
-const Carousel = ({reviewers}) => {
+type IFeedback = {
+    id?: number;
+    name: string;
+    surname: string;
+    avatar?: string;
+    about: string;
+    position?: string;
+    date: string;
+}
+type IFeedbacks = {
+    reviewers: IFeedback[]
+}
+
+const Carousel: React.FC<IFeedbacks> = ({reviewers}) => {
 
     return (
         <div className='carousel'>
@@ -25,7 +38,7 @@ const Carousel = ({reviewers}) => {
                 }}
                 pagination={{ clickable: true }}
             >
-            {reviewers.map( (reviewer) => 
+            {reviewers.map((reviewer) => 
                 <SwiperSlide key={reviewer.id}>
                     <FeedbackCard 
                         name={reviewer.name} 
