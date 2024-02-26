@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate }  from "react-router-dom"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
-
+import { authStore } from '../../../store/auth';
+import { useStore } from 'effector-react'
 import { StyledButton, Error, FormWrapper, Header, StyledInput, StyledLink, Wrapper, Form } from './styles'
+import { Regulars } from '../../../shared/constants/regExp';
 
 const schema = yup.object().shape({
     email: yup
         .string()
-        .matches(/^((?=[a-zA-Z0-9])[a-zA-Z0-9!#$%&\\'*+\-/=?^_`.{|}~]{1,25})@(([a-zA-Z0-9-]){1,25}\.)([a-zA-Z0-9]{2,4})$/, "Недопустимые адрес электронной почты")
+        .matches(Regulars.regEmail, "Недопустимые адрес электронной почты")
         .required("Это обязательно поле"),
     password: yup
         .string()
-        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,24}$/, 'Пароль должен содержать как минимум 8 символов: английские заглавные и прописные буквы, цифру и один из спецсимволов: "!#$%&"')
+        .matches(Regulars.regPassword, 'Пароль должен содержать как минимум 8 символов: английские заглавные и прописные буквы, цифру и один из спецсимволов: "!#$%&"')
         .required("Это обязательно поле"),
 })
 
@@ -28,23 +30,17 @@ const Auth = () => {
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
 
-    const database = {
-        email: "user@gmail.com",
-        password: "Awa1dsa23?"
-    }
-
-    const onSubmit = (data) => {
-        if(data.email === database.email) { 
-            if(data.password === database.password) {
-                navigate('/')
-            } else { 
-                setError('server')      
-            }
-        } else {
-            setError('server')    
+    const auth = useStore(authStore.$token);
+    
+    useEffect(() => {
+        if(auth.accessToken) {
+            localStorage.setItem("auth", JSON.stringify(auth));
+            navigate(`/about`);
         }
-        console.log(data.email)
-        console.log(data.password)
+    },[auth])
+    
+    const onSubmit = (data) => {
+        authStore.getToken({ email: data.email, password: data.password });
     }
 
     return (

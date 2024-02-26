@@ -8,7 +8,7 @@ import ilink from '../../shared/assets/ilink.svg'
 
 import { Main } from './styles'
 
-const Authorization = () => {
+const Authorization:React.FC = () => {
 
 	return (
 		<div>
