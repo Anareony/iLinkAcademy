@@ -6,14 +6,13 @@ import avatar from '../../components/FeedbackCard/img/Camera.svg'
 import brand from './img/brand.svg'
 import profile from '../Button/img/Profile.svg'
 
-import { Heading, Container, Nav, UserInfo, Border, Name, SurName } from './styles'
+import { Heading, Container, Nav, UserInfo, Border, Name } from './styles'
+import { useStore } from 'effector-react'
+import { userStore } from '../../store/store'
 
-type IHeader = {
-    name: string;
-    surname: string;
-}
-
-const Header:React.FC<IHeader> = ({name,surname}) => {
+const Header:React.FC = () => {
+    
+    const userInfo = useStore(userStore.$userInfo)
 
     return (
         <Heading>
@@ -21,10 +20,9 @@ const Header:React.FC<IHeader> = ({name,surname}) => {
                 <Nav>
                     <UserInfo>
                         <Border>
-                            <img className={cl.icon} src={avatar} alt='avatar'/>
+                            {/* <img className={cl.icon} src={`https://academtest.ilink.dev/images/${userInfo.profileImage}`} alt='avatar'/> */}
                         </Border>
-                        <Name>{name}</Name>
-                        <SurName>{surname}</SurName>
+                        <Name>{userInfo.firstName} {userInfo.lastName}</Name>
                     </UserInfo>
                     <Link to='/' className={cl.link}>
                         <img src={brand} alt="logo" />
