@@ -1,62 +1,60 @@
-import axios from 'axios'
-import { createEffect } from 'effector'
+import { createEffect, createEvent, createStore, forward, sample} from 'effector'
+import { IProfileInfo } from '../shared/constants/types';
 
-const config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    }
-}
+const userInitialState: IProfileInfo = {
+    id: "",
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    academyStatus: "",
+    profileImage: "",
+    aboutMe: "",
+    favoriteFood: "",
+    gender: "",
+    year: "",
+    smallAboutMe: "",
+    cityOfResidence: "",
+    hasPet: false,
+    pet: "",
+};
 
-const params = new URLSearchParams({
-    'email': 'Chudoyakov.roman@gmail.com',
-    'password': 'Qw2222@@'
+const $userInfo = createStore(userInitialState)
+
+const getUserInfo = createEvent();
+
+const getUserInfoFx = createEffect(async () => {
+  const localToken = localStorage.getItem('auth')
+
+  if (localToken) {
+    const localTokenObj = JSON.parse(localToken);
+    const response = await fetch(
+        "https://academtest.ilink.dev/user/getUserProfile",
+        {
+            method: "GET",
+            headers: { Authorization: `Bearer ${localTokenObj.accessToken}` },
+        }
+    )
+      .then((response) => response.text())
+      .then((response) => JSON.parse(response))
+    return response;
+  }
 });
 
-const setData = createEffect( async () =>{
-    await axios.post("https://academtest.ilink.dev/user/signIn", params, config )
-        .then(response => {
-            localStorage.setItem('key', response.data.accessToken)
-        })
+forward({
+    from: getUserInfo,
+    to: getUserInfoFx,
 })
 
-setData()
+const $isLoading = getUserInfoFx.pending;
 
-//@ts-ignore
-const key:string = 'Bearer ' + localStorage.getItem('key')
-
-const getData = createEffect(async () =>{
-    await axios.get("https://academtest.ilink.dev/user/getUserProfile", {
-        headers: {
-            'Authorization': key
-        }
-    })
-        .then(response => {
-            console.log(response)
-        })
+sample({
+    clock: getUserInfoFx.doneData,
+    fn: (clock) => clock,
+    target: $userInfo,
 })
 
-getData()
-
-const getDataReview = createEffect(async () =>{
-    await axios.get("https://academtest.ilink.dev/reviews/getAll", {
-        headers: {
-            'Authorization': key
-        }
-    })
-    .then(response => {
-        console.log(response)
-    })
-})
-
-getDataReview()
-
-
-const setCaptcha = createEffect( async () =>{
-    await axios.get("https://academtest.ilink.dev/reviews/getCaptcha")
-        .then(response => {
-            console.log(response)
-        })
-})
-
-setCaptcha()
-export {getData}
+export const userStore = {
+    getUserInfo,
+    $userInfo,
+    $isLoading
+};
