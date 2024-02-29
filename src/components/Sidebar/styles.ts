@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 type ImgProps = {
@@ -46,7 +46,7 @@ const Img = styled.div<{img: string}>`
     }
 `
 
-const StyledLink = styled(Link)<ImgProps>`
+const StyledLink = styled(NavLink)<ImgProps>`
     font-family: 'Factor A';
     font-weight: 700;
     font-size: 16px;

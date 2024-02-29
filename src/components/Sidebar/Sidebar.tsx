@@ -12,31 +12,24 @@ import paperActive from './img/PaperActive.svg'
 
 import { StyledLink, Img, Btns, Container } from './styles'
 
-type ISidebar = {
-    whoIsActive: 'students' | 'feedback' | 'aboutme'
-}
-
-const Sidebar: React.FC<ISidebar> = ({whoIsActive}) => {
+const Sidebar: React.FC = () => {
 
     return (
         <Container>
             <Btns>
                 <StyledLink 
-                    className={ whoIsActive === 'students' ? 'active' : ''} 
                     imghover={usersHover}
                     imgactive={usersActive}  
                     to='/students'>
                         <Img img={users}/>Участники
-                    </StyledLink>
+                </StyledLink>
                 <StyledLink 
-                    className={ whoIsActive === 'feedback' ? 'active' : ''} 
                     imghover={chatHover}
                     imgactive={chatActive}  
                     to='/feedback'>
                     <Img img={chat}/>Отзывы
                 </StyledLink>
                 <StyledLink 
-                    className={ whoIsActive === 'aboutme' ? 'active' : ''} 
                     imghover={paperHover}
                     imgactive={paperActive} 
                     to='/aboutme'>
