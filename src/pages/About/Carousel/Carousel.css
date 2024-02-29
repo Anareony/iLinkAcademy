@@ -9,10 +9,6 @@
 .swiper-button-prev {
     display: none !important;
 }
-.swiper-slide {
-    margin-right: 37px !important;
-}
-
 .swiper-pagination {
     margin-top: 32px !important;
     left: 2px !important;

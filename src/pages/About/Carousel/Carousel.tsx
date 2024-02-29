@@ -7,27 +7,18 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './Carousel.css'
 import FeedbackCard from '../../../components/FeedbackCard/FeedbackCard'
+import { userReviewsStore } from '../../../store/reviews';
+import { useStore } from 'effector-react';
+import { IReview } from '../../../store/reviews';
 
-type IFeedback = {
-    id?: number;
-    name: string;
-    surname: string;
-    avatar?: string;
-    about: string;
-    position?: string;
-    date: string;
-}
-type IFeedbacks = {
-    reviewers: IFeedback[]
-}
-
-const Carousel: React.FC<IFeedbacks> = ({reviewers}) => {
+const Carousel: React.FC = () => {
+    const fethingReviews = useStore(userReviewsStore.$userReviews);
 
     return (
         <div className='carousel'>
             <Swiper
                 modules={[Navigation, Pagination]}
-                spaceBetween={40}
+                spaceBetween={20}
                 slidesPerView={1}
                 loop={true}
                 navigation
@@ -36,15 +27,17 @@ const Carousel: React.FC<IFeedbacks> = ({reviewers}) => {
                         slidesPerView: 2
                     }
                 }}
-                pagination={{ clickable: true }}
+                pagination={{ 
+                    clickable: true,
+                }}
             >
-            {reviewers.map((reviewer) => 
+            {fethingReviews.filter((item) => item.status === "approved").map((reviewer) => 
                 <SwiperSlide key={reviewer.id}>
                     <FeedbackCard 
-                        name={reviewer.name} 
-                        surname={reviewer.surname} 
-                        about={reviewer.about} 
-                        position={reviewer.position} 
+                        name={reviewer.authorName} 
+                        about={reviewer.text} 
+                        avatar={reviewer.authorImage} 
+                        date={reviewer.createdAt}
                     />
                 </SwiperSlide>
                 )}
