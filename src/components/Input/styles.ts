@@ -10,7 +10,7 @@ import show from './assets/Show.svg'
 const EyeBtn = styled.button`
     border: none;
     position: absolute;
-    bottom: -5px;
+    bottom: 14px;
     right: 15px;
     cursor: pointer;
     background-image: url(${eye});
@@ -82,7 +82,6 @@ const InputLabel = styled.label`
     line-height: 20px;
     letter-spacing: -0.0124rem;
     margin-bottom: 4px;
-    position: relative;
 `
 
 const Msg = styled.span`
@@ -104,8 +103,8 @@ const Helper = styled.div`
     width: 20px;
     height: 20px;
     background-image: url(${info});
-    right: 14px;
-    bottom: -2px;
+    right: 15px;
+    bottom: 17px;
     cursor: pointer;
     &:hover ${Msg} {
         display: block;

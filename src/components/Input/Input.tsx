@@ -10,7 +10,7 @@ interface InputProps {
     isPassword?: boolean;
     errors?: boolean;
     errorMsg?: string;
-    inputValue?: string;
+    inputValue?: string | number;
     placeholder?: string;
 }
 
@@ -42,7 +42,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     }
 
     return (
-        <div>
+        <div style={{position:'relative'}}>
             <InputLabel>{props.label}
                 <StyledInput 
                     ref={ref} 
