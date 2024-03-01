@@ -23,5 +23,9 @@ const Error = styled.div`
     margin-top: 12px;
     color: #EB5757;
 `
+const CaptchaWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 
-export { Container, ModalForm, Header, Feedback, Error}
+export { Container, ModalForm, Header, Feedback, Error, CaptchaWrapper}

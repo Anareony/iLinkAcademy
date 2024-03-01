@@ -148,6 +148,13 @@
     margin-top: 12px;
     color: #EB5757;
 }
+.caphaImg {
+    margin-right: 16px;
+    border-radius: 2px;
+    width: 165px;
+    height: 52px;
+    text-align: center;
+  }
 
 @media screen and (max-width: 768px) {
     .centered {

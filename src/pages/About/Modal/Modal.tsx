@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
@@ -13,7 +13,10 @@ import error from '../assets/error.svg'
 import fileIcon from '../assets/fileIcon.svg'
 import deleteIcon from '../assets/Delete.svg'
 
-import { Container, ModalForm, Header, Feedback, Error} from './styles'
+import { Container, ModalForm, Header, Feedback, Error, CaptchaWrapper} from './styles'
+import { captchaStore } from '../../../store/captcha';
+import { useStore } from 'effector-react';
+import { IReviewPost, addReviewStore } from '../../../store/addReview';
 
 const schema = yup.object().shape({
     names: yup
@@ -59,11 +62,34 @@ const Modal = ({visible, setVisible, setShow}: IModal) => {
         const input: HTMLElement = document.querySelector('#fileLoader') as HTMLElement;
         input.click();
     }
-    
+
+    useEffect(() => {
+        captchaStore.getCaptcha()
+    }, [])
+
+    const captcha = useStore(captchaStore.$captcha);
+
+    let captchaImg = "";
+
+    if(captcha !== null) {
+        captchaImg = captcha.base64Image;
+    }
+
+    const refreshCaphaHandler = (e:React.FormEvent<HTMLButtonElement>): void => {
+        e.preventDefault()
+        captchaStore.getCaptcha();
+    };
+
     const onSubmit = (data:any) => {
-        console.log(data.names);
-        console.log(data.body);
-        console.log(data.picture[0].name);
+        const review: IReviewPost = {
+            authorName: data.names,
+            title: "defautl Title",
+            text: data.body,
+            captchaKey: captcha.key,
+            captchaValue: data.captcha,
+          };
+
+        addReviewStore.sendReview(review)
         setShow(true);
         setVisible(false);
         setValueLenght(0);
@@ -82,10 +108,10 @@ const Modal = ({visible, setVisible, setShow}: IModal) => {
                     <div className={cl.information}>
                         <div className={cl.width}>
                             <div className={cl.label}>Как вас зовут?</div>
-                            <Input 
+                            {/* <Input 
                                 {...register("names")}  
                                 placeholder={'Имя Фамилия'}
-                            />
+                            /> */}
                         </div>
                         <ButtonWithIcon 
                             style={{alignSelf: 'flex-end'}}
@@ -136,6 +162,14 @@ const Modal = ({visible, setVisible, setShow}: IModal) => {
                         </textarea>
                         <div className={cl.ValueLenght}>{ValueLenght}/200</div>
                     </Feedback>
+                    <CaptchaWrapper>
+                        {/* <Input 
+                            {...register("captcha")}  
+                            placeholder={''}
+                        /> */}
+                        <img src={captchaImg} className={cl.caphaImg}/>
+                        <button onClick={refreshCaphaHandler}>refresh</button>
+                    </CaptchaWrapper>
                     { errors.body && <Error className={cl.error}><img src={error} alt='error'/>{errors.body.message}</Error>}
                     <div className={cl.submit}>
                         <Button type="submit">Отправить отзыв</Button>
