@@ -31,7 +31,7 @@ const FormPasswordRecovery = () => {
         email: "user@gmail.com",
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = (data:any) => {
         if(data.email === database.email) { 
             setTimeout(() => setSucces(true), 2000) 
             setTimeout(() => setSucces(false), 10000) 
@@ -48,8 +48,8 @@ const FormPasswordRecovery = () => {
                 <StyledLink to='/auth'></StyledLink>
                 <Header>Сброс пароля</Header>
             </HeaderWrapper>
-            <Wrapper>
-                <StyledInput 
+            <Wrapper primary="40px">
+                {/* <StyledInput 
                     {...register("email", {
                             onChange: (e) => {
                                 setEmailValue(e.target.value)
@@ -60,12 +60,12 @@ const FormPasswordRecovery = () => {
                     inputValue={emailValue}
                     errors={errors.email}
                     errorMsg={errors.emal && errors.email.message}
-                />
+                /> */}
             </Wrapper>
             <BtnWrapper> 
                 <Button>
-                    <Text type='submit'>Отправить код</Text>
-                    <MobileText type='submit'>Сбросить</MobileText>
+                    <Text>Отправить код</Text>
+                    <MobileText >Сбросить</MobileText>
                 </Button>
                 <Link to='/auth'><StyledButton>Отмена</StyledButton></Link>
             </BtnWrapper>  
