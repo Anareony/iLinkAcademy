@@ -7,50 +7,55 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 import StudentsList from './StudentsList/StudentsList'
 import Dropdown from '../../components/Dropdown/Dropdown'
 
-import { IStudent } from '../../types/types'
-
 import none from '../../shared/assets/wolf.svg'
 
 import { Img, ImgContainer, Header, Container, Wrapper } from './styles'
+import { useStore } from 'effector-react'
+import { IStudent, usersStore } from '../../store/users'
+import { userStore } from '../../store/store'
 
 const Students: React.FC = () => {
-
-    const [students] = useState<IStudent[]>(require('../../students.json'))
     
     const [selectedSort, setSelectedSort] = useState<string>('')
     const [pageCount, setPageCount] = useState<number>(0);
     const [itemOffset, setItemOffset] = useState<number>(0);
     const [studentsPerPage] = useState<number>(6)
 
-    const filtredStudents = useMemo(():IStudent[] => {
+    const users = useStore(usersStore.$users)    
+
+    useEffect(() => {
+        userStore.getUserInfo()
+        usersStore.getUsers([]);
+    }, [])
+
+    const filteredStudents = useMemo(():IStudent[] => {
         if(selectedSort === 'expelled') {
             setItemOffset(0)
-            return [...students].filter( elem => elem.status === 'Отчислен')
-        } else if (selectedSort === 'styding') {
+            return users.filter( elem => elem.academyStatus === 'Отчислен')
+        } else if (selectedSort === 'studing') {
             setItemOffset(0)
-            return [...students].filter( elem => elem.status === 'Обучается')
+            return users.filter( elem => elem.academyStatus === 'studies')
         } else if (selectedSort === 'ended') {
             setItemOffset(0)
-            return [...students].filter( elem => elem.status === 'Закончил')
-        }
-        return students
-    }, [selectedSort, students])
-
+            return users.filter( elem => elem.academyStatus === 'Закончил')
+        } else return users
+    }, [selectedSort, users])
+console.log(users)
     const sortPosts = (sort: string) => {
         setSelectedSort(sort)
     }
     
-    const [currentItems, setCurrentItems] = useState<IStudent[]>(filtredStudents);
+    const [currentItems, setCurrentItems] = useState<IStudent[]>(filteredStudents);
 
     useEffect(() => {
         const endOffset = itemOffset + studentsPerPage;
         console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        setCurrentItems(filtredStudents.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(filtredStudents.length / studentsPerPage));
-    }, [filtredStudents, itemOffset, studentsPerPage]);
+        setCurrentItems(filteredStudents.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(filteredStudents.length / studentsPerPage));
+    }, [filteredStudents, itemOffset, studentsPerPage]);
   
     const handlePageChange = (event:{selected:number}) => {
-        const newOffset = event.selected * studentsPerPage % filtredStudents.length;
+        const newOffset = event.selected * studentsPerPage % filteredStudents.length;
         console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
         setItemOffset(newOffset);
     };
@@ -59,31 +64,34 @@ const Students: React.FC = () => {
         <div>
             <HeaderAdmin/>
             <Wrapper>
-                <Sidebar whoIsActive={'students'}/>
-                { students.length !== 0
-                    ?   <Container>
-                            <Header>
-                                <h3>Участники</h3>
-                                <Dropdown 
-                                    value={selectedSort}
-                                    setSelect={sortPosts}
-                                    options={[
-                                        {value: 'Все', name: 'Все'},
-                                        {value: 'expelled', name: 'Отчислен'},
-                                        {value: 'styding', name: 'Обучается'},
-                                        {value: 'ended', name: 'Закончил'}
-                                ]}/>
-                            </Header>
+                <Sidebar/>
+                <Container>
+                    <Header>
+                        <h3>Участники</h3>
+                        <Dropdown 
+                            value={selectedSort}
+                            setSelect={sortPosts}
+                            options={[
+                                {value: 'Все', name: 'Все'},
+                                {value: 'expelled', name: 'Отчислен'},
+                                {value: 'studing', name: 'Обучается'},
+                                {value: 'ended', name: 'Закончил'}
+                        ]}/>
+                    </Header>
+                    { currentItems.length !== 0 ? 
+                        <>
                             <StudentsList students={currentItems}/>
                             <Pagination
                                 pagesCount={pageCount}
                                 onChange={handlePageChange} 
                             />
-                        </Container>
-                    :   <ImgContainer>
+                        </> 
+                        :                       
+                        <ImgContainer>
                             <Img src={none} alt='none'/>
                         </ImgContainer>
-                }
+                    }   
+                </Container>
             </Wrapper>
             <Footer/>
         </div>

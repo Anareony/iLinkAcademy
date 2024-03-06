@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { IStudent } from '../../../types/types'
-
 import StudentItem from '../StudentItem/StudentItem'
 
 import { Item, Container, Wrapper, Headers } from './styles'
+import { IStudent } from '../../../store/users'
 
 type StudentsListProps = {
     students: IStudent[]

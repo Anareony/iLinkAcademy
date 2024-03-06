@@ -4,7 +4,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 24px;
+    padding: 24px 0;
     border-bottom: 1px dashed #E0E0E0;
     &:last-child{
         border-bottom: none;
@@ -20,7 +20,7 @@ const Student = styled.div`
     font-weight: 700;
     font-size: 14px;
     line-height: 17.33px;
-    width: 20%;
+    width: 15%;
     margin-left: 12px;
     @media (max-width: 768px) {
         width: 30%;
