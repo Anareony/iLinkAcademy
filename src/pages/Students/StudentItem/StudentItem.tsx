@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { IStudent } from '../../../types/types'
-
 import avatar from '../assets/Camera.svg'
 import { Status, Information, Student, Container } from './styles'
+import { IStudent } from '../../../store/users'
 
 type StudentItemProps = {
     student: IStudent;
@@ -12,19 +11,19 @@ type StudentItemProps = {
 const StudentItem: React.FC<StudentItemProps> = ({student}) => {
 
     function StatusContainer() {
-        if (student.status === 'Обучается') {
-            return <Status style={{color: '#61BF4A'}}>{student.status}</Status> 
-        } else if (student.status === 'Отчислен') {
-            return <Status style={{color: '#EB5757'}}>{student.status}</Status> 
-        }
-        return <Status>{student.status}</Status> 
+        if (student.academyStatus === 'studies') {
+            return <Status style={{color: '#61BF4A'}}>Обучается</Status> 
+        } else if (student.academyStatus === 'Отчислен') {
+            return <Status style={{color: '#EB5757'}}>Отчислен</Status> 
+        } 
+        return <Status>Закончил</Status> 
     }
     
     return (
         <Container>
-            { student.avatar ? <img src={student.avatar} alt='avatar'/> : <img src={avatar} alt='avatar'/>}
-            <Student>{student.name + ' ' + student.surname}</Student>
-            <Information>{student.information}</Information>
+            { student.profileImage ? <img style={{width:'40px',height:'40px'}} src={`https://academtest.ilink.dev/images/${student.profileImage}`} alt='avatar'/> : <img src={avatar} alt='avatar'/>}
+            <Student>{student.firstName} {student.lastName}</Student>
+            <Information>{student.smallAboutMe}</Information>
             <StatusContainer/>
         </Container>
     )
