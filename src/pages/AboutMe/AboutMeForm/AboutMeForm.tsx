@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup'
@@ -10,6 +10,8 @@ import avatar from '../../../shared/assets/1.jpg'
 import edit from '../assets/Edit.svg'
 
 import { Error, ImgHoverContainer, ImgHover, Container, Header, Grid, DropdownContainer, DropdownText, Select, Text, TextareaContainer, Textarea, Value, Img, ProfilePic, Button, FileInput, PicBtn, PicHeader, ImgEdit, Edit, FloatedBtn, StyledInput } from './styles'
+import { useStore } from 'effector-react';
+import { userStore } from '../../../store/store';
 
 const schema = yup.object().shape({
     file: yup
@@ -62,11 +64,29 @@ const AboutMeForm: React.FC = () => {
     });
 
     const [isDisabled, setDisabledBtn] = useState<boolean>(false)
-
+    useEffect(()=>{
+        userStore.getUserInfo()
+    },[])
+    const userInfo = useStore(userStore.$userInfo)
     const fileLoader = () => {
         const input = document.querySelector('#fileLoader');
         // @ts-ignore
         input.click()
+    }
+
+    const updateProfile = async (profileImage: FormData): Promise<any> => {
+        const url = `https://academtest.ilink.dev/user/updatePhoto`;
+        const key:any = localStorage.getItem('auth')
+        const localTokenObj = JSON.parse(key);
+        const request = await fetch(url, {
+            method: "POST",
+            headers: {
+                Authorization: "Bearer " + localTokenObj.accessToken,
+            },
+            body: profileImage,
+        });
+        const response = await request.json();
+        return response;
     }
 
     return (
@@ -76,9 +96,9 @@ const AboutMeForm: React.FC = () => {
             </Header>
                 <Edit>
                     <ProfilePic>
-                        <Img onClick={fileLoader} src={avatar} alt='avatar'/>
+                        <Img onClick={fileLoader} src={`https://academtest.ilink.dev/images/${userInfo.profileImage}`} alt='avatar'/>
                         <ImgHoverContainer>
-                            <ImgHover src={avatar} alt='avatar'/>
+                            <ImgHover src={`https://academtest.ilink.dev/images/${userInfo.profileImage}`} alt='avatar'/>
                         </ImgHoverContainer>
                         <PicBtn>
                             <PicHeader>Фото профиля</PicHeader>
@@ -87,15 +107,22 @@ const AboutMeForm: React.FC = () => {
                     </ProfilePic>
                     <FileInput type='file' id='fileLoader' accept=".png, .jpg, .jpeg" 
                         {...register("file", {
-                            onChange: (e) => console.log(e.target.files[0].name)
+                            onChange: (e) => {
+                                const formData = new FormData();
+                                formData.set("profileImage", e.target?.files?.[0]);
+                                console.log(e.target.files[0])
+                                console.log(formData)
+                                updateProfile(formData)
+                            }
                         })}
                     />
                     { !isDisabled && <Button2 onClick={() => setDisabledBtn(true)}>Редактировать</Button2>}
                 </Edit>
             <Grid>
-                <StyledInput 
+                {/* <StyledInput 
                     {...register("name")} 
                     label='Имя'
+                    inputValue={userInfo.firstName}
                     disabled={!isDisabled}
                     errors={errors.name}
                     errorMsg={errors.name && errors.name.message}
@@ -103,6 +130,7 @@ const AboutMeForm: React.FC = () => {
                 <StyledInput 
                     {...register("surname")} 
                     label='Фамилия'
+                    inputValue={userInfo.lastName}
                     disabled={!isDisabled}
                     errors={errors.surname}
                     errorMsg={errors.surname && errors.surname.message}
@@ -110,10 +138,11 @@ const AboutMeForm: React.FC = () => {
                 <StyledInput 
                     {...register("date")} 
                     label='Дата рождения'
+                    inputValue={new Date(userInfo.birthDate).toLocaleDateString()}
                     disabled={!isDisabled}
                     errors={errors.date}
                     errorMsg={errors.date && errors.date.message}
-                />
+                /> */}
                 <DropdownContainer>
                     <DropdownText>Город</DropdownText>
                     <Select disabled={!isDisabled} {...register("city")}>
@@ -142,8 +171,8 @@ const AboutMeForm: React.FC = () => {
                 <DropdownContainer>
                     <DropdownText>Животное</DropdownText>
                     <Select disabled={!isDisabled} {...register("pet")}>
-                        <option value='Нету'>
-                            Нету
+                        <option value='Нет'>
+                            Нет
                         </option>
                         <option value='Есть'>
                             Есть
@@ -169,7 +198,7 @@ const AboutMeForm: React.FC = () => {
                 <Textarea
                     disabled={!isDisabled} {...register("about")}
                     placeholder="Напишите пару слов о себе..."
-                    value={aboutValue}
+                    value={userInfo.aboutMe}
                     onChange={(e) => {
                         setAboutValue(e.target.value)
                     }}    

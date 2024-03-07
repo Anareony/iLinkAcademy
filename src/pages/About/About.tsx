@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer";
 import plus from "./assets/Vector.svg"
@@ -6,36 +6,37 @@ import Modal from "./Modal/Modal";
 import Carousel from "./Carousel/Carousel";
 import UserCard from "./UserCard/UserCard";
 import ToastSucces from "../../components/ToastSucces/ToastSucces";
-import { IStudent } from '../../types/types'
+import { useStore } from "effector-react";
+import { userStore } from "../../store/store";
+import { userReviewsStore } from "../../store/reviews";
+import Loader from "../../components/Loader/Loader";
 
 const About = () => {
 
     const [modal, setModal] = useState<boolean>(false)
     const [toast, setToast] = useState<boolean>(false)
-
-    const user = {name:'Роман', surname:'Чудояков', city:'Томск', sex:'мужчина', age:'21', pets: 'Нет', date: '20.09.2000',
-        info: 'Всем привет! Меня зовут Роман, мне 22 года. Учусь в ТУСУРе, и параллельно изучаю программирование.'
-    }
-    const [reviewers] = useState(require('../../students.json'))
     
-    const prev = () => {
-        const prevBtn:HTMLElement = document.querySelector('.swiper-button-prev') as HTMLElement;
+    const handleClick = (className:string) => {
+        const prevBtn:HTMLElement = document.querySelector(className) as HTMLElement;
         prevBtn.click();
     }
 
-    const next = () => {
-        const nextBtn:HTMLElement = document.querySelector('.swiper-button-next') as HTMLElement;
-        nextBtn.click();
-    }
+    useEffect(() => {
+        userStore.getUserInfo()
+        userReviewsStore.getUserReviews([]);
+    }, []);
 
-  return (
+    const userInfo = useStore(userStore.$userInfo);
+    console.log(userInfo)
+    
+    return (
     <div className="App">
-                <div className="wrapper">
-                    <Header name={user.name} surname={user.surname}/>
+             {userInfo.id ? <div className="wrapper">
+                    <Header/>
                     <main className="main">
                         <div className="content">
                             <h3 className="mainText">Добро пожаловать<br/>в академию!</h3>
-                            <UserCard user={user}/>
+                            <UserCard/>
                             <div className="review">
                                 <div className="review__container">
                                     <div className="inline">
@@ -46,10 +47,10 @@ const About = () => {
                                         </button>
                                     </div>
                                     <Modal setShow={setToast} visible={modal} setVisible={setModal}></Modal>
-                                    <Carousel reviewers={reviewers}/>
+                                    <Carousel/>
                                 </div>
-                                <button className="prevBtn" onClick={prev}></button>
-                                <button className="nextBtn" onClick={next}></button>
+                                <button className="prevBtn" onClick={() => handleClick('.swiper-button-prev')}></button>
+                                <button className="nextBtn" onClick={() => handleClick('.swiper-button-next')}></button>
                             </div>
                         </div>
                     </main>
@@ -60,7 +61,8 @@ const About = () => {
                         show={toast} 
                         setShow={setToast}       
                     />
-                </div>
+                </div> :
+                <Loader/>}   
             </div>
   )
 }

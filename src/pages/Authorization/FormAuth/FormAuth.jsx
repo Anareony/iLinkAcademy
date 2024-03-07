@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import { authStore } from '../../../store/auth';
 import { useStore } from 'effector-react'
 import { StyledButton, Error, FormWrapper, Header, StyledInput, StyledLink, Wrapper, Form } from './styles'
-import { Regulars } from '../../../shared/constants/regExp';
+import { Regulars } from '../../../shared/const/regExp';
 
 const schema = yup.object().shape({
     email: yup

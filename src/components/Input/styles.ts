@@ -24,9 +24,6 @@ const EyeBtn = styled.button`
     &.active {
         background-image: url(${eyeHide});
     }
-    &.activeInput {
-        background-image: url(${show});
-    }
     &.active.hasError{
         background-image: url(${eyeHide});
     }
@@ -69,11 +66,12 @@ const StyledInput = styled.input`
         line-height: 22px;
         letter-spacing: 0;
     }
-
+    &:focus + ${EyeBtn}.active {
+        background-image: url(${eyeHide});
+    }
     &:focus + ${EyeBtn} {
         background-image: url(${show});
     }
-
 `
 const InputLabel = styled.label`
     font-family: 'Factor A';

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 
-import { IStudent } from '../../types/types'
-
 import Footer from '../../components/Footer/Footer'
 import HeaderAdmin from '../../components/HeaderAdmin/HeaderAdmin'
 import Sidebar from '../../components/Sidebar/Sidebar'
@@ -11,44 +9,65 @@ import FeedbackList from './FeedbackList/FeedbackList'
 import none from '../../shared/assets/wolf.svg'
 
 import { Img, ImgContainer, Header, Container, Scroll, Wrapper } from './styles'
+import { useStore } from 'effector-react'
+import { IReview, userReviewsStore } from '../../store/reviews'
 
 const Feedback: React.FC = () => {
 
-    const [students, setStudents] = useState<IStudent[]>((require('../../students.json')))
     const [selectedSort, setSelectedSort] = useState<string>('')
+    
+    const reviews = useStore(userReviewsStore.$userReviews)
 
     useEffect(() => {
-        setStudents([...students].sort((a,b) => { 
-            return b.reviewStatus.localeCompare(a.reviewStatus) ||  Number(new Date(b.reviewDate)) -  Number(new Date(a.reviewDate)) 
-    }))}, [])
+        userReviewsStore.getUserReviews([])
+    }, [])
+    const sortByTime = (a: IReview, b: IReview) => {
+        return Date.parse(b.createdAt) - Date.parse(a.createdAt);
+    };
+    const filterPublishReviews = (array: IReview[]) => {
+        return array.filter(element => element.status === "approved").sort((a, b) => sortByTime(a, b));
+    }
 
+    const filterRejectedReviews = (array: IReview[]) => {
+        return array.filter(element => element.status === "declined").sort((a, b) => sortByTime(a, b));
+    }
+
+    const filterUnpublishedReviews = (array: IReview[]) => {
+        return array.filter(element => element.status === "onCheck").sort((a, b) => sortByTime(a, b));
+    }
+
+const dropDownFiltered = (dropdownValue: string, array: IReview[]) => {
+    let result = [];
+    if (dropdownValue === "declined") {
+        result.push(...filterRejectedReviews(array));
+        result.push(...filterPublishReviews(array));
+        result.push(...filterUnpublishedReviews(array));
+
+    } else if (dropdownValue === "approved") {
+        result.push(...filterPublishReviews(array));
+        result.push(...filterUnpublishedReviews(array));
+        result.push(...filterRejectedReviews(array));
+    } else {
+        result.push(...filterUnpublishedReviews(array));
+        result.push(...filterRejectedReviews(array));
+        result.push(...filterPublishReviews(array));
+    }
+    return result;
+}
+
+    console.log(dropDownFiltered(selectedSort,reviews))
+    
     const sortFeedback = (sort:string) => {
         setSelectedSort(sort)
         console.log(sort)
-        if ( sort === 'unpublished') {
-            setStudents([...students].sort((a,b) => { 
-                return b.reviewStatus.localeCompare(a.reviewStatus)
-            }))
-        }
-        if ( sort === 'canceled') {
-            setStudents([...students].sort((a,b) => {
-                return a.reviewStatus.localeCompare(b.reviewStatus)
-            }))
-        }
-        if ( sort === 'published') {   
-            const publishedReview = students.filter(review => review.reviewStatus === 'published')
-            const canceledReview = students.filter(review => review.reviewStatus === 'canceled')       
-            const unpublishedReview = students.filter(review => review.reviewStatus === 'unpublished')
-            setStudents([...publishedReview, ...canceledReview, ...unpublishedReview])
-        }   
     }
 
     return (
         <div>
             <HeaderAdmin/>
             <Wrapper>
-                <Sidebar whoIsActive={'feedback'}/>
-                { students.length !== 0
+                <Sidebar/>
+                { reviews.length !== 0
                         ?
                         <Container>
                             <Header>
@@ -57,13 +76,13 @@ const Feedback: React.FC = () => {
                                     value={selectedSort}
                                     setSelect={sortFeedback}
                                     options={[
-                                        {value: 'unpublished', name: 'Сначала неопубликованные'},
-                                        {value: 'canceled', name: 'Сначала отклоненные'},
-                                        {value: 'published', name: 'Сначала опубликованные'}
+                                        {value: 'onCheck', name: 'Сначала неопубликованные'},
+                                        {value: 'declined', name: 'Сначала отклоненные'},
+                                        {value: 'approved', name: 'Сначала опубликованные'}
                                 ]}/>            
                             </Header>
                             <Scroll>
-                                <FeedbackList students={students}/>
+                                <FeedbackList students={dropDownFiltered(selectedSort,reviews)}/>
                             </Scroll>
                          </Container>   
                     :   <ImgContainer>

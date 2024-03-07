@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 
-import { IStudent } from '../../../types/types'
-
 import FeedbackItem from '../FeedbackItem/FeedbackItem'
 import ToastSucces from '../../../components/ToastSucces/ToastSucces';
 
 import { Wrapper } from './styles'
+import { useStore } from 'effector-react';
+import { IReview, userReviewsStore } from '../../../store/reviews';
 
 type FeedbackListProps = {
-    students: IStudent[]
+    students: IReview[]
 }
 
 const FeedbackList: React.FC<FeedbackListProps> = ({students}) => {
 
     const [succes, setSucces] = useState<boolean>(false)
-
+    const userReviews = useStore(userReviewsStore.$userReviews)
+    // console.log(userReviews)
     return (
         <div>
             <Wrapper>

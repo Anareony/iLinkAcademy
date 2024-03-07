@@ -1,5 +1,5 @@
 import { createEffect, createEvent, createStore, forward, sample} from 'effector'
-import { IProfileInfo } from '../shared/constants/types';
+import { IProfileInfo } from '../shared/const/types';
 
 const userInitialState: IProfileInfo = {
     id: "",

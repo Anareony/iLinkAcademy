@@ -1,70 +1,79 @@
 import React, { useState } from 'react'
-
+import { Path, UseFormRegister } from "react-hook-form";
 import { Helper, Msg, InputLabel, StyledInput, EyeBtn } from './styles'
+import { IFormInputs } from '../../shared/const/types';
 
 interface InputProps {
-    id?: string;
+    id : Path<IFormInputs>;
     label?: string;
     name?: string;
     disabled?: boolean;
-    isPassword?: boolean;
     errors?: boolean;
     errorMsg?: string;
-    inputValue?: string | number;
     placeholder?: string;
+    type?: "text" | "password";
+    register: UseFormRegister<IFormInputs>
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+const Input: React.FC<InputProps> = ({
+        id,
+        name,
+        type = "text",
+        placeholder,
+        label,
+        disabled,
+        errors,
+        errorMsg,
+        register
+    }) => {
 
-    const [passwordShown, setPasswordShown] = useState<boolean>(true);
-    const [isActive, setActive] = useState<boolean>(false);
+    const [isShowPassword, setIsShowPassword] = useState<boolean>(type === "password");
+    const [isActive, setIsActive] = useState<boolean>(false);
 
     const togglePasswordVisiblity = () => {
-        setActive(!isActive)
-        setPasswordShown(passwordShown ? false : true);
+        setIsShowPassword(!isShowPassword)
     };
 
-    const rootClasses: string[] = []
-    const rootClassesInput: string[] = []
-
-    if(isActive) {
-        rootClasses.push('active')
-    }
-
-    if(props.errors) {
-        rootClasses.push('hasError')
-        rootClassesInput.push('hasError')
-    }   
-
-    if(props.inputValue) {
-        rootClasses.push('activeInput')
-        rootClassesInput.push('active')
-    }
-
+    const onChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.currentTarget.value) {
+          setIsActive(true);
+        } else {
+          setIsActive(false);
+        }
+    };
+ 
     return (
         <div style={{position:'relative'}}>
-            <InputLabel>{props.label}
-                <StyledInput 
-                    ref={ref} 
-                    {...props} 
-                    value={props.inputValue}
-                    type={props.isPassword && passwordShown ? "password" : "text"} 
-                    className={rootClassesInput.join(' ')}
-                    placeholder={props.placeholder}
-                />
-                    {props.isPassword && <EyeBtn
-                                            type='button' 
-                                            className={rootClasses.join(' ')}
-                                            onClick={togglePasswordVisiblity}
-                                        />
-                    }
-                    {props.errors &&    <Helper>
-                                            <Msg>{props.errorMsg}</Msg>
-                                        </Helper>
-                    }
+            <InputLabel>
+                {label}
             </InputLabel>
+            <StyledInput
+                {...register(id)} 
+                type={isShowPassword ? "password" : "text"} 
+                className={`
+                    ${isActive ? "active" : "" } 
+                    ${errors ? "hasError" : "" }
+                `}
+                placeholder={placeholder}
+                onInput={onChangeValue}
+            />
+                {type === "password" && (
+                    <EyeBtn
+                        type='button' 
+                        className={`
+                            ${!isShowPassword ? "active" : "" } 
+                            ${errors ? "hasError" : "" }
+                        `}
+                        onClick={togglePasswordVisiblity}
+                    />
+                )}
+                {errors &&    <Helper>
+                                        <Msg>{errorMsg}</Msg>
+                                    </Helper>
+                }
+            
         </div> 
     )
-})
+}
 
 export default Input

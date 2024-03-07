@@ -26,14 +26,14 @@ const UserCard:React.FC = () => {
         </div>
         ) : (
             <UserContainer>
-                {/* <UserPhoto src={`https://academtest.ilink.dev/images/${userInfo.profileImage}`} alt='userPhoto'/> */}
+                <UserPhoto src={`https://academtest.ilink.dev/images/${userInfo.profileImage}`} alt='userPhoto'/>
                 <UserInfo>
                     <UserName><p>{userInfo.firstName} {userInfo.lastName}</p></UserName>
                     <UserBirthday><p>{new Date(userInfo.birthDate).toLocaleDateString()}</p></UserBirthday>
                     <UserCity><p><strong>Город:</strong> {userInfo.cityOfResidence}</p></UserCity>
                     <UserSex><p><strong>Пол:</strong> {user.sex}</p><img src={male} alt='sex'/></UserSex>
                     <UserAge><p><strong>Возраст:</strong> {userInfo.year}</p></UserAge>
-                    <UserAbout><p><strong>О себе:</strong> test</p></UserAbout>
+                    <UserAbout><p><strong>О себе:</strong> {userInfo.aboutMe}</p></UserAbout>
                     <UserPets><img src={dogFood} alt='dogFood' style={{marginRight:'12px'}}/><p><strong>Домашнее животное:</strong> {user.pets}</p></UserPets>
                 </UserInfo>
             </UserContainer>

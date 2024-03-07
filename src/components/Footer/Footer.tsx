@@ -4,11 +4,11 @@ import vk from './img/vk.svg'
 import reddit from './img/reddit.svg'
 import tg from './img/tg.svg'
 
-import { Container, Text, SocialList, SocialItem, SocialLink } from './styles'
+import { Container, Text, SocialList, SocialItem, SocialLink, Footer as StyledFooter } from './styles'
 
 const Footer:React.FC = () => {
     return (
-        <footer>
+        <StyledFooter>
             <Container>
                 <Text>© iLINK ACADEMY. ALL RIGHTS RESERVED. 2022</Text>
                 <SocialList>
@@ -29,7 +29,7 @@ const Footer:React.FC = () => {
                     </SocialItem>
                 </SocialList>
             </Container>
-        </footer>
+        </StyledFooter>
     )
 }
 

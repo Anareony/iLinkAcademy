@@ -13,7 +13,7 @@ const AboutMe: React.FC = () => {
         <div>
             <HeaderAdmin/>
             <Wrapper>
-                <Sidebar whoIsActive={'aboutme'}/>
+                <Sidebar/>
                 <Container>
                     <AboutMeForm/>
                 </Container>
