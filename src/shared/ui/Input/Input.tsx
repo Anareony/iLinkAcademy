@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { Path, UseFormRegister } from "react-hook-form";
+
+import { IFormInputs } from 'shared/const/types';
+
+import { ReactComponent as Show } from 'shared/assets/eye.svg'
+import { ReactComponent as Hide} from 'shared/assets/eyeHide.svg'
+
 import { Helper, Msg, InputLabel, StyledInput, EyeBtn, Container } from './styles'
-import { IFormInputs } from '../../const/types';
 
 interface InputProps {
     id : Path<IFormInputs>;
@@ -63,11 +68,12 @@ export const Input: React.FC<InputProps> = ({
                 <EyeBtn
                     type='button' 
                     className={`
-                        ${!isShowPassword ? "active" : "" } 
-                        ${errors ? "hasError" : "" }
+                        ${isActive ? "active" : "" } 
                     `}
                     onClick={togglePasswordVisiblity}
-                />
+                >
+                    { isShowPassword ? <Show/> : <Hide/>}
+                </EyeBtn>
             )}
             {errors && errorMsg && (
                 <Helper>

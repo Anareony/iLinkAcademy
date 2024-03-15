@@ -1,10 +1,5 @@
 import styled from 'styled-components'
-import eye from 'shared/assets/eye.svg'
-import eyeHover from 'shared/assets/eyeHover.svg'   
-import eyeHide from 'shared/assets/eyeHide.svg'
-import eyeHideHover from 'shared/assets/eyeHideHover.svg'
 import info from 'shared/assets/InfoSquare.svg'
-import show from 'shared/assets/Show.svg'
 
 const Container = styled.div`
     position: relative;
@@ -17,28 +12,23 @@ const EyeBtn = styled.button`
     bottom: 14px;
     right: 15px;
     cursor: pointer;
-    background-image: url(${eye});
     background-color: #fff;
     width: 24px;
     height: 24px;
-    &.hasError {
-        right: 45px;
-        background-image: url(${show});
+
+    svg path{
+        stroke: #8A8A8A;
+       
     }
-    &.active {
-        background-image: url(${eyeHide});
-    }
-    &.active.hasError{
-        background-image: url(${eyeHide});
-    }
-    &:hover.active.hasError {
-        background-image: url(${eyeHideHover});
-    }
-    &:hover.active {
-        background-image: url(${eyeHideHover});
+    &.active{
+        svg path{
+            stroke: #585CC6;
+        }
     }
     &:hover {
-        background-image: url(${eyeHover});
+        svg path{
+            stroke: #585CC6;
+        }
     }
 `
 const StyledInput = styled.input`
@@ -62,6 +52,14 @@ const StyledInput = styled.input`
     &.hasError {
         border: 1px solid #EB5757;
     }
+    &.hasError + ${EyeBtn} {
+        right: 45px;
+    }
+    &:focus + ${EyeBtn} {
+        svg path{
+            stroke: #585CC6;
+        }
+    }
     &::placeholder{
         font-size: 14px;
         font-weight: 400;
@@ -69,12 +67,7 @@ const StyledInput = styled.input`
         line-height: 22px;
         letter-spacing: 0;
     }
-    &:focus + ${EyeBtn}.active {
-        background-image: url(${eyeHide});
-    }
-    &:focus + ${EyeBtn} {
-        background-image: url(${show});
-    }
+
 `
 const InputLabel = styled.label`
     display: inline-block;
@@ -88,7 +81,7 @@ const InputLabel = styled.label`
     }
 `
 
-const Msg = styled.span`
+const Msg = styled.p`
     font-family: 'Gilroy';
     font-weight: 400;
     font-size: 10px;
@@ -97,9 +90,8 @@ const Msg = styled.span`
     position: absolute;
     bottom: 30px;
     right: -14px;
-    background: #fff;
+    background: #F5F5F5;
     min-width: 166px;
-    max-height: 44px;
 `
 
 const Helper = styled.div`
