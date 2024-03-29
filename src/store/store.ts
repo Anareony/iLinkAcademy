@@ -1,7 +1,7 @@
 import { createEffect, createEvent, createStore, forward, sample} from 'effector'
-import { IProfileInfo } from '../shared/const/types';
+import { UserProps } from '../shared/const/types';
 
-const userInitialState: IProfileInfo = {
+const userInitialState: UserProps = {
     id: "",
     firstName: "",
     lastName: "",

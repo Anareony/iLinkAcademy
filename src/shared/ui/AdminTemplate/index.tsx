@@ -2,15 +2,14 @@ import React from 'react'
 
 import { Main, Container } from './styles'
 
-interface IAdminTemplate {
+interface AdminTemplateProps {
     header: React.ReactNode;
     nav: React.ReactNode;
     main: React.ReactNode;
     footer: React.ReactNode;
 }
 
-export const AdminTemplate: React.FC<IAdminTemplate> = ({header,nav,main,footer}) => {
-
+export const AdminTemplate: React.FC<AdminTemplateProps> = ({header,nav,main,footer}) => {
     return (
         <div>
             {header}

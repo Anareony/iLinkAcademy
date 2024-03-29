@@ -1,9 +1,9 @@
-export interface IAuthorization {
+export interface AuthorizationProps {
     email: string;
     password: string;
 }
 
-export interface IUser {
+export interface UserProps {
     id: string;
     firstName: string;
     lastName: string;
@@ -20,7 +20,7 @@ export interface IUser {
     pet: string;
 }
 
-export interface IReview {
+export interface ReviewProps {
     id?: string;
     authorName: string;
     authorImage: string;
@@ -32,17 +32,17 @@ export interface IReview {
     version?: number;
 }
 
-export interface IOption {
+export interface Options {
     id: number | string;
     value: string;
 }
 
-export type TSelect = {
+export type Select = {
     label: string;
     value: string;
 };
 
-export interface IReviewPost {
+export interface ReviewPostProps {
     authorName: string;
     title: string;
     text: string;
@@ -50,7 +50,7 @@ export interface IReviewPost {
     captchaValue: string;
 }
 
-export interface IStudent {
+export interface StudentProps {
     id?: string;
     firstName: string;
     lastName: string;
@@ -60,29 +60,29 @@ export interface IStudent {
     academyStatus: string;
 }
 
-export interface IFormAboutUserInputs {
+export interface FormAboutUserInputsProps {
     firstName: string;
     lastName: string;
     dateBirth: string;
     text: string;
-    city: TSelect;
-    sex: TSelect;
-    pet: TSelect;
+    city: Select;
+    sex: Select;
+    pet: Select;
     shortInfo: string;
 }
 
-export interface IFormAddCommentInputs {
+export interface FormAddCommentInputsProps {
     name: string;
     text: string;
     file: any;
     captcha: string;
 }
 
-export interface IFormInputs extends IAuthorization, IFormAboutUserInputs, IFormAddCommentInputs {}
+export interface FormInputsProps extends AuthorizationProps, FormAboutUserInputsProps, FormAddCommentInputsProps {}
 
-export type IStatus = "onCheck" | "approved" | "declined";
+export type Status = "onCheck" | "approved" | "declined";
 
-export interface IUpdateUser {
+export interface UpdateUserProps {
     firstName: string;
     lastName: string;
     birthDate: Date;

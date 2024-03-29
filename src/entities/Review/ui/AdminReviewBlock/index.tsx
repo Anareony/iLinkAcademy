@@ -3,12 +3,12 @@ import approved from 'shared/assets/approved.svg'
 
 import { Img, ReviewPublished} from './styles'
 
-interface IAdminReviewBlock {
+interface AdminReviewBlockProps {
     editBlock?: React.ReactNode;
     status?: "onCheck" | "approved" | "declined";
 }
 
-export const AdminReviewBlock: React.FC<IAdminReviewBlock> = ({status, editBlock}) => {
+export const AdminReviewBlock: React.FC<AdminReviewBlockProps> = ({status, editBlock}) => {
     
     if (status === "onCheck") {
         return ( 

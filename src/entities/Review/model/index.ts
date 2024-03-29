@@ -1,15 +1,15 @@
 import { createEffect, createEvent, createStore, forward, sample } from 'effector'
 
-import { IReview } from 'shared/const/types';
+import { ReviewProps } from 'shared/const/types';
 import { API } from 'shared/api/requests';
 
-const reviewsInitialState: IReview[] = [];
+const reviewsInitialState: ReviewProps[] = [];
 
 const $reviews = createStore(reviewsInitialState);
 
 const getReviewsFx = createEffect( async () => API.getReviews())
   
-const getReviews = createEvent<IReview[]>();
+const getReviews = createEvent<ReviewProps[]>();
 
 forward({
     from: getReviews,
@@ -24,7 +24,7 @@ sample({
 
 const $isLoadingReviews = getReviewsFx.pending;
 
-const $editReview = createStore<IReview>({
+const $editReview = createStore<ReviewProps>({
     status: "onCheck",
     authorName: "",
     id: "-1",
@@ -33,7 +33,7 @@ const $editReview = createStore<IReview>({
     createdAt: "",
 });
   
-const setEditReview = createEvent<IReview>();
+const setEditReview = createEvent<ReviewProps>();
   
 sample({
     clock: setEditReview,
@@ -45,5 +45,5 @@ export const ReviewsModel = {
     $reviews,
     $isLoadingReviews,
     $editReview,
-    setEditReview
+    setEditReview,
 };

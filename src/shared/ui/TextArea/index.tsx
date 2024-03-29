@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, TextareaHTMLAttributes } from "react";
 import { Path, UseFormRegister } from "react-hook-form";
-import { IFormInputs } from '../../const/types';
+import { FormInputsProps } from 'shared/const/types';
 import { Label, StyledTextArea, LengthBlock, Container, Msg, Helper  } from "./styles";
 
-interface TextAreaProps {
-    id : Path<IFormInputs>;
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+    id : Path<FormInputsProps>;
+    register: UseFormRegister<FormInputsProps>;
     label?: string;
-    name?: string;
-    disabled?: boolean;
     errors?: boolean;
     errorMsg?: string;
-    placeholder?: string;
-    defaultValue?: string;
     maxLength?: number;
-    defalutValue?: string;
-    register: UseFormRegister<IFormInputs>,
+    defaultValue?: string;
 }
 
 export const TextArea: React.FC<TextAreaProps> = ({
@@ -22,11 +18,10 @@ export const TextArea: React.FC<TextAreaProps> = ({
     label, 
     defaultValue, 
     maxLength, 
-    disabled, 
-    placeholder, 
     register, 
     errors, 
     errorMsg,
+    ...props
 }) => {
     const [symbols, setSymbols] = useState(0);
 
@@ -42,15 +37,14 @@ export const TextArea: React.FC<TextAreaProps> = ({
         <Container>
             <Label>{label}</Label>
             <StyledTextArea 
+                {...props}    
                 {...register(id)}
-                placeholder={placeholder}
-                disabled={disabled}
                 onChange={onChangeSymbols}
                 maxLength={maxLength}
                 defaultValue={defaultValue}
                 className={`
                     ${errors ? "hasError" : "" }
-                `}    
+                `}
             /> 
             <LengthBlock>{symbols}/{maxLength}</LengthBlock>
             {errors && errorMsg && (

@@ -1,9 +1,9 @@
 import { createEffect, createEvent, createStore, forward, sample} from "effector";
 
-import { IUser } from "shared/const/types";
+import { UserProps } from "shared/const/types";
 import { API } from "shared/api/requests";
 
-const userInitialState: IUser = {
+const userInitialState: UserProps = {
     id: "",
     firstName: "",
     lastName: "",
@@ -24,7 +24,7 @@ const $user = createStore(userInitialState)
 
 const getUser = createEvent();
 
-const getUserFx = createEffect(async () => API.getProfile());
+const getUserFx = createEffect(async () => API.getUser());
 
 forward({
     from: getUser,

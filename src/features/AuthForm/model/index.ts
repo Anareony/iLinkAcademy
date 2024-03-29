@@ -1,12 +1,12 @@
 import { createEffect, createEvent, createStore, forward, sample } from 'effector'
 import { API } from 'shared/api/requests';
-import { IAuthorization } from 'shared/const/types';
+import { AuthorizationProps } from 'shared/const/types';
 
 const $token = createStore("")
 
-const getToken = createEvent<IAuthorization>();
+const getToken = createEvent<AuthorizationProps>();
 
-const getTokenFx = createEffect( async (user: IAuthorization) => {
+const getTokenFx = createEffect( async (user: AuthorizationProps) => {
     const accessToken = await API.authorization(user) 
     localStorage.setItem("accessToken", accessToken);
     return accessToken

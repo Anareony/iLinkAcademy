@@ -2,11 +2,11 @@ import React from "react";
 import camera from "shared/assets/Camera.svg"
 import { AvatarImg } from "./style";
 
-interface IAvatar {
+interface AvatarProps {
     avatar?: string;
 }
 
-export const Avatar: React.FC<IAvatar> = ({ avatar }) => {
+export const Avatar: React.FC<AvatarProps> = ({ avatar }) => {
     return (
         <AvatarImg 
             src={

@@ -10,8 +10,7 @@ const Container = styled.div`
         border-bottom: none;
     }
     @media (max-width: 768px) {
-        padding: 19px 38px 19px 16px;;
-        min-width: 600px;
+        min-width: 450px;
     }
 
 `

@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { IFormInputs } from 'shared/const/types';
+import { FormInputsProps } from 'shared/const/types';
 import { Button } from "shared/ui/Button/Button";
 
 import { schema } from '../lib';
@@ -11,12 +11,12 @@ import { FormWrapper, Header, StyledInput, StyledLink, Wrapper, Form } from './s
 
 export const AuthForm = () => {
 
-    const { register, handleSubmit, formState: { errors, isDirty, isValid, isSubmitted }} = useForm<IFormInputs>({
+    const { register, handleSubmit, formState: { errors, isDirty, isValid, isSubmitted }} = useForm<FormInputsProps>({
         resolver: yupResolver(schema),
         mode: "onChange"
     });
 
-    const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+    const onSubmit: SubmitHandler<FormInputsProps> = (data) => {
         authModel.getToken({ 
             email: data.email, 
             password: data.password 

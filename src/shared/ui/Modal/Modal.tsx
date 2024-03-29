@@ -4,14 +4,14 @@ import cross from 'shared/assets/cross.svg'
 
 import { ModalWrapper, Container, Header, Button } from './styles'
 
-interface IModal {
+interface ModalProps {
     isShow: boolean;
     header: string;
     closeWindow: () => void;
     children: React.ReactNode;
 }
 
-export const Modal: React.FC<IModal> = ({ isShow, header, closeWindow, children }) => {
+export const Modal: React.FC<ModalProps> = ({ isShow, header, closeWindow, children }) => {
     return (
         <ModalWrapper className={isShow ? "active" : ""}>
             <Container>

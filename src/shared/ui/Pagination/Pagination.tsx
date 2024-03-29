@@ -4,14 +4,14 @@ import right from 'shared/assets/right.svg'
 
 import { Img, MyPagination } from './styles'
 
-interface IPaginateProps {
+interface PaginationProps {
     marginPagesDisplayed?: number;
     pagesCount: number;
     pageRangeDisplayed?: number;
     onChange: ({ selected }: { selected: number }) => void;
 }
 
-export const Pagination: React.FC<IPaginateProps> = ({
+export const Pagination: React.FC<PaginationProps> = ({
     marginPagesDisplayed = 2,
     pagesCount,
     pageRangeDisplayed = 2,

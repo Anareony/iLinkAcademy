@@ -2,14 +2,14 @@ import React from 'react'
 import ReactSelect from 'react-select'
 import "./styles.css"
 
-interface IDropdown {
+interface DropdownProps {
     options: any;
     isDisabled?: boolean;
     defaultValue?: any;
     onChange?: any;
 }
 
-export const Dropdown: React.FC<IDropdown> = ({options, isDisabled, defaultValue, onChange}) => {
+export const Dropdown: React.FC<DropdownProps> = ({options, isDisabled, defaultValue, onChange}) => {
     return (
         <ReactSelect
             className="react-select-container"

@@ -1,8 +1,8 @@
-import { IStatus, IReviewPost, IAuthorization, IUpdateUser } from "shared/const/types";
+import { Status, ReviewPostProps, AuthorizationProps, UpdateUserProps } from "shared/const/types";
 
 const baseUrl = "https://academtest.ilink.dev";
 
-const authorization = async (loginData: IAuthorization) => {
+const authorization = async (loginData: AuthorizationProps) => {
     const url = `${baseUrl}/user/signIn`
     try {
         const response = await fetch(url, {
@@ -19,7 +19,7 @@ const authorization = async (loginData: IAuthorization) => {
     }
 }
 
-const getProfile = async () => {
+const getUser = async () => {
     const url =  `${baseUrl}/user/getUserProfile`
     try {
         const response = await fetch(url, {
@@ -80,7 +80,7 @@ const getStudents = async () => {
     }
 }
 
-const createReview = async (comment: IReviewPost) => {
+const createReview = async (comment: ReviewPostProps) => {
     const url = `${baseUrl}/reviews/create`
     try {
         const response = await fetch(url, {
@@ -98,7 +98,7 @@ const createReview = async (comment: IReviewPost) => {
     }
 }
 
-const updateStatusComment = async (id: string, status: IStatus) => {
+const updateStatusComment = async (id: string, status: Status) => {
     const url = `${baseUrl}/reviews/updateStatus/${id}`;
     try {
         const response = await fetch(url, {
@@ -116,7 +116,7 @@ const updateStatusComment = async (id: string, status: IStatus) => {
     }
 }
 
-const updateTextComment = async (id: string, text: string) => {
+const updateReviewText = async (id: string, text: string) => {
     const url = `${baseUrl}/reviews/updateInfo/${id}`;
     try {
         const response = await fetch(url, {
@@ -133,7 +133,7 @@ const updateTextComment = async (id: string, text: string) => {
         throw Error(e.message);
     }
 }
-const updatePhotoUser = async (profileImage: FormData): Promise<any> => {
+const updateUserPhoto = async (profileImage: FormData): Promise<any> => {
     const url = `${baseUrl}/user/updatePhoto`;
     try {
         const response = await fetch(url, {
@@ -149,7 +149,7 @@ const updatePhotoUser = async (profileImage: FormData): Promise<any> => {
         throw Error(e.message);
     }
 }
-const updateUser = async (updateInfo: IUpdateUser): Promise<any> => {
+const updateUser = async (updateInfo: UpdateUserProps): Promise<any> => {
     const url = `${baseUrl}/user/updateInfo`;
     try {
         const response = await fetch(url, {
@@ -169,13 +169,13 @@ const updateUser = async (updateInfo: IUpdateUser): Promise<any> => {
 
 export const API = {
     authorization,
-    getProfile,
+    getUser,
     getCaptcha,
     getReviews,
     createReview,
     getStudents,
     updateStatusComment,
-    updateTextComment,
-    updatePhotoUser,
+    updateReviewText,
+    updateUserPhoto,
     updateUser
 }

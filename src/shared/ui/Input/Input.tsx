@@ -1,35 +1,29 @@
-import React, { useState } from 'react'
+import React, { InputHTMLAttributes, useState } from 'react'
 import { Path, UseFormRegister } from "react-hook-form";
 
-import { IFormInputs } from 'shared/const/types';
+import { FormInputsProps } from 'shared/const/types';
 
 import { ReactComponent as Show } from 'shared/assets/eye.svg'
 import { ReactComponent as Hide} from 'shared/assets/eyeHide.svg'
 
 import { Helper, Msg, InputLabel, StyledInput, EyeBtn, Container } from './styles'
 
-interface InputProps {
-    id : Path<IFormInputs>;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    id: Path<FormInputsProps>;
+    register: UseFormRegister<FormInputsProps>,
     label?: string;
-    disabled?: boolean;
     errors?: boolean;
     errorMsg?: string;
-    placeholder?: string;
-    type?: "text" | "password";
-    defaultValue?: string;
-    register: UseFormRegister<IFormInputs>,
 }
 
 export const Input: React.FC<InputProps> = ({
         id,
-        type = "text",
-        placeholder,
         label,
-        disabled,
         errors,
         errorMsg,
-        defaultValue,
-        register
+        type = "text",
+        register,
+        ...props
     }) => {
 
     const [isShowPassword, setIsShowPassword] = useState<boolean>(type === "password");
@@ -53,16 +47,15 @@ export const Input: React.FC<InputProps> = ({
                 {label}
             </InputLabel>
             <StyledInput
+                {...props}
                 {...register(id)} 
                 type={isShowPassword ? "password" : "text"} 
-                disabled={disabled}
-                defaultValue={defaultValue}
                 className={`
                     ${isActive ? "active" : "" } 
                     ${errors ? "hasError" : "" }
                 `}
-                placeholder={placeholder}
                 onInput={onChangeValue}
+
             />
             {type === "password" && (
                 <EyeBtn

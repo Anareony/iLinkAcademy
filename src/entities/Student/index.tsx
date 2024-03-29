@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { IStudent } from 'shared/const/types'
+import { StudentProps } from 'shared/const/types'
 import { Avatar } from 'shared/ui/Avatar'
 
 import { Status, Information, Name, Container, Header } from './styles'
 
-export const Student: React.FC<IStudent> = ({profileImage, firstName, lastName, academyStatus, smallAboutMe}) => {
+export const Student: React.FC<StudentProps> = ({profileImage, firstName, lastName, academyStatus, smallAboutMe}) => {
 
     return (
         <Container>

@@ -1,18 +1,17 @@
 import React from 'react'
 
-import { IReview } from 'shared/const/types';
+import { ReviewProps } from 'shared/const/types';
 import { Avatar } from 'shared/ui/Avatar';
 import { AdminReviewBlock } from './AdminReviewBlock';
 
 import { Feedback, Container, Header, UserInfo, UserTable, UserFullName, UserLocation, FeedbackDate, Body } from './styles'
 
-interface IComment extends IReview {
+interface IComment extends ReviewProps {
     isAdmin?: boolean;
     editBlock?: React.ReactNode;
 }
 
 export const Review: React.FC<IComment> = ({authorName, authorImage, status, createdAt, text, isAdmin, editBlock}) => {
-
     return (
         <Feedback>
             <Container>
