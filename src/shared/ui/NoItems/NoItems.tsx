@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import none from 'shared/assets/wolf.svg'
+import none from "shared/assets/wolf.svg";
 
-import { ImgContainer, Img } from './styles'
+import { ImgContainer, Img } from "./styles";
 
 export const NoItems = () => {
-    return (
-        <ImgContainer>
-            <Img src={none} alt='none'/>
-        </ImgContainer>
-    )
-}
+	return (
+		<ImgContainer>
+			<Img src={none} alt="none" />
+		</ImgContainer>
+	);
+};

@@ -1,2 +1,2 @@
-export { UserModel } from "./model"
-export { UserCard } from "./ui"
+export { UserModel } from "./model";
+export { UserCard } from "./ui";

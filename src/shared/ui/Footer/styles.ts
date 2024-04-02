@@ -1,42 +1,40 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Footer = styled.footer`
-    width: 100%;
-    background: #fff;
-`
+	width: 100%;
+	background: #fff;
+`;
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 80px 20px 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px 80px 20px 80px;
 
-    @media screen and (max-width: 768px) {
-        flex-direction: column;
-        padding: 12px 23px 16px 24px;
-    }
-`
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+		padding: 12px 23px 16px 24px;
+	}
+`;
 const Text = styled.div`
-    font-size: 16px;
-    font-family: 'Gilroy';
-    font-weight: normal;
-    color: #8A8A8A;
+	font-size: 16px;
+	font-family: "Gilroy";
+	font-weight: normal;
+	color: #8a8a8a;
 
-    @media screen and (max-width: 768px) {
-        font-size: 12px;
-        color: #333333;
-    }
-`
+	@media screen and (max-width: 768px) {
+		font-size: 12px;
+		color: #333333;
+	}
+`;
 const SocialList = styled.ul`
-    list-style: none;
-    display: flex;
-`
+	list-style: none;
+	display: flex;
+`;
 const SocialItem = styled.li`
-    &:nth-child(2) {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-`
-const SocialLink = styled.a`
-
-`
-export { Footer, Container, Text, SocialList, SocialItem, SocialLink }
+	&:nth-child(2) {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+`;
+const SocialLink = styled.a``;
+export { Footer, Container, Text, SocialList, SocialItem, SocialLink };

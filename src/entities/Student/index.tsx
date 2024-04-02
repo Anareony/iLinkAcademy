@@ -1,26 +1,38 @@
-import React from 'react'
+import React from "react";
 
-import { StudentProps } from 'shared/const/types'
-import { Avatar } from 'shared/ui/Avatar'
+import { StudentProps } from "shared/const/types";
+import { Avatar } from "shared/ui/Avatar";
 
-import { Status, Information, Name, Container, Header } from './styles'
+import { Status, Information, Name, Container, Header } from "./styles";
 
-export const Student: React.FC<StudentProps> = ({profileImage, firstName, lastName, academyStatus, smallAboutMe}) => {
-
-    return (
-        <Container>
-            <Header>
-                <Avatar avatar={profileImage}/>
-                <Name>{firstName} {lastName}</Name>
-            </Header>
-            <Information>{smallAboutMe}</Information>
-            <Status className={`
-                ${academyStatus === "studies" ? "studies": ""}
-                ${academyStatus === "expelled" ? "expelled": ""}
-            `}>
-                {academyStatus === "studies" ? "Обучается" : 
-                academyStatus === "expelled" ? "Отчислен" : "Закончил"}
-            </Status> 
-        </Container>
-    )
-}
+export const Student: React.FC<StudentProps> = ({
+	profileImage,
+	firstName,
+	lastName,
+	academyStatus,
+	smallAboutMe,
+}) => {
+	return (
+		<Container>
+			<Header>
+				<Avatar avatar={profileImage} />
+				<Name>
+					{firstName} {lastName}
+				</Name>
+			</Header>
+			<Information>{smallAboutMe}</Information>
+			<Status
+				className={`
+                ${academyStatus === "studies" ? "studies" : ""}
+                ${academyStatus === "expelled" ? "expelled" : ""}
+            `}
+			>
+				{academyStatus === "studies"
+					? "Обучается"
+					: academyStatus === "expelled"
+						? "Отчислен"
+						: "Закончил"}
+			</Status>
+		</Container>
+	);
+};

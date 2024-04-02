@@ -1,2 +1,2 @@
-export { authModel } from "./model"
-export { AuthForm } from "./ui"
+export { authModel } from "./model";
+export { AuthForm } from "./ui";
