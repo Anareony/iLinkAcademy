@@ -26,7 +26,7 @@ export const AuthForm = () => {
 		mode: "onChange",
 	});
 
-	const onSubmit: SubmitHandler<FormInputsProps> = data => {
+	const onSubmit: SubmitHandler<FormInputsProps> = (data) => {
 		authModel.getToken({
 			email: data.email,
 			password: data.password,
@@ -43,8 +43,8 @@ export const AuthForm = () => {
 						register={register}
 						placeholder="Введите адрес эл. почты"
 						label="Электронная почта"
-						errors={!!errors.email}
-						errorMsg={errors?.email?.message}
+						errors={errors.email}
+						errorMsg={errors.email?.message}
 					/>
 				</Wrapper>
 				<Wrapper primary>
@@ -55,8 +55,8 @@ export const AuthForm = () => {
 						register={register}
 						label="Пароль"
 						placeholder="Введите пароль"
-						errors={!!errors.password}
-						errorMsg={errors?.password?.message}
+						errors={errors.password}
+						errorMsg={errors.password?.message}
 					/>
 				</Wrapper>
 				<Button

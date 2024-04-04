@@ -15,11 +15,6 @@ const InputContainer = styled.div`
 		width: 100%;
 	}
 `;
-const Error = styled.div`
-	margin-top: 5px;
-	line-height: 1;
-	color: #eb5757;
-`;
 const UserInformation = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -28,4 +23,4 @@ const UserInformation = styled.div`
 	}
 `;
 
-export { Form, TextAreaContainer, Error, UserInformation, InputContainer };
+export { Form, TextAreaContainer, UserInformation, InputContainer };

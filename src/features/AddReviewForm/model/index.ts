@@ -7,7 +7,11 @@ import {
 } from "effector";
 
 import { ToastModel } from "entities/Toast";
-import { ReviewPostProps, UploadImageProps } from "shared/const/types";
+import {
+	ReviewPostProps,
+	ReviewProps,
+	UploadImageProps,
+} from "shared/const/types";
 import { API } from "shared/api/requests";
 
 const $isShowAddReview = createStore(false);
@@ -19,15 +23,29 @@ sample({
 	target: $isShowAddReview,
 });
 
+const $review = createStore<ReviewProps>({
+	id: "",
+	authorName: "",
+	authorImage: "",
+	createdAt: "",
+	text: "",
+});
+
 const createReview = createEvent<ReviewPostProps>();
 
-const createReviewFx = createEffect(async (review: ReviewPostProps) =>
-	API.createReview(review),
+const createReviewFx = createEffect(
+	async (review: ReviewPostProps) => await API.createReview(review),
 );
 
 forward({
 	from: createReview,
 	to: createReviewFx,
+});
+
+sample({
+	clock: createReviewFx.doneData,
+	fn: (clock) => clock,
+	target: $review,
 });
 
 const getCaptcha = createEvent();
@@ -54,17 +72,28 @@ sample({
 
 const $isLoading = getCaptchaFx.pending;
 
-const uploadPhotoComment = createEvent<UploadImageProps>();
+const uploadImageReview = createEvent<FormData>();
 
-const uploadPhotoCommentFx = createEffect<UploadImageProps, any, Error>(
-	async ({ authorImage, id }) => {
+const $uploadPhotoCommentData = createStore<FormData | null>(null);
+
+sample({
+	clock: uploadImageReview,
+	target: $uploadPhotoCommentData,
+});
+
+const uploadImageReviewFx = createEffect<UploadImageProps, any, Error>(
+	async ({ id, authorImage }) => {
 		await API.updateReviewPhoto(id, authorImage);
 	},
 );
 
-forward({
-	from: uploadPhotoComment,
-	to: uploadPhotoCommentFx,
+sample({
+	clock: createReviewFx.doneData,
+	source: $uploadPhotoCommentData,
+	fn: (source, clock) => {
+		return { authorImage: source!, id: clock.id };
+	},
+	target: uploadImageReviewFx,
 });
 
 sample({
@@ -102,4 +131,5 @@ export const AddReviewModel = {
 	createReview,
 	showAddReview,
 	$isShowAddReview,
+	uploadImageReview,
 };

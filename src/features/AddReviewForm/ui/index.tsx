@@ -3,25 +3,22 @@ import { useStore } from "effector-react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { ReviewPostProps, FormInputsProps } from "shared/const/types";
-import { Modal } from "shared/ui/Modal/Modal";
-
-import { AddReviewModel } from "../model";
-import { schema } from "../lib";
-
 import { TextArea } from "shared/ui/TextArea";
 import { Input } from "shared/ui/Input/Input";
+import { Error } from "shared/ui/Error";
+import { FormInputsProps } from "shared/const/types";
+import { Modal } from "shared/ui/Modal/Modal";
+
 import { Captcha } from "./Captcha";
 import { SubmitBlock } from "./SubmitBlock";
 import { LoadFile } from "./LoadFile";
 import { FileBar } from "./FileBar";
-
-import error from "shared/assets/error.svg";
+import { AddReviewModel } from "../model";
+import { schema } from "../lib";
 
 import {
 	Form,
 	TextAreaContainer,
-	Error,
 	UserInformation,
 	InputContainer,
 } from "./styles";
@@ -70,20 +67,18 @@ export const AddReviewForm = () => {
 	};
 
 	const onSubmit = (data: FormInputsProps) => {
-		// AddReviewModel.createReview({
-		// 	authorName: data.name,
-		// 	text: data.text,
-		// 	title: data.name,
-		// 	captchaValue: data.captcha,
-		// 	captchaKey: captcha.key,
-		//     authorImage: data.file[0]
-		// });
+		AddReviewModel.createReview({
+			authorName: data.name,
+			text: data.text,
+			title: "title",
+			captchaValue: data.captcha,
+			captchaKey: captcha.key,
+		});
 
 		if (data.file) {
 			const form = new FormData();
 			form.append("authorImage", data.file[0]);
-			console.log(form);
-			// AddCommentModel.uploadPhotoComment(form);
+			AddReviewModel.uploadImageReview(form);
 		}
 
 		AddReviewModel.showAddReview(false);
@@ -111,18 +106,8 @@ export const AddReviewForm = () => {
 					<LoadFile register={register} onChangeFile={onChangeFile} />
 				</UserInformation>
 				{file && <FileBar file={file} deleteFile={deleteFile} />}
-				{errors.file && (
-					<Error>
-						<img src={error} alt="error" />
-						{errors.file.message}
-					</Error>
-				)}
-				{errors.name && (
-					<Error>
-						<img src={error} alt="error" />
-						{errors.name.message}
-					</Error>
-				)}
+				{errors.file && <Error>{errors.file.message}</Error>}
+				{errors.name && <Error>{errors.name.message}</Error>}
 				<TextAreaContainer>
 					<TextArea
 						id="text"
@@ -132,12 +117,7 @@ export const AddReviewForm = () => {
 						maxLength={200}
 						errors={errors.text}
 					/>
-					{errors.text && (
-						<Error>
-							<img src={error} alt="error" />
-							{errors.text.message}
-						</Error>
-					)}
+					{errors.text && <Error>{errors.text.message}</Error>}
 				</TextAreaContainer>
 				<Captcha
 					register={register}
@@ -145,12 +125,7 @@ export const AddReviewForm = () => {
 					reloadCaptcha={refreshCaptchaHandler}
 					errors={errors.captcha}
 				/>
-				{errors.captcha && (
-					<Error>
-						<img src={error} alt="error" />
-						{errors.captcha.message}
-					</Error>
-				)}
+				{errors.captcha && <Error>{errors.captcha.message}</Error>}
 				<SubmitBlock />
 			</Form>
 		</Modal>

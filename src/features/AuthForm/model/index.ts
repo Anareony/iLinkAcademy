@@ -6,6 +6,7 @@ import {
 	sample,
 } from "effector";
 
+import { ToastModel } from "entities/Toast";
 import { API } from "shared/api/requests";
 import { AuthorizationProps } from "shared/const/types";
 
@@ -41,7 +42,7 @@ sample({
 
 sample({
 	clock: $token,
-	fn: clock => !!clock,
+	fn: (clock) => !!clock,
 	target: $isAuth,
 });
 
@@ -52,8 +53,30 @@ forward({
 
 sample({
 	clock: getTokenFx.doneData,
-	fn: clock => clock,
+	fn: (clock) => clock,
 	target: $token,
+});
+
+sample({
+	clock: getTokenFx.failData,
+	fn: (clock) => !clock.message,
+	target: ToastModel.successToast,
+});
+
+sample({
+	clock: getTokenFx.failData,
+	fn: () => ({
+		textError: "Такого пользователя не существует.",
+		textSuccess: "",
+		titleSuccess: "",
+	}),
+	target: ToastModel.setToast,
+});
+
+sample({
+	clock: getTokenFx.failData,
+	fn: () => true,
+	target: ToastModel.showToast,
 });
 
 export const authModel = {
