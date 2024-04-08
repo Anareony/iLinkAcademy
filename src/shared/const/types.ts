@@ -4,20 +4,20 @@ export interface AuthorizationProps {
 }
 
 export interface UserProps {
-	id: string;
+	id?: string;
 	firstName: string;
 	lastName: string;
 	birthDate: string;
-	academyStatus: string;
-	profileImage: string;
+	academyStatus?: string;
+	profileImage?: string;
 	aboutMe: string;
-	favoriteFood: string;
+	favoriteFood?: string;
 	cityOfResidence: string;
 	gender: string;
-	year: string;
+	year?: string;
 	smallAboutMe: string;
 	hasPet: boolean;
-	pet: string;
+	pet?: string;
 }
 
 export interface ReviewProps {
@@ -85,6 +85,10 @@ export interface FormInputsProps
 
 export type Status = "onCheck" | "approved" | "declined";
 
+export interface UploadImageProps {
+	id: string;
+	authorImage: FormData;
+}
 export interface UpdateUserProps {
 	firstName: string;
 	lastName: string;

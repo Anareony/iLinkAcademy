@@ -5,10 +5,10 @@ import {
 	UpdateUserProps,
 } from "shared/const/types";
 
-const baseUrl = "https://academtest.ilink.dev";
+const BASE_URL = "https://academtest.ilink.dev";
 
 const authorization = async (loginData: AuthorizationProps) => {
-	const url = `${baseUrl}/user/signIn`;
+	const url = `${BASE_URL}/user/signIn`;
 	try {
 		const response = await fetch(url, {
 			method: "POST",
@@ -16,7 +16,13 @@ const authorization = async (loginData: AuthorizationProps) => {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(loginData),
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
 		return response.accessToken;
 	} catch (e: any) {
 		throw Error(e.message);
@@ -24,14 +30,20 @@ const authorization = async (loginData: AuthorizationProps) => {
 };
 
 const getUser = async () => {
-	const url = `${baseUrl}/user/getUserProfile`;
+	const url = `${BASE_URL}/user/getUserProfile`;
 	try {
 		const response = await fetch(url, {
 			method: "GET",
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 			},
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
 		return response;
 	} catch (e: any) {
 		throw Error(e.message);
@@ -39,11 +51,17 @@ const getUser = async () => {
 };
 
 const getCaptcha = async () => {
-	const url = `${baseUrl}/reviews/getCaptcha`;
+	const url = `${BASE_URL}/reviews/getCaptcha`;
 	try {
 		const response = await fetch(url, {
 			method: "GET",
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
 		return response;
 	} catch (e: any) {
 		throw Error(e.message);
@@ -51,14 +69,20 @@ const getCaptcha = async () => {
 };
 
 const getReviews = async () => {
-	const url = `${baseUrl}/reviews/getAll`;
+	const url = `${BASE_URL}/reviews/getAll`;
 	try {
 		const response = await fetch(url, {
 			method: "GET",
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 			},
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
 		return response;
 	} catch (e: any) {
 		throw Error(e.message);
@@ -66,14 +90,20 @@ const getReviews = async () => {
 };
 
 const getStudents = async () => {
-	const url = `${baseUrl}/user/getAll`;
+	const url = `${BASE_URL}/user/getAll`;
 	try {
 		const response = await fetch(url, {
 			method: "GET",
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 			},
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
 		return response;
 	} catch (e: any) {
 		throw Error(e.message);
@@ -81,7 +111,7 @@ const getStudents = async () => {
 };
 
 const createReview = async (comment: ReviewPostProps) => {
-	const url = `${baseUrl}/reviews/create`;
+	const url = `${BASE_URL}/reviews/create`;
 	try {
 		const response = await fetch(url, {
 			method: "POST",
@@ -90,8 +120,35 @@ const createReview = async (comment: ReviewPostProps) => {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 			},
 			body: JSON.stringify(comment),
-		}).then(response => response.json());
-		console.log(response.ok, response);
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
+		return response;
+	} catch (e: any) {
+		throw Error(e.message);
+	}
+};
+
+const updateReviewPhoto = async (
+	id: string,
+	authorImage: FormData,
+): Promise<any> => {
+	const url = `${BASE_URL}/reviews/updatePhoto/${id}`;
+	try {
+		const response = await fetch(url, {
+			method: "POST",
+			body: authorImage,
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
 		if (!response.ok) {
 			throw Error(response.message);
 		}
@@ -102,8 +159,8 @@ const createReview = async (comment: ReviewPostProps) => {
 	}
 };
 
-const updateStatusComment = async (id: string, status: Status) => {
-	const url = `${baseUrl}/reviews/updateStatus/${id}`;
+const updateReviewStatus = async (id: string, status: Status) => {
+	const url = `${BASE_URL}/reviews/updateStatus/${id}`;
 	try {
 		const response = await fetch(url, {
 			method: "POST",
@@ -112,7 +169,12 @@ const updateStatusComment = async (id: string, status: Status) => {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")!}`,
 			},
 			body: JSON.stringify({ status }),
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
 
 		if (!response.ok) {
 			throw Error(response.message);
@@ -125,7 +187,7 @@ const updateStatusComment = async (id: string, status: Status) => {
 };
 
 const updateReviewText = async (id: string, text: string) => {
-	const url = `${baseUrl}/reviews/updateInfo/${id}`;
+	const url = `${BASE_URL}/reviews/updateInfo/${id}`;
 	try {
 		const response = await fetch(url, {
 			method: "POST",
@@ -134,7 +196,12 @@ const updateReviewText = async (id: string, text: string) => {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")!}`,
 			},
 			body: JSON.stringify({ text }),
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
 
 		if (!response.ok) {
 			throw Error(response.message);
@@ -146,7 +213,7 @@ const updateReviewText = async (id: string, text: string) => {
 	}
 };
 const updateUserPhoto = async (profileImage: FormData): Promise<any> => {
-	const url = `${baseUrl}/user/updatePhoto`;
+	const url = `${BASE_URL}/user/updatePhoto`;
 	try {
 		const response = await fetch(url, {
 			method: "POST",
@@ -154,14 +221,24 @@ const updateUserPhoto = async (profileImage: FormData): Promise<any> => {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")!}`,
 			},
 			body: profileImage,
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
+
+		if (!response.ok) {
+			throw Error(response.message);
+		}
+
 		return response;
 	} catch (e: any) {
 		throw Error(e.message);
 	}
 };
 const updateUser = async (updateInfo: UpdateUserProps): Promise<any> => {
-	const url = `${baseUrl}/user/updateInfo`;
+	const url = `${BASE_URL}/user/updateInfo`;
 	try {
 		const response = await fetch(url, {
 			method: "POST",
@@ -170,7 +247,12 @@ const updateUser = async (updateInfo: UpdateUserProps): Promise<any> => {
 				Authorization: `Bearer ${localStorage.getItem("accessToken")!}`,
 			},
 			body: JSON.stringify(updateInfo),
-		}).then(response => response.json());
+		}).then((response) => {
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+			return response.json();
+		});
 
 		if (!response.ok) {
 			throw Error(response.message);
@@ -189,7 +271,8 @@ export const API = {
 	getReviews,
 	createReview,
 	getStudents,
-	updateStatusComment,
+	updateReviewPhoto,
+	updateReviewStatus,
 	updateReviewText,
 	updateUserPhoto,
 	updateUser,
