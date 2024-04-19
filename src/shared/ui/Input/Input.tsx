@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, useState } from "react";
-import { Path, UseFormRegister } from "react-hook-form";
+import { FieldError, Path, UseFormRegister } from "react-hook-form";
 
 import { FormInputsProps } from "shared/const/types";
 
@@ -19,7 +19,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	id: Path<FormInputsProps>;
 	register: UseFormRegister<FormInputsProps>;
 	label?: string;
-	errors?: boolean;
+	errors?: FieldError;
 	errorMsg?: string;
 }
 

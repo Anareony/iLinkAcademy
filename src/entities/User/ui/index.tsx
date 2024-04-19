@@ -46,15 +46,15 @@ export const UserCard: React.FC = () => {
 					</p>
 				</UserCity>
 				<UserSex>
-					<p>
-						<strong>Пол: </strong>
+					<p style={{ display: "flex" }}>
+						<strong>Пол:&nbsp;</strong>
 						{user.gender === "male" ? (
-							<span>
+							<span style={{ display: "flex" }}>
 								Мужчина&nbsp;
 								<img src={male} alt="Мужчина" />
 							</span>
 						) : (
-							<span>
+							<span style={{ display: "flex" }}>
 								Женщина&nbsp;
 								<img src={female} alt="Женщина" />
 							</span>

@@ -47,7 +47,7 @@ const LengthBlock = styled.div`
 	line-height: 14px;
 	position: absolute;
 	bottom: 10px;
-	right: 5px;
+	right: 15px;
 `;
 const Msg = styled.span`
 	font-family: "Gilroy";

@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 import { authModel } from "features/AuthForm";
 
-import { AuthorizationPage } from "pages/Auth";
+import { AuthorizationPage } from "pages/AuthPage";
 import { PasswordRecoveryPage } from "pages/PasswordRecoveryPage";
 import { MainPage } from "pages/MainPage";
 import { StudentsPage } from "pages/StudentsPage";
