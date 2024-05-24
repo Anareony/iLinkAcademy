@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStore } from "effector-react";
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,9 @@ import {
 } from "./styles";
 
 export const HeaderAdmin: React.FC = () => {
+	useEffect(() => {
+		UserModel.getUser();
+	}, []);
 	const user = useStore(UserModel.$user);
 	const isLoading = useStore(UserModel.$isLoading);
 

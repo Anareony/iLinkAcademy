@@ -20,6 +20,8 @@ const getTokenFx = createEffect(async (user: AuthorizationProps) => {
 	return accessToken;
 });
 
+const $isLoading = getTokenFx.pending;
+
 const checkAccessTokenFx = createEffect(() =>
 	localStorage.getItem("accessToken") !== null
 		? localStorage.getItem("accessToken")!
@@ -84,4 +86,5 @@ export const authModel = {
 	checkAccessToken,
 	$token,
 	getToken,
+	$isLoading,
 };

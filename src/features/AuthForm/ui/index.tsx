@@ -15,6 +15,9 @@ import {
 	Wrapper,
 	Form,
 } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useStore } from "effector-react";
 
 export const AuthForm = () => {
 	const {
@@ -25,6 +28,24 @@ export const AuthForm = () => {
 		resolver: yupResolver(schema),
 		mode: "onChange",
 	});
+
+	const token = useStore(authModel.$token);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		authModel.checkAccessToken();
+		if (token) {
+			navigate("/main");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	useEffect(() => {
+		if (token) {
+			navigate("/main");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [token]);
 
 	const onSubmit: SubmitHandler<FormInputsProps> = (data) => {
 		authModel.getToken({
@@ -66,7 +87,7 @@ export const AuthForm = () => {
 					Войти
 				</Button>
 			</Form>
-			<StyledLink to="/pass">Забыли пароль?</StyledLink>
+			<StyledLink to="/password-recovery">Забыли пароль?</StyledLink>
 		</FormWrapper>
 	);
 };

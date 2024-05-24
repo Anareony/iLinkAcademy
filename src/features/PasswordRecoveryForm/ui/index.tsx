@@ -42,7 +42,7 @@ export const FormPasswordRecovery = () => {
 	return (
 		<Form onSubmit={handleSubmit(onSubmit)}>
 			<HeaderWrapper>
-				<StyledLink to="/auth"></StyledLink>
+				<StyledLink to="/login"></StyledLink>
 				<Header>Сброс пароля</Header>
 			</HeaderWrapper>
 			<StyledInput
@@ -58,7 +58,7 @@ export const FormPasswordRecovery = () => {
 					<Text>Отправить код</Text>
 					<MobileText>Сбросить</MobileText>
 				</Button>
-				<Link to="/auth">
+				<Link to="/login">
 					<StyledButton>Отмена</StyledButton>
 				</Link>
 			</BtnsWrapper>
